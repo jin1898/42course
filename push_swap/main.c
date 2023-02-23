@@ -1,29 +1,45 @@
 #include "push_swap.h"
 
-int	main(void)
+int	main(int ac, char **av)
 {
-	t_stack *head1 = get_linke(head1, -1);
+	if(ac <= 2 )
+		print_error();
+	t_stack	*head = NULL;
+	head = get_linke(head,-1);
+	char **a;
+	int i = 1;
+	int n = 0;
+	int count = 0;
 
-	printf("[head1 : %p]\n", head1);
-	printf("[head1->number : %d]\n",head1->number);
+	while(*(av+i))
+	{
 
-	add_tail_dlinke(head1, 33, -1);
-	add_tail_dlinke(head1, 26, -1);
-	
-	printf("[head1->number : %d]\n",head1->number);
-	add_tail_dlinke(head1, 96, -1);
-	add_tail_dlinke(head1, 1, -1);
+		a = ft_split(av[i],' ');
+		n = 0;
+		while(a[n])
+		{
+			add_tail_dlinke(head,ft_atoll(a[n]),count);
+			n++;
+			count++;
+		}
+		i++;
+		n = 0;
+		while(a[n])
+		{
+			free(a[n]);
+			n++;
+		}
+		free(a);
 
-	printf_linke(head1);
+	}
+	printf_linke(head);
+	printf("\n[total %d words]\n",count);
+	check_dup(head);
+	swap(head);
+	printf_linke(head);
 
-	del_all_dlinke(head1);
 
-	printf_linke(head1);
-	
-	printf("[head1 : %p]\n", head1);
-	printf("----------\n");
-	system("leaks -q a.out");
-
-	printf("----------\n");
-
+	del_all_dlinke(&head);
+	printf("head : %p\n",head);
+	system("leaks a.out -q");
 }
