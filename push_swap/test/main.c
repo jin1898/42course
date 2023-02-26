@@ -38,34 +38,16 @@ int	main(int ac, char **av)
 	printf_linke(head);
 	printf_linke(head2);
 	printf("\n[total %d words]\n",count);
+	printf("=========================\n");
 //	check_dup(head);
-	printf("going in to sort\n");
+	printf("going in to change\n");
 	sort(&head,&head2);
+
+//	change(&head,&head2);
 	printf_linke(head);
 	printf_linke(head2);
 
-	
-//	sa(&(head->next));
-//	printf_linke(head);
-//	printf_linke(head2);
-//
 
-
-//	ss(&(head->next),&(head2->next));
-//	printf_linke(head);
-//	printf_linke(head2);
-
-//	pb(&(head->next),&(head2->next));
-//	printf_linke(head);
-//	printf_linke(head2);
-//
-//	pb(&(head->next),&(head2->next));
-//	printf_linke(head);
-//	printf_linke(head2);
-//
-//	sb(&(head2->next));
-//	printf_linke(head);
-//	printf_linke(head2);
 
 	del_all_dlinke(&head);
 	del_all_dlinke(&head2);

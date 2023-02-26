@@ -54,4 +54,5 @@ void    rrr(t_stack **a, t_stack **b);
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
-#endif 
+
+#endif
