@@ -78,7 +78,7 @@ int	sorted(t_stack *head)
 
 	while(head->next)
 	{
-		if(!(head->name < head->next->name))
+		if(!(head->number < head->next->number))
 			return 0;
 		head = head->next;
 	}

@@ -39,7 +39,7 @@ int	main(int ac, char **av)
 	printf_linke(head2);
 	printf("\n[total %d words]\n",count);
 	printf("=========================\n");
-//	check_dup(head);
+	check_dup(head);
 	printf("going in to change\n");
 
 	if(!sorted(head))
@@ -55,4 +55,32 @@ int	main(int ac, char **av)
 	del_all_dlinke(&head2);
 	printf("head : %p, head2 : %p\n",head,head2);
 	system("leaks a.out -q");
+}
+
+void	check_dup(t_stack *a)
+{
+	t_stack *point;
+	t_stack *head;
+
+	point = a;
+	head = a;
+	point = point->next;
+	while(point->next)
+	{
+		head = point->next;
+		while(head)
+		{
+			if(point->number == head->number)
+			{
+				printf("check_dup going in \n");
+				printf("\n--[information]--\n [point->name %d] [head->name %d] \n [point: %d] == [head: %d]\n",point->name, head->name,point->number,head->number);
+				del_all_dlinke(&a);
+
+				system("leaks a.out -q");
+				print_error();
+			}
+			head = head->next;
+		}
+		point = point->next;
+	}
 }
