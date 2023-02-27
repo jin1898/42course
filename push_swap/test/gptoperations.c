@@ -46,9 +46,10 @@ void    pb(t_stack **a, t_stack **b)
         t_stack *tmp;
 
         tmp = (*a)->next;
-        (*a)->next = *b;
-        *b = *a;
-        *a = tmp;
+        (*b)->next = tmp;
+		tmp->next = tmp->prev->next;
+        // *b = *a;
+        // *a = tmp;
         ft_putstr_fd("pb\n", 1);
     }
 }

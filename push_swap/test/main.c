@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/27 18:28:45 by jsunwoo           #+#    #+#             */
+/*   Updated: 2023/02/27 18:54:25 by jsunwoo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
 int	main(int ac, char **av)
@@ -14,42 +26,39 @@ int	main(int ac, char **av)
 	int n = 0;
 	int count = 0;
 
-	while(*(av+i))
+	while (*(av + i))
 	{
-
-		a = ft_split(av[i],' ');
+		a = ft_split(av[i], ' ');
 		n = 0;
-		while(a[n])
+		while (a[n])
 		{
-			add_tail_dlinke(head,ft_atoll(a[n]),count);
+			add_tail_dlinke(head, ft_atoll(a[n]), count);
 			n++;
 			count++;
 		}
 		i++;
 		n = 0;
-		while(a[n])
+		while (a[n])
 		{
 			free(a[n]);
 			n++;
 		}
 		free(a);
-
 	}
 	printf_linke(head);
 	printf_linke(head2);
 	printf("\n[total %d words]\n",count);
 	printf("=========================\n");
 	check_dup(head);
-	printf("going in to change\n");
-
-	if(!sorted(head))
-		sort(&head,&head2);
-
-//	change(&head,&head2);
+	sort(&head, &head2);
 	printf_linke(head);
 	printf_linke(head2);
-
-
+	pb(&head,&head2);
+//	mainsort(&head, &head2);
+//	sandatob(&head, &head2);
+//	sandbtoa(&head, &head2);
+	printf_linke(head);
+	printf_linke(head2);
 
 	del_all_dlinke(&head);
 	del_all_dlinke(&head2);

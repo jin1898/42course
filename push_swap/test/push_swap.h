@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/02/27 14:12:58 by jsunwoo           #+#    #+#             */
+/*   Updated: 2023/02/27 18:12:05 by jsunwoo          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 #define PUSH_SWAP_H
 
@@ -14,25 +26,25 @@ typedef struct s_doubly_linke
 #include <stdlib.h>
 #include <unistd.h>
 
-
-
-t_stack *add_tail_dlinke(t_stack *head, int number, int name);
+t_stack	*add_tail_dlinke(t_stack *head, int number, int name);
 void	printf_linke(t_stack *head);
-void del_all_dlinke(t_stack **head);
-t_stack *get_linke(t_stack *head, int name);
+void	del_all_dlinke(t_stack **head);
+t_stack	*get_linke(t_stack *head, int name);
 char	**ft_split(char const *s, char c);
-int ft_atoll(const char *str);
+int		ft_atoll(const char *str);
 void	print_error(void);
 void	check_dup(t_stack *a);
 void	sort(t_stack **head, t_stack **head2);
 void	sort3(t_stack **head);
-int	sorted(t_stack *head);
-
+int		sorted(t_stack *head);
+void	find_pushb(int a, t_stack **head, t_stack **head2, int size);
+void	sort5(t_stack **head, t_stack **head2);
+void	sort4(t_stack **head, t_stack **head2);
+void	mainsort(t_stack **head, t_stack **head2);
+void	sandatob(t_stack **head, t_stack **head2);
+void	sandbtoa(t_stack **head, t_stack **head2);
 
 //----gpt-------------------
-
-
-
 
 void    ft_swap(int *a, int *b);
 //t_stack2 *ft_stacknew(int value);
