@@ -5,73 +5,12 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/27 13:56:02 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/02/28 00:00:55 by sunwoo-jin       ###   ########.fr       */
+/*   Created: 2023/02/27 23:21:51 by sunwoo-jin        #+#    #+#             */
+/*   Updated: 2023/02/28 00:32:11 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-int	*indexing(t_stack **head, t_stack **head2)
-{
-	int		*a;
-	int		z;
-	t_stack	*p;
-	int		temp;
-	int		i;
-
-	p = *head;
-	z = -1;
-	a = malloc(sizeof(t_stack) * ((*head)->totalsize));
-	if (!a)
-		return(NULL);
-	while (z++ < (*head)->totalsize && p->next)
-	{
-		p = p->next;
-		a[z] = p->number;
-	}
-	z = 0;
-	i = 0;
-	while (z < (*head)->totalsize)
-	{
-		while (i < (((*head)->totalsize) - 1))
-		{
-			if (a[i] > a[i + 1])
-			{
-				temp = a[i];
-					a[i] = a[i + 1];
-					a[i + 1] = temp;
-			}
-			i++;
-		}
-		z++;
-	}
-	//지워도됨
-	printf("배열정렬 : ");
-	for(int i = 0; i < ((*head)->totalsize); i++)
-	{
-		printf("%d ",a[i]);
-	}
-	//지워도됨
-	z = 0;
-	p = *head;
-	while(z < (*head)->totalsize)
-	{	
-		p = (*head)->next;
-		while(p)
-		{
-			if(a[z] == p->number)
-			{
-				p->name = z;
-				z++;
-			}
-			p = p->next;
-		}
-	}
-	free(a);
-	return (1);
-	printf("변경완료!\n");
-}
 
 void	sort3(t_stack **head)
 {
@@ -92,7 +31,7 @@ void	sort3(t_stack **head)
 void	sort2(t_stack **head)
 {
 	t_stack	*p;
-	printf("sort2!\n");
+
 	p = (*head)->next;
 	if (p->name > p->next->name)
 		sa(head);

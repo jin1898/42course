@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:08:41 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/02/28 00:49:08 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/02/28 01:22:35 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	sandatob(t_stack **head, t_stack **head2)
 		pib++;
 		p = p->next;
 	}
+	sandbtoa(head, head2);
 }
 
 void	sandbtoa(t_stack **head, t_stack **head2)

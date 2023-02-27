@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 18:28:45 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/02/27 18:54:25 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/02/28 01:04:29 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,21 +45,22 @@ int	main(int ac, char **av)
 		}
 		free(a);
 	}
+	printf("연결리스트 완료---start---\n");
 	printf_linke(head);
 	printf_linke(head2);
+	printf("연결리스트 완료---end---\n");
 	printf("\n[total %d words]\n",count);
 	printf("=========================\n");
 	check_dup(head);
-	sort(&head, &head2);
+	if (!indexing1(&head, &head2))
+		return (0);
+	printf("indexing 완료됬음!--start---\n");
 	printf_linke(head);
 	printf_linke(head2);
-	pb(&head,&head2);
-//	mainsort(&head, &head2);
-//	sandatob(&head, &head2);
-//	sandbtoa(&head, &head2);
-	printf_linke(head);
-	printf_linke(head2);
-
+	printf("indexing 완료됬음!---end--\n");
+	// mainsort(&head, &head2);
+	// sandatob(&head, &head2);
+	// sandbtoa(&head, &head2);
 	del_all_dlinke(&head);
 	del_all_dlinke(&head2);
 	printf("head : %p, head2 : %p\n",head,head2);

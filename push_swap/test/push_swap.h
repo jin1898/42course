@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 14:12:58 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/02/27 18:12:05 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/02/28 00:01:19 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ char	**ft_split(char const *s, char c);
 int		ft_atoll(const char *str);
 void	print_error(void);
 void	check_dup(t_stack *a);
-void	sort(t_stack **head, t_stack **head2);
+int		*indexing(t_stack **head, t_stack **head2);
 void	sort3(t_stack **head);
 int		sorted(t_stack *head);
 void	find_pushb(int a, t_stack **head, t_stack **head2, int size);

@@ -14,37 +14,33 @@ int	main(int ac, char **av)
 	int n = 0;
 	int count = 0;
 
-	while(*(av+i))
+	while (*(av + i))
 	{
-
-		a = ft_split(av[i],' ');
+		a = ft_split(av[i], ' ');
 		n = 0;
-		while(a[n])
+		while (a[n])
 		{
-			add_tail_dlinke(head,ft_atoll(a[n]),count);
+			add_tail_dlinke(head, ft_atoll(a[n]), count);
 			n++;
 			count++;
 		}
 		i++;
 		n = 0;
-		while(a[n])
+		while (a[n])
 		{
 			free(a[n]);
 			n++;
 		}
 		free(a);
-
 	}
 	printf_linke(head);
 	printf_linke(head2);
-	printf("\n[total %d words]\n",count);
+	printf("\n[total %d words]\n", count);
 //	check_dup(head);
 	printf("going in to sort\n");
 	sort(&head,&head2);
 	printf_linke(head);
 	printf_linke(head2);
-
-	
 //	sa(&(head->next));
 //	printf_linke(head);
 //	printf_linke(head2);
