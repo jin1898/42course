@@ -54,6 +54,37 @@ void	sort(t_stack **head,t_stack **head2)
 	printf("변경완료!\n");
 }
 
+void	sort3(t_stack **head)
+{
+	t_stack *p;
+	p = (*head)->next;
+
+	if(sorted(*head))
+		return ;
+	if(p->name == ((*head)->totalsize) - 1)
+		ra(head);
+	else if(p->next->name == ((*head)->totalsize) - 1)
+		rra(head);
+	if (p->name > p->next->name)
+		sa(head);
+	printf("sort3으로 들어왔음!\n");
+
+}
+
+int	sorted(t_stack *head)
+{
+	head = head->next;
+	printf("sorted들어왔음!\n");
+
+	while(head->next)
+	{
+		if(!(head->name < head->next->name))
+			return 0;
+		head = head->next;
+	}
+	return (1);
+}
+
 void	print_error(void)
 {
 	write(2,"Error\n",6);

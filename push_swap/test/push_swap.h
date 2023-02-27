@@ -25,6 +25,8 @@ int ft_atoll(const char *str);
 void	print_error(void);
 void	check_dup(t_stack *a);
 void	sort(t_stack **head, t_stack **head2);
+void	sort3(t_stack **head);
+int	sorted(t_stack *head);
 
 
 //----gpt-------------------
@@ -36,7 +38,7 @@ void    ft_swap(int *a, int *b);
 //t_stack2 *ft_stacknew(int value);
 void    ft_stackadd_front(t_stack **stack, t_stack *new);
 void    ft_stackadd_back(t_stack **stack, t_stack *new);
-//t_stack *ft_stacklast(t_stack *stack);
+t_stack *ft_stacklast(t_stack *stack);
 void    ft_putstr_fd(char *s, int fd);
 size_t  ft_strlen(const char *s);
 

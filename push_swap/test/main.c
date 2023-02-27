@@ -41,7 +41,9 @@ int	main(int ac, char **av)
 	printf("=========================\n");
 //	check_dup(head);
 	printf("going in to change\n");
-	sort(&head,&head2);
+
+	if(!sorted(head))
+		sort(&head,&head2);
 
 //	change(&head,&head2);
 	printf_linke(head);
