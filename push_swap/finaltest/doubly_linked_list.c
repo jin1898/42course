@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 23:07:01 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/02/28 01:55:38 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/02/28 11:07:41 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_stack	*add_tail_dlinke(t_stack *head, int number, int name)
 	new = malloc(sizeof(t_stack));
 	new->number = number;
 	new->name = name;
+	new->totalsize = 0;
 	if (head->name == -1)
 		head->totalsize += 1;
 	while (point->next)
@@ -65,13 +66,13 @@ t_stack	*get_linke(int name)
 //이 함수 없애야함!
 void	printf_linke(t_stack *head)
 {
-	printf("---start-----\n");
+	// printf("---start-----\n");
 	while (head)
 	{
 		printf("[name : %d] [number: %d] [totalsize : %d]\n",head->name,head->number,head->totalsize);
 		head = head->next;
 	}
 	printf("[head : %p]\n", head);
-	printf("----end----\n");
+	// printf("----end----\n");
 }
 //이 함수 없애야함!

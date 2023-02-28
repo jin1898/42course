@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:59:51 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/02/28 01:54:36 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/02/28 11:20:35 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,10 @@ void	find_pushb(int a, t_stack **head, t_stack **head2)
 	int		count;
 	t_stack	*p;
 
+	printf("[find_pushb 함수 전 ---start---]\n"); // 지워야함
+	printf_linke(*head);
+	printf_linke(*head2);
+	printf("[find_pushb완료 함수 전---end---]\n"); // 지워야함
 	p = (*head)->next;
 	count = 0;
 	while (p->next)
@@ -55,6 +59,10 @@ void	find_pushb(int a, t_stack **head, t_stack **head2)
 			ra(head);
 	}
 	pb(head, head2);
+	printf("[find_pushb/pb 함수 후---start---]\n"); // 지워야함
+	printf_linke(*head);
+	printf_linke(*head2);
+	printf("[find_pushb/pb함수 함수 후---end---]\n"); // 지워야함
 }
 
 void	mainsort(t_stack **head, t_stack **head2)

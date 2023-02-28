@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:40:35 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/02/28 02:09:43 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/02/28 11:34:00 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,32 @@ int	main(int ac, char **av)
 	head = get_linke(-1);
 	head2 = get_linke(-2);
 	parsing(av, &head, i);
+	printf("[main/parsing완료 ---start---]\n"); // 지워야함
+	printf_linke(head);
+	printf_linke(head2);
+	printf("[main/parsing완료 ---end---]\n"); // 지워야함
 	check_dup(head);
 	indexing1(&head);
-	mainsort(&head, &head2);
-	del_all_dlinke(&head);
-	del_all_dlinke(&head2);
+	printf("[main/parsing/indexing1완료 ---start---]\n"); // 지워야함
+	printf_linke(head);
+	printf_linke(head2);
+	printf("[main/parsing/indexing1완료 ---end---]\n"); // 지워야함
+
+
+	ra(&head);
+	printf("[main/parsing/indexing1/ra 완료 ---start---]\n"); // 지워야함
+	printf_linke(head);
+	printf_linke(head2);
+	printf("[main/parsing/indexing1/ra 완료 ---end---]\n"); // 지워야함
+
+
+	// mainsort(&head, &head2);
+	// printf("[main/parsing/indexing1/mainsort완료 ---start---]\n"); // 지워야함
+	// printf_linke(head);
+	// printf_linke(head2);
+	// printf("[main/parsing/indexing1/mainsort완료 ---end---]\n"); // 지워야함
+	// del_all_dlinke(&head);
+	// del_all_dlinke(&head2);
 }
 
 void	parsing(char **av, t_stack **head, int i)
