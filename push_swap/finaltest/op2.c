@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op2.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:55:23 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/02/28 17:23:34 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/02/28 18:46:25 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ void	swap(t_stack **a, int i)
 			p2 = (*a)->next->next->next;
 		else
 			p2 = 0;
-
 		(*a)->next = p1;
 		p1->prev = (*a);
 		p1->next = p0;
@@ -72,6 +71,26 @@ void	push(t_stack **in, t_stack **out, int i)
 		write(1, "pb\n", 3);
 }
 
-void	reverse_rotate
+void	reverse_rotate(t_stack **stack);
+{
+	
+}
 
-void	rotate(t_stack **stack)
+void	rotate(t_stack **stack);
+{
+	t_stack	*p0;
+	t_stack	*p1;
+	t_stack	*pl;
+
+	pl = (*stack);
+	if ((*stack)->next && (*stack)->next->next)
+	{
+		p0 = (*stack)->next;
+		p1 = (*stack)->next->next;
+		while (pl->next)
+			pl = pl->next;
+		(*stack)->next = p1;
+		p1->
+	}
+
+}
