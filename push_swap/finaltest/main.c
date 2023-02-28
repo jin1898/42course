@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:40:35 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/02/28 11:34:00 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/02/28 16:53:45 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ int	main(int ac, char **av)
 	printf("[main/parsing/indexing1완료 ---end---]\n"); // 지워야함
 
 
-	ra(&head);
-	printf("[main/parsing/indexing1/ra 완료 ---start---]\n"); // 지워야함
+	push(&head2, &head, -2);
+	printf("[main/parsing/indexing1/pb 완료 ---start---]\n"); // 지워야함
 	printf_linke(head);
 	printf_linke(head2);
-	printf("[main/parsing/indexing1/ra 완료 ---end---]\n"); // 지워야함
+	printf("[main/parsing/indexing1/pb 완료 ---end---]\n"); // 지워야함
 
 
 	// mainsort(&head, &head2);

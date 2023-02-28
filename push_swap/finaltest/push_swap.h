@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:36:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/02/28 01:57:26 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/02/28 16:52:25 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,8 @@ void	sort4(t_stack **head, t_stack **head2);
 void	mainsort(t_stack **head, t_stack **head2);
 void	sandatob(t_stack **head, t_stack **head2);
 void	sandbtoa(t_stack **head, t_stack **head2);
+
+
+void	push(t_stack **in, t_stack **out, int i);
+void	swap(t_stack **a, int i);
 #endif
