@@ -5,7 +5,7 @@ int	main(int ac, char **av)
 	if(ac <= 2 )
 		print_error();
 	t_stack	*head = NULL;
-	t_stack *head2 = NULL;
+	t_stack	*head2 = NULL;
 
 	head = get_linke(head,-1);
 	head2 = get_linke(head2,-2);

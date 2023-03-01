@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op2.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:55:23 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 12:42:14 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/01 15:25:57 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,10 +28,11 @@ void	swap(t_stack **head)
 			p2 = (*head)->next->next->next;
 		else
 			p2 = 0;
-		p0->prev = p1;
-		p0->next = p2;
+		(*head)->next = p1;
 		p1->prev = (*head);
 		p1->next = p0;
+		p0->next = p2;
+		p0->prev = p1;
 		if (p2)
 			p2->prev = p0;
 		for (t_stack *print = *head; print!= 0; print = print->next)//지워야함!!

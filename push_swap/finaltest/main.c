@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:40:35 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 12:45:49 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/01 14:38:25 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	main(int ac, char **av)
 	printf_linke(head2);
 	printf("[main/parsing/indexing1완료 ---end---]\n"); // 지워야함
 
-	reverse_rotate(&head);
+	swap(&head);
 
 	for (t_stack *print = head; print!= 0; print = print->next)//지워야함!!
 		printf("[name:%d number:%d >> ",print->name, print->number);
