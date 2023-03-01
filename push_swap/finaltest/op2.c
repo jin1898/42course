@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:55:23 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 15:25:57 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/01 18:54:32 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,6 @@ void	swap(t_stack **head)
 	{
 		p0 = (*head)->next;
 		p1 = (*head)->next->next;
-		printf("--p0.name:%d p0.name:%d--\n",p0->name,p0->number);
-		printf("--p1.name:%d p1.number:%d--\n",p1->name,p1->number);
 		if ((*head)->next->next->next)
 			p2 = (*head)->next->next->next;
 		else
@@ -35,9 +33,6 @@ void	swap(t_stack **head)
 		p0->prev = p1;
 		if (p2)
 			p2->prev = p0;
-		for (t_stack *print = *head; print!= 0; print = print->next)//지워야함!!
-			printf("[name:%d number:%d >> ",print->name, print->number);
-		printf("]\n");// 지워야함!!!!!!!!!!!
 	}
 	else//지워야함!!!!!!!!!!
 		printf("fail swap\n"); //지워야함!!!!!!!!!!!
@@ -56,7 +51,12 @@ void	push(t_stack **in, t_stack **out)
 	if ((*out)->next)
 	{
 		p0 = (*out)->next;
-		p1 = (*out)->next->next;
+		if ((*out)->next->next)
+		{
+			p1 = (*in)->next;
+			(*in)->next = (*out)->next;
+			(*out)->next = p1;
+		}
 		(*out)->next = (*out)->next->next;
 		p1->prev = (*out);
 		if ((*in)->next)

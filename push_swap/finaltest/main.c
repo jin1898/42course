@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:40:35 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 14:38:25 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/01 18:40:39 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,19 +37,15 @@ int	main(int ac, char **av)
 	printf_linke(head);
 	printf_linke(head2);
 	printf("[main/parsing/indexing1완료 ---end---]\n"); // 지워야함
-
-	swap(&head);
-
-	for (t_stack *print = head; print!= 0; print = print->next)//지워야함!!
-		printf("[name:%d number:%d >> ",print->name, print->number);
-	printf("\n");
-	// mainsort(&head, &head2);
-	printf("[main/parsing/indexing1/mainsort완료 ---start---]\n"); // 지워야함
+	push(&head2, &head);
+	push(&head2, &head);
+	//mainsort(&head, &head2);
+	printf("[main/parsing/indexing1/pb완료 ---start---]\n"); // 지워야함
 	printf_linke(head);
 	printf_linke(head2);
-	printf("[main/parsing/indexing1/mainsort완료 ---end---]\n"); // 지워야함
-	// del_all_dlinke(&head);
-	// del_all_dlinke(&head2);
+	printf("[main/parsing/indexing1/pb완료 ---end---]\n"); // 지워야함
+	del_all_dlinke(&head);
+	del_all_dlinke(&head2);
 }
 
 void	parsing(char **av, t_stack **head, int i)
