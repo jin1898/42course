@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:40:35 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 18:40:39 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/01 21:50:55 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,3 +100,5 @@ void	check_dup(t_stack *a)
 		point = point->next;
 	}
 }
+
+//도와줘! git push 반영이안되!
