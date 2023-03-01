@@ -20,15 +20,15 @@ void	sort(t_stack **head,t_stack **head2)
 
   	  for(int i = 0;i < totalsize;i++)
 	  {
-       		for(int j = 0;j < (totalsize - 1);j++)
+       	for(int j = 0;j < (totalsize - 1);j++)
 		{
         	    if(a[j]>a[j+1])
 		    {
-       	         	temp=a[j];
-        	        a[j]=a[j+1];
+       	        	temp=a[j];
+        	    	a[j]=a[j+1];
                 	a[j+1]=temp;
 		    }
-       		 }
+       	}
    	 }	
 	printf("배열정렬 : ");
 	for(int i = 0; i < totalsize; i++)
@@ -40,10 +40,10 @@ void	sort(t_stack **head,t_stack **head2)
 	p = *head;
 	printf_linke(*head);
 	printf_linke(*head2); 
-	while(z++ < totalsize)
+	while (z++ < totalsize)
 	{	
 		p = (*head)->next;
-		if(!(a[z] != p->number))
+		if (!(a[z] != p->number))
 		{
 			p = p->next;
 			printf("같지 않음! 다음으로 넘어감\n");
@@ -54,7 +54,6 @@ void	sort(t_stack **head,t_stack **head2)
 			p->name = z;
 			printf("같음2! a[z] = %d / p->name = %d z = %d\n",a[z],p->name,z);
 		}
-
 	}
 	printf("변경완료!\n");
 	printf_linke(*head);

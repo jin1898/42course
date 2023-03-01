@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 23:07:01 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/02/28 11:07:41 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/01 01:09:57 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	printf_linke(t_stack *head)
 		printf("[name : %d] [number: %d] [totalsize : %d]\n",head->name,head->number,head->totalsize);
 		head = head->next;
 	}
-	printf("[head : %p]\n", head);
+	printf("#######[head : %p]#########\n", head);
 	// printf("----end----\n");
 }
 //이 함수 없애야함!

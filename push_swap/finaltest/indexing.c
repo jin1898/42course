@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 00:10:47 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/02/28 02:10:39 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/01 11:20:41 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,21 +41,25 @@ void	*indexing2(t_stack **head, int *a)
 	int	temp;
 
 	z = 0;
-	i = 0;
 	while (z < (*head)->totalsize)
 	{
+		i = 0;
 		while (i < (((*head)->totalsize) - 1))
 		{
 			if (a[i] > a[i + 1])
 			{
 				temp = a[i];
-					a[i] = a[i + 1];
-					a[i + 1] = temp;
+				a[i] = a[i + 1];
+				a[i + 1] = temp;
 			}
 			i++;
 		}
 		z++;
 	}
+	printf("[배열정렬완료 : "); //지워야함!!!!!!!!!
+	for(int i = 0; i < (*head)->totalsize; i++)
+		printf("%d ", a[i]);
+	printf("]\n"); //지워야함!!!!!!!!!!
 	return (0);
 }
 
@@ -65,18 +69,17 @@ void	*indexing3(t_stack **head, int *a)
 	t_stack	*p;
 
 	z = 0;
-	p = *head;
 	while (z < (*head)->totalsize)
 	{	
 		p = (*head)->next;
-		while (p)
+		while ((a[z] != p->number))
 		{
-			if (a[z] == p->number)
-			{
-				p->name = z;
-				z++;
-			}
 			p = p->next;
+		}
+		if (a[z] == p->number)
+		{
+			p->name = z;
+			z++;
 		}
 	}
 	return (0);

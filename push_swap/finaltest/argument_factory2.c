@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:59:51 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/02/28 11:20:35 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/01 11:42:28 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,11 +54,11 @@ void	find_pushb(int a, t_stack **head, t_stack **head2)
 	while (p->name != (*head)->next->name)
 	{
 		if (count > 2)
-			rra(head);
+			reverse_rotate(head);
 		else
-			ra(head);
+			rotate(head);
 	}
-	pb(head, head2);
+	push(head2, head);
 	printf("[find_pushb/pb 함수 후---start---]\n"); // 지워야함
 	printf_linke(*head);
 	printf_linke(*head2);
@@ -85,12 +85,12 @@ void	mainsort(t_stack **head, t_stack **head2)
 	else if ((*head)->totalsize == 3)
 	{
 		if (!sorted(*head))
-			sort4(head, head2);
+			sort3(head);
 	}
 	else if ((*head)->totalsize == 2)
 	{
 		if (!sorted(*head))
-			sort4(head, head2);
+			sort2(head);
 	}
 }
 // mainsort 이상함 total이 3인데 4를 들어가지 않나.. 결과적으로도 출력상 정렬이 안되어있다.

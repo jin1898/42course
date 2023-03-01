@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 23:21:51 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/02/28 00:32:11 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/01 12:20:11 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ void	sort3(t_stack **head)
 	if (sorted(*head))
 		return ;
 	if (p->name == ((*head)->totalsize) - 1)
-		ra(head);
+		rotate(head);
 	else if (p->next->name == ((*head)->totalsize) - 1)
-		rra(head);
+		reverse_rotate(head);
 	if (p->name > p->next->name)
-		sa(head);
+		swap(head);
 	printf("sort3으로 들어왔음!\n");
 }
 
@@ -34,7 +34,7 @@ void	sort2(t_stack **head)
 
 	p = (*head)->next;
 	if (p->name > p->next->name)
-		sa(head);
+		swap(head);
 }
 
 int	sorted(t_stack *head)

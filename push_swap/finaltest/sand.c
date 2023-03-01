@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:08:41 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/02/28 01:22:35 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/01 11:45:34 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ void	sandatob(t_stack **head, t_stack **head2)
 	while (p->next)
 	{
 		if (pib > p->name)
-			pb(head, head2);
+			push(head2, head);
 		else if ((pib + chunk) > (p->name))
 		{
-			pb(head, head2);
-			rb(head2);
+			push(head2, head);
+			rotate(head2);
 		}
 		else if ((pib + chunk) < (p->name))
-			ra(head);
+			rotate(head);
 		pib++;
 		p = p->next;
 	}
@@ -51,14 +51,14 @@ void	sandbtoa(t_stack **head, t_stack **head2)
 		if (pb > i)
 		{
 			while ((*head)->name != i)
-				rb(head2);
-			pa(head, head2);
+				rotate(head2);
+			push(head, head2);
 		}
 		else
 		{
 			while ((*head)->name != i)
-				rrb(head2);
-			pa(head, head2);
+				reverse_rotate(head2);
+			push(head, head2);
 		}
 		i++;
 	}
