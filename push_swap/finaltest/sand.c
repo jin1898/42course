@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:08:41 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/01 18:21:55 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/02 10:30:12 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,8 @@ void	sandbtoa(t_stack **head, t_stack **head2)
 	printf_linke(*head2);
 	printf("[sandatob완료 적용전 배열상태---end---]\n"); // 지워야함
 	pb = ((*head)->totalsize) / 2;
-	i = 0;
-	while (i < ((*head)->totalsize))
+	i = ((*head)->totalsize) - 1;
+	while (i >= 0)
 	{
 		if (pb > i)
 		{
@@ -67,6 +67,6 @@ void	sandbtoa(t_stack **head, t_stack **head2)
 				reverse_rotate(head2);
 			push(head, head2);
 		}
-		i++;
+		i--;
 	}
 }
