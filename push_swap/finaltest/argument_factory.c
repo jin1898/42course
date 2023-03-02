@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   argument_factory.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 23:21:51 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 12:20:11 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/02 13:29:46 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	sort3(t_stack **head)
-{
+void	sort3(t_stack **head, t_stack *head2)
+{ // 9 1 2
 	t_stack	*p;
 
 	p = (*head)->next;
-	if (sorted(*head))
+	if (sorted(*head) && (head2)->next->next == NULL)
 		return ;
-	if (p->name == ((*head)->totalsize) - 1)
+	if (*((*head)->next == ((*head)->totalsize) - 1)
 		rotate(head);
-	else if (p->next->name == ((*head)->totalsize) - 1)
+	else if (*(*head)->next->name == ((*head)->totalsize) - 1)
 		reverse_rotate(head);
-	if (p->name > p->next->name)
+	if ((*head)->name > (*head)->next->name)
 		swap(head);
 	printf("sort3으로 들어왔음!\n");
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   argument_factory2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:59:51 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/01 11:42:28 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/02 11:52:12 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 void	sort4(t_stack **head, t_stack **head2)
 {
 	find_pushb(0, head, head2);
-	sort3(head);
+	sort3(head, *head2);
 	printf("sort4!\n");
 	printf_linke(*head);
 	printf_linke(*head2);
@@ -26,7 +26,7 @@ void	sort5(t_stack **head, t_stack **head2)
 {
 	find_pushb(0, head, head2);
 	find_pushb(1, head, head2);
-	sort3(head);
+	sort3(head, *head2);
 	printf("sort5\n");
 	printf_linke(*head);
 	printf_linke(*head2);
@@ -69,7 +69,7 @@ void	mainsort(t_stack **head, t_stack **head2)
 {
 	if ((*head)->totalsize > 5)
 	{
-		if (!sorted(*head))
+		if (sorted(*head))
 			sandatob(head, head2);
 	}
 	else if ((*head)->totalsize == 5)
@@ -85,7 +85,7 @@ void	mainsort(t_stack **head, t_stack **head2)
 	else if ((*head)->totalsize == 3)
 	{
 		if (!sorted(*head))
-			sort3(head);
+			sort3(head, *head2);
 	}
 	else if ((*head)->totalsize == 2)
 	{
