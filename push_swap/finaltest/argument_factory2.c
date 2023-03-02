@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:59:51 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/02 11:52:12 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:05:09 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,11 @@ void	sort4(t_stack **head, t_stack **head2)
 {
 	find_pushb(0, head, head2);
 	sort3(head, *head2);
-	printf("sort4!\n");
+	push(head, head2);
+	printf("sort4!완료!--start--\n");
 	printf_linke(*head);
 	printf_linke(*head2);
-	printf("sort4!\n");
+	printf("sort4!완료!--start--\n");
 }
 
 void	sort5(t_stack **head, t_stack **head2)
@@ -27,6 +28,9 @@ void	sort5(t_stack **head, t_stack **head2)
 	find_pushb(0, head, head2);
 	find_pushb(1, head, head2);
 	sort3(head, *head2);
+	sort2(head2, 1);
+	push(head, head2);
+	push(head, head2);
 	printf("sort5\n");
 	printf_linke(*head);
 	printf_linke(*head2);
@@ -69,7 +73,7 @@ void	mainsort(t_stack **head, t_stack **head2)
 {
 	if ((*head)->totalsize > 5)
 	{
-		if (sorted(*head))
+		if (!sorted(*head))
 			sandatob(head, head2);
 	}
 	else if ((*head)->totalsize == 5)
@@ -90,7 +94,7 @@ void	mainsort(t_stack **head, t_stack **head2)
 	else if ((*head)->totalsize == 2)
 	{
 		if (!sorted(*head))
-			sort2(head);
+			sort2(head, 0);
 	}
 }
 // mainsort 이상함 total이 3인데 4를 들어가지 않나.. 결과적으로도 출력상 정렬이 안되어있다.

@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:36:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/02 11:49:57 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:04:43 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ void	find_pushb(int a, t_stack **head, t_stack **head2);
 void	sort3(t_stack **head, t_stack *head2);
 void	sort4(t_stack **head, t_stack **head2);
 void	sort5(t_stack **head, t_stack **head2);
-void	sort2(t_stack **head);
+void	sort2(t_stack **head, int i);
 void	mainsort(t_stack **head, t_stack **head2);
 void	sandatob(t_stack **head, t_stack **head2);
 void	sandbtoa(t_stack **head, t_stack **head2);

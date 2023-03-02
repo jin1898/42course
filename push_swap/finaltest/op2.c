@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:55:23 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/02 10:17:02 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/02 15:01:04 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,13 +33,13 @@ void	swap(t_stack **head)
 		p0->prev = p1;
 		if (p2)
 			p2->prev = p0;
+		if ((*head)->name == -1)
+			write(1, "sa\n", 3);
+		else if ((*head)->name == -2)
+			write(1, "sb\n", 3);
 	}
 	else//지워야함!!!!!!!!!!
 		printf("fail swap\n"); //지워야함!!!!!!!!!!!
-	if ((*head)->name == -1)
-		write(1, "sa\n", 3);
-	else if ((*head)->name == -2)
-		write(1, "sb\n", 3);
 }
 
 void	push(t_stack **in, t_stack **out)
