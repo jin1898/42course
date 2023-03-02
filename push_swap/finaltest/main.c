@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:40:35 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/02 10:26:48 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/02 16:33:13 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,6 @@ int	main(int ac, char **av)
 	t_stack	*head2;
 	int		i;
 
-	if (ac <= 2)
-		print_error();
 	i = 1;
 	(void)ac;
 	head = NULL;
@@ -27,6 +25,8 @@ int	main(int ac, char **av)
 	head = get_linke(-1);
 	head2 = get_linke(-2);
 	parsing(av, &head, i);
+	if ((head)->totalsize <= 1)
+		print_error();
 	printf("[main/parsing완료 ---start---]\n"); // 지워야함
 	printf_linke(head);
 	printf_linke(head2);
