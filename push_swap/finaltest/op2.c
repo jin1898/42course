@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:55:23 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 18:54:32 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/02 10:17:02 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,29 @@ void	swap(t_stack **head)
 
 void	push(t_stack **in, t_stack **out)
 {
+	t_stack	*in0;
+
+	if ((*out)->next)
+	{
+		if (!(*out)->next->next)
+		{
+			in0 = (*in)->next;
+			(*in)->next = (*out)->next;
+			(*in)->next->next = in0;
+			(*out)->next = NULL;
+		}
+		else
+			push2(in, out);
+	}
+	else
+		printf("fail push\n"); // 지워야해!!!!!!!!!
+	if ((*in)->name == -1)
+		write(1, "pa\n", 3);
+	else if ((*in)->name == -2)
+		write(1, "pb\n", 3);
+}
+void	push2(t_stack **in, t_stack **out)
+{
 	t_stack	*p0;
 	t_stack	*p1;
 	t_stack	*in0;
@@ -51,12 +74,7 @@ void	push(t_stack **in, t_stack **out)
 	if ((*out)->next)
 	{
 		p0 = (*out)->next;
-		if ((*out)->next->next)
-		{
-			p1 = (*in)->next;
-			(*in)->next = (*out)->next;
-			(*out)->next = p1;
-		}
+		p1 = (*out)->next->next;
 		(*out)->next = (*out)->next->next;
 		p1->prev = (*out);
 		if ((*in)->next)
@@ -71,10 +89,6 @@ void	push(t_stack **in, t_stack **out)
 	}
 	else
 		printf("fail push\n"); // 지워야해!!!!!!!!!
-	if ((*in)->name == -1)
-		write(1, "pa\n", 3);
-	else if ((*in)->name == -2)
-		write(1, "pb\n", 3);
 }
 
 void	reverse_rotate(t_stack **head)

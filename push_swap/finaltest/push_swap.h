@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:36:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 11:39:23 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/02 10:01:33 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	sandatob(t_stack **head, t_stack **head2);
 void	sandbtoa(t_stack **head, t_stack **head2);
 
 void	push(t_stack **in, t_stack **out);
+void	push2(t_stack **in, t_stack **out);
 void	swap(t_stack **a);
 void	rotate(t_stack **stack);
 void	reverse_rotate(t_stack **stack);
