@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:40:35 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/02 16:33:13 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/03 12:48:40 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,10 @@ int	main(int ac, char **av)
 	head2 = get_linke(-2);
 	parsing(av, &head, i);
 	if ((head)->totalsize <= 1)
-		print_error();
-	printf("[main/parsing완료 ---start---]\n"); // 지워야함
-	printf_linke(head);
-	printf_linke(head2);
-	printf("[main/parsing완료 ---end---]\n"); // 지워야함
+		exit(1);
 	check_dup(head);
 	indexing1(&head);
-	printf("[main/parsing/indexing1완료 ---start---]\n"); // 지워야함
-	printf_linke(head);
-	printf_linke(head2);
-	printf("[main/parsing/indexing1완료 ---end---]\n"); // 지워야함
 	mainsort(&head, &head2);
-	printf("[main/parsing/indexing1/mainsort완료 ---start---]\n"); // 지워야함
-	printf_linke(head);
-	printf_linke(head2);
-	printf("[main/parsing/indexing1/mainsort완료 ---end---]\n"); // 지워야함
 	del_all_dlinke(&head);
 	del_all_dlinke(&head2);
 }
@@ -98,5 +86,3 @@ void	check_dup(t_stack *a)
 		point = point->next;
 	}
 }
-
-//도와줘! git push 반영이안되!

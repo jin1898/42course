@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:08:41 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/02 10:30:12 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/03 12:55:23 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,6 @@ void	sandatob(t_stack **head, t_stack **head2)
 	int		chunk;
 	t_stack	*p;
 
-	printf("[sandatob 적용전 배열상태 ---start---]\n"); // 지워야함
-	printf_linke(*head);
-	printf_linke(*head2);
-	printf("[sandatob완료 적용전 배열상태---end---]\n"); // 지워야함
 	p = (*head)->next;
 	pib = 0;
 	chunk = 0.000000053 * ((*head)->totalsize) * \
@@ -47,10 +43,7 @@ void	sandbtoa(t_stack **head, t_stack **head2)
 {
 	int	pb;
 	int	i;
-	printf("[sandatob 적용전 배열상태 ---start---]\n"); // 지워야함
-	printf_linke(*head);
-	printf_linke(*head2);
-	printf("[sandatob완료 적용전 배열상태---end---]\n"); // 지워야함
+
 	pb = ((*head)->totalsize) / 2;
 	i = ((*head)->totalsize) - 1;
 	while (i >= 0)

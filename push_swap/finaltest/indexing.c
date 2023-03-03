@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   indexing.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 00:10:47 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 11:20:41 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/03 12:54:45 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,6 @@ void	*indexing2(t_stack **head, int *a)
 		}
 		z++;
 	}
-	printf("[배열정렬완료 : "); //지워야함!!!!!!!!!
-	for(int i = 0; i < (*head)->totalsize; i++)
-		printf("%d ", a[i]);
-	printf("]\n"); //지워야함!!!!!!!!!!
 	return (0);
 }
 

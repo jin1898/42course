@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 13:59:51 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/02 15:05:09 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/03 12:52:32 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,6 @@ void	sort4(t_stack **head, t_stack **head2)
 	find_pushb(0, head, head2);
 	sort3(head, *head2);
 	push(head, head2);
-	printf("sort4!완료!--start--\n");
-	printf_linke(*head);
-	printf_linke(*head2);
-	printf("sort4!완료!--start--\n");
 }
 
 void	sort5(t_stack **head, t_stack **head2)
@@ -31,10 +27,6 @@ void	sort5(t_stack **head, t_stack **head2)
 	sort2(head2, 1);
 	push(head, head2);
 	push(head, head2);
-	printf("sort5\n");
-	printf_linke(*head);
-	printf_linke(*head2);
-	printf("sort5\n");
 }
 
 void	find_pushb(int a, t_stack **head, t_stack **head2)
@@ -42,10 +34,6 @@ void	find_pushb(int a, t_stack **head, t_stack **head2)
 	int		count;
 	t_stack	*p;
 
-	printf("[find_pushb 함수 전 ---start---]\n"); // 지워야함
-	printf_linke(*head);
-	printf_linke(*head2);
-	printf("[find_pushb완료 함수 전---end---]\n"); // 지워야함
 	p = (*head)->next;
 	count = 0;
 	while (p->next)
@@ -63,10 +51,6 @@ void	find_pushb(int a, t_stack **head, t_stack **head2)
 			rotate(head);
 	}
 	push(head2, head);
-	printf("[find_pushb/pb 함수 후---start---]\n"); // 지워야함
-	printf_linke(*head);
-	printf_linke(*head2);
-	printf("[find_pushb/pb함수 함수 후---end---]\n"); // 지워야함
 }
 
 void	mainsort(t_stack **head, t_stack **head2)
@@ -97,5 +81,3 @@ void	mainsort(t_stack **head, t_stack **head2)
 			sort2(head, 0);
 	}
 }
-// mainsort 이상함 total이 3인데 4를 들어가지 않나.. 결과적으로도 출력상 정렬이 안되어있다.
-// b->a 로 되돌리는 식도 만들어야한다.

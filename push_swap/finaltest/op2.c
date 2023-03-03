@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:55:23 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/02 15:01:04 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/03 12:55:03 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,6 @@ void	swap(t_stack **head)
 		else if ((*head)->name == -2)
 			write(1, "sb\n", 3);
 	}
-	else//지워야함!!!!!!!!!!
-		printf("fail swap\n"); //지워야함!!!!!!!!!!!
 }
 
 void	push(t_stack **in, t_stack **out)
@@ -58,13 +56,12 @@ void	push(t_stack **in, t_stack **out)
 		else
 			push2(in, out);
 	}
-	else
-		printf("fail push\n"); // 지워야해!!!!!!!!!
 	if ((*in)->name == -1)
 		write(1, "pa\n", 3);
 	else if ((*in)->name == -2)
 		write(1, "pb\n", 3);
 }
+
 void	push2(t_stack **in, t_stack **out)
 {
 	t_stack	*p0;
@@ -87,8 +84,6 @@ void	push2(t_stack **in, t_stack **out)
 			(in0)->prev = p0;
 		(*in)->next = p0;
 	}
-	else
-		printf("fail push\n"); // 지워야해!!!!!!!!!
 }
 
 void	reverse_rotate(t_stack **head)
@@ -110,8 +105,6 @@ void	reverse_rotate(t_stack **head)
 		p0->prev = pl;
 		plp->next = NULL;
 	}
-	else
-		printf("fail reverse_rotate\n");
 	if ((*head)->name == -1)
 		write(1, "rra\n", 4);
 	else if ((*head)->name == -2)
@@ -137,8 +130,6 @@ void	rotate(t_stack **head)
 		p0->prev = pl;
 		p0->next = NULL;
 	}
-	else
-		printf("fail rotate\n");
 	if ((*head)->name == -1)
 		write(1, "ra\n", 3);
 	else if ((*head)->name == -2)

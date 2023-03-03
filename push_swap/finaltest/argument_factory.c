@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 23:21:51 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/02 15:27:08 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/03 12:51:54 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ void	sort3(t_stack **head, t_stack *head2)
 		reverse_rotate(head);
 	if ((*head)->next->name > (*head)->next->next->name)
 		swap(head);
-	printf("sort3으로 들어왔음!\n");
 }
 
 void	sort2(t_stack **head, int i)
@@ -42,7 +41,6 @@ void	sort2(t_stack **head, int i)
 int	sorted(t_stack *head)
 {
 	head = head->next;
-	printf("sorted들어왔음!\n");
 	while (head->next)
 	{
 		if (!(head->number < head->next->number))

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:57:44 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/02/27 23:02:13 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/03 12:53:43 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ char	**ft_split2(char **result, char const *s, char c, int word_num)
 			k++;
 			word_len++;
 		}
-		if (!(result[i] = (char *)malloc(sizeof(char) * (word_len + 6))))
+		result[i] = (char *)malloc(sizeof(char) * (word_len + 6));
+		if (!(result))
 			return (NULL);
 		ft_word_make(result[i], s, k, word_len);
 		word_len = 0;

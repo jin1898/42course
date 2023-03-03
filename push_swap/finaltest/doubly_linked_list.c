@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   doubly_linked_list.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 23:07:01 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/01 01:09:57 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/03 12:51:09 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,17 +62,3 @@ t_stack	*get_linke(int name)
 	new->totalsize = 0;
 	return (new);
 }
-
-//이 함수 없애야함!
-void	printf_linke(t_stack *head)
-{
-	// printf("---start-----\n");
-	while (head)
-	{
-		printf("[name : %d] [number: %d] [totalsize : %d]\n",head->name,head->number,head->totalsize);
-		head = head->next;
-	}
-	printf("#######[head : %p]#########\n", head);
-	// printf("----end----\n");
-}
-//이 함수 없애야함!
