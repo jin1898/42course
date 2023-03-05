@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   op2.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/28 15:55:23 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/03 12:55:03 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/05 15:18:55 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void	push(t_stack **in, t_stack **out)
 			in0 = (*in)->next;
 			(*in)->next = (*out)->next;
 			(*in)->next->next = in0;
+			(*in)->next->next->prev = (*out)->next;
 			(*out)->next = NULL;
 		}
 		else

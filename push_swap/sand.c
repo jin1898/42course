@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   sand.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 17:08:41 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/03 12:55:23 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/05 17:22:47 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,15 +25,18 @@ void	sandatob(t_stack **head, t_stack **head2)
 	while (p)
 	{
 		if (pib > p->name)
+		{
 			push(head2, head);
-		else if ((pib + chunk) > (p->name))
+			pib++;
+		}
+		else if ((pib + chunk) >= (p->name))
 		{
 			push(head2, head);
 			rotate(head2);
+			pib++;
 		}
-		else if ((pib + chunk) < (p->name))
+		else //((pib + chunk) < (p->name))
 			rotate(head);
-		pib++;
 		p = (*head)->next;
 	}
 	sandbtoa(head, head2);
@@ -41,20 +44,28 @@ void	sandatob(t_stack **head, t_stack **head2)
 
 void	sandbtoa(t_stack **head, t_stack **head2)
 {
-	int	pb;
-	int	i;
+	t_stack	*head2_find;
+	int		i;
+	int		count;
 
-	pb = ((*head)->totalsize) / 2;
-	i = ((*head)->totalsize) - 1;
+	i = (*head)->totalsize -1;
+	count = 0;
 	while (i >= 0)
 	{
-		if (pb > i)
+		head2_find = *head2;
+		count = 0;
+		while (i != head2_find->name)
+		{
+			head2_find = head2_find->next;
+			count++;
+		}
+		if ((i / 2) >= count)
 		{
 			while ((*head2)->next->name != i)
 				rotate(head2);
 			push(head, head2);
 		}
-		else
+		else if ((i / 2) < count)
 		{
 			while ((*head2)->next->name != i)
 				reverse_rotate(head2);
