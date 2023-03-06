@@ -1,3 +1,0 @@
-push_swap 폴더에 체커 2가지 (checker_Mac/checker)둘다 있어야하고 현재 파일에서 아래 명령어를 수행해야함.
-그리고 밑에 명령어를 실행하기 전에 make로 push_swap이라는 실행파일이 만들어져있어야함.
-bash push_swap_tester/tester.sh ./ 6 3
