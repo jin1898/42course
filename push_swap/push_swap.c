@@ -6,12 +6,11 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:40:35 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/05 17:24:10 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/06 10:24:56 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-#include <stdio.h>
 
 int	main(int ac, char **av)
 {
@@ -30,15 +29,7 @@ int	main(int ac, char **av)
 		exit(1);
 	check_dup(head);
 	indexing1(&head);
-	// printf("indexing/check_dup/parsing완료--start--\n");
-	// printf_linke(head);
-	// printf_linke(head2);
-	// printf("indexing/check_dup/parsing완료--end--\n");
 	mainsort(&head, &head2);
-	// printf("indexing/check_dup/indexing/mainsort완료--start--\n");
-	// printf_linke(head);
-	// printf_linke(head2);
-	// printf("indexing/check_dup/indexing/mainsort완료--end--\n");
 	del_all_dlinke(&head);
 	del_all_dlinke(&head2);
 }
@@ -95,17 +86,3 @@ void	check_dup(t_stack *a)
 		point = point->next;
 	}
 }
-
-//이 함수 없애야함!
-void	printf_linke(t_stack *head)
-{
-	// printf("---start-----\n");
-	while (head)
-	{
-		printf("[name : %d] [number: %d] [totalsize : %d]\n",head->name,head->number,head->totalsize);
-		head = head->next;
-	}
-	printf("#######[head : %p]#########\n", head);
-	// printf("----end----\n");
-}
-//이 함수 없애야함!

@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+         #
+#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/03 11:06:15 by jsunwoo           #+#    #+#              #
-#    Updated: 2023/03/03 11:44:49 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/03/06 10:59:23 by sunwoo-jin       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,7 +23,7 @@ LIB_OBJS := $(LIB_SRCS:.c=.o)
 
 AR := ar
 ARFLAGS := -rc
-CC := gcc
+CC := cc
 CFLAGS := -Wall -Wextra -Werror
 
 all : $(NAME)

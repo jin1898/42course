@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/27 22:36:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/03 19:26:04 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/06 10:58:06 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ t_stack	*get_linke(int name);
 char	**ft_split(char const *s, char c);
 int		ft_atoll(const char *str);
 void	print_error(void);
-void	printf_linke(t_stack *head); // 이 함수 없애야함!!!!!!!!!!!!!!!!!!!!!!!!ㄴ
 void	check_dup(t_stack *a);
 void	*indexing3(t_stack **head, int *a);
 void	*indexing2(t_stack **head, int *a);
@@ -48,6 +47,8 @@ void	sort2(t_stack **head, int i);
 void	mainsort(t_stack **head, t_stack **head2);
 void	sandatob(t_stack **head, t_stack **head2);
 void	sandbtoa(t_stack **head, t_stack **head2);
+void	sandatob_pib1(int *pib, t_stack **head, t_stack **head2);
+void	sandbtoa2(t_stack **head, t_stack **head2, int *i, int *count);
 
 void	push(t_stack **in, t_stack **out);
 void	push2(t_stack **in, t_stack **out);
