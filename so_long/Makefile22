@@ -1,0 +1,22 @@
+SRCS = main.c
+OBJS := $(SRCS:.c=.o)
+NAME := so_long
+
+all : $(NAME)
+
+clean : 
+	rm -f *.o
+
+fclean : clean
+	rm -f $(NAME)
+
+re : fclean all
+
+$(NAME) : $(OBJS)
+	cc *.c -I. -Lminilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit -o $(NAME)
+		# cc *.c -I. -Lminilibx_opengl_20191021 -lmlx -framework OpenGL -framework Appkit $(SRCS) -o $(NAME)
+
+%.o : %.c
+	cc -Wall -Wextra -c $<
+
+.PHONY : all clean fclean
