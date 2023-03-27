@@ -6,13 +6,13 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/20 16:34:33 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/27 15:06:55 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-t_gimgi	img_init(void *mlx)
+t_gimgi	img_init2(void *mlx)
 {
 	t_gimgi	imgbox;
 	int		width;

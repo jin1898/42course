@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:08:03 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/21 14:15:28 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/27 15:07:30 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ char	*ft_mod_strdup(char *s);
 char	*ft_mode_strjoin(char *s1, char *s2);
 void	check_map(t_gi *gp);
 t_gimgi	img_init(void *mlx);
+t_gimgi	img_init3(void *mlx);
 void	put_img(t_gi *gp, int w, int h);
 void	setting_img(t_gi *game);
 void	map_check_params(t_gi *gp);
