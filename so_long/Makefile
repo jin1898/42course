@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/03/27 15:31:35 by jsunwoo           #+#    #+#              #
+#    Updated: 2023/03/27 15:31:36 by jsunwoo          ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRCS = main.c image.c key.c map.c Text_editing_tools.c get_next_line.c get_next_line_utils.c
 
 OBJS := $(SRCS:.c=.o)
@@ -19,6 +31,6 @@ $(NAME) : $(OBJS) $(GNLOBJS)
 	$(CC) -o $(NAME) $(OBJS) -Lmlx/ -lmlx -framework OpenGL -framework AppKit
 
 %.o : %.c
-	$(CC) -Wall -Wextra $(INCLUDE) -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -g $(INCLUDE) -c $< -o $@
 
 .PHONY : all clean fclean re
