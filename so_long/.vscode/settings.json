@@ -1,0 +1,9 @@
+{
+    "files.associations": {
+        "get_next_line.h": "c",
+        "stddef.h": "c",
+        "fcntl.h": "c",
+        "stdlib.h": "c",
+        "so_long.h": "c"
+    }
+}

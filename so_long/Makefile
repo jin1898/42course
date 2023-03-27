@@ -1,36 +1,28 @@
-# **************************************************************************** #
-#                                                                              #
-#                                                         :::      ::::::::    #
-#    Makefile                                           :+:      :+:    :+:    #
-#                                                     +:+ +:+         +:+      #
-#    By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+         #
-#                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/03/10 16:08:37 by jsunwoo           #+#    #+#              #
-#    Updated: 2023/03/10 16:08:37 by jsunwoo          ###   ########.fr        #
-#                                                                              #
-# **************************************************************************** #
+SRCS = main.c image.c key.c map.c Text_editing_tools.c
+OBJS := $(SRCS:.c=.o)
+NAME := so_long
 
-NAME	=	so_long
-SRCS	=	main.c
+GNL_DIR = ./get_next_line
+GNL_NAME = get_next_line.c get_next_line_utils.c
+GNL = $(addprefix $(GNL_DIR)/,$(GNL_NAME))
 
-OBJS = $(SRCS:%.c=%.o)
-CC		=	clang
-CFLAGS	=	-Wall -Werror -Wextra
-CLIB	=	-Lmlx -lmlx -framework OpenGL -framework Appkit -Imlx
+INCLUDE := -I./get_next_line
+CC = gcc
 
-all		: $(NAME)
+all : $(NAME)
 
-%.o	:%.c
-	$(CC) $(CFLAGS)  -c $< -o $@
+clean :
+	rm -f $(OBJS)
 
-$(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(CLIB) $(SRCS) -o $(NAME)
-	# install_name_tool -change libmlx.dylib mlx/libmlx.dylib $(NAME)
+fclean : clean
+	rm -f $(NAME)
 
-clean	:
-	rm -rf $(OBJS)
+re : fclean all
 
-fclean	: clean
-	rm -rf	$(NAME)
+$(NAME) : $(OBJS) $(GNL)
+	$(CC) -o $(NAME) $(OBJS) -Lmlx/ -lmlx -framework OpenGL -framework AppKit
 
-re		: fclean all
+%.o : %.c $(GNL_DIR)/%.c
+	$(CC) -Wall -Wextra $(INCLUDE) -c $< -o $@
+
+.PHONY : all clean fclean re

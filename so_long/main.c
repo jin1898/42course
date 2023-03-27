@@ -3,46 +3,68 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/10 17:21:22 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/20 16:34:33 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include <mlx.h>
+#include "so_long.h"
 
-int	main(void)
+t_gimgi	img_init(void *mlx)
 {
-	void *mlx;
-	void *win;
-	void *img;
-	void *img2;
-	void *img3;
-	void *img4;
-	void *img5;
-	// void *img6;
-	// void *img7;
-	int img_width;
-	int img_height;
+	t_gimgi	imgbox;
+	int		width;
+	int		height;
 
-	mlx = mlx_init();
-	win = mlx_new_window(mlx, 500, 500, "my_mlx");
-	img = mlx_xpm_file_to_image(mlx, "./images/Actions.xpm", &img_width, &img_height);
-	img2 = mlx_xpm_file_to_image(mlx, "./images/Spritesheet.xpm", &img_width, &img_height);
-	img3 = mlx_xpm_file_to_image(mlx, "./images/Grass_tiles.xpm", &img_width, &img_height);
-	img4 = mlx_xpm_file_to_image(mlx, "./images/Grass_tiles2.xpm", &img_width, &img_height);
-	img5 = mlx_xpm_file_to_image(mlx, "./images/Grass_tiles3.xpm", &img_width, &img_height);
-	// img6 = mlx_xpm_file_to_image(mlx, "./images/rune.xpm", &img_width, &img_height);
-	// img7 = mlx_xpm_file_to_image(mlx, "./images/rune_light.xpm", &img_width, &img_height);
-	mlx_put_image_to_window(mlx, win, img, 0, 0);
-	mlx_put_image_to_window(mlx, win, img2, 64, 0);
-	mlx_put_image_to_window(mlx, win, img3, 128, 0);
-	mlx_put_image_to_window(mlx, win, img4, 192, 64);
-	mlx_put_image_to_window(mlx, win, img5, 0, 64);
-	// mlx_put_image_to_window(mlx, win, img6, 64, 64);
-	// mlx_put_image_to_window(mlx, win, img7, 128, 64);
-	mlx_loop(mlx);
+	imgbox.floor = mlx_xpm_file_to_image(mlx, "./images/tile00.xpm", \
+	&width, &height);
+	imgbox.wall = mlx_xpm_file_to_image(mlx, "./images/stome.xpm", \
+	&width, &height);
+	imgbox.character = mlx_xpm_file_to_image(mlx, "./images/player_S00.xpm", \
+	&width, &height);
+	imgbox.treasure = mlx_xpm_file_to_image(mlx, "./images/ball.xpm", \
+	&width, &height);
+	imgbox.exit = mlx_xpm_file_to_image(mlx, "./images/ladder.xpm", \
+	&width, &height);
+	return (imgbox);
+}
+
+int	press_key(int key_number, t_gi *gp)
+{
+	if (key_number == KEY_ESC)
+		end_game(gp);
+	if (key_number == KEY_W)
+		move_w(gp);
+	if (key_number == KEY_A)
+		move_a(gp);
+	if (key_number == KEY_S)
+		move_s(gp);
+	if (key_number == KEY_D)
+		move_d(gp);
+	return (0);
+}
+
+int	main(int ac, char *av[])
+{
+	t_gi	*gp; //game pointer
+
+	if (ac != 2)
+	{
+		write(1, "Where is map?\n", 14);
+		exit(1);
+	}
+	gp = malloc(sizeof(gp));
+	gp->mlx = mlx_init();
+	gp->img = img_init(gp->mlx);
+	read_map(av[1], gp);
+	check_map(gp);
+	gp->window = mlx_new_window(gp->mlx, gp->width * 64, \
+	gp->height * 64, "so_long");
+	setting_img(gp);
+	mlx_hook(gp->window, KEY_PRESS, 0, &press_key, gp);
+	mlx_hook(gp->window, KEY_EXIT, 0, &end_game, gp);
+	mlx_loop(gp->mlx);
 	return (0);
 }
