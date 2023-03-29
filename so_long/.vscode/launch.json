@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Debug",
             "program": "so_long",
-            "args": ["test_map/a.cub"],
+            "args": ["map.ber"],
             "cwd": "${workspaceFolder}"
         }
     ]

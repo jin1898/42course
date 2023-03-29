@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/27 15:06:55 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/29 13:59:27 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,13 +55,13 @@ int	main(int ac, char *av[])
 		write(1, "Where is map?\n", 14);
 		exit(1);
 	}
-	gp = malloc(sizeof(gp));
+	gp = malloc(sizeof(t_gi));
 	gp->mlx = mlx_init();
 	gp->img = img_init(gp->mlx);
 	read_map(av[1], gp);
 	check_map(gp);
-	gp->window = mlx_new_window(gp->mlx, gp->width * 64, \
-	gp->height * 64, "so_long");
+	gp->window = mlx_new_window(gp->mlx, \
+	gp->width * 64, gp->height * 64, "so_long");
 	setting_img(gp);
 	mlx_hook(gp->window, KEY_PRESS, 0, &press_key, gp);
 	mlx_hook(gp->window, KEY_EXIT, 0, &end_game, gp);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   image.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 17:02:40 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/20 17:54:21 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/29 13:51:29 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,14 @@ t_gimgi	img_init(void *mlx)
 	int		width;
 	int		height;
 
-	img.floor = mlx_xpm_file_to_image(mlx, "./images/land.xpm", \
+	img.floor = mlx_xpm_file_to_image(mlx, "./images/tile00.xpm", \
 	&width, &height);
-	img.wall = mlx_xpm_file_to_image(mlx, "./images/wall.xpm", &width, &height);
-	img.character = mlx_xpm_file_to_image(mlx, "./images/chara.xpm", \
+	img.wall = mlx_xpm_file_to_image(mlx, "./images/stone.xpm", &width, &height);
+	img.character = mlx_xpm_file_to_image(mlx, "./images/player_S00.xpm", \
 	&width, &height);
-	img.treasure = mlx_xpm_file_to_image(mlx, "./images/chest.xpm", \
+	img.treasure = mlx_xpm_file_to_image(mlx, "./images/ball.xpm", \
 	&width, &height);
-	img.exit = mlx_xpm_file_to_image(mlx, "./images/rune.xpm", &width, &height);
+	img.exit = mlx_xpm_file_to_image(mlx, "./images/ladder.xpm", &width, &height);
 	return (img);
 }
 
