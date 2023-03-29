@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:33:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/21 14:29:00 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/29 11:38:38 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,11 @@ void	map_check_wall(t_gi *gp)
 		}
 		else if (i > ft_strlen(gp->str_line) - gp->width)
 		{
-			write(1, "Map is not walled (bottom)\n", 26);
-			exit(1);
+			if (gp->str_line[i] != '1')
+			{
+				write(1, "Map is not walled (bottom)\n", 26);
+				exit(1);
+			}
 		}
 		i++;
 	}
