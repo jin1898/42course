@@ -6,11 +6,12 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/29 13:59:27 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/29 20:41:59 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+#include <stdio.h> // 이거 지워야함!!!!!!!!!!!!!!!!!!!!
 
 t_gimgi	img_init2(void *mlx)
 {
@@ -46,6 +47,13 @@ int	press_key(int key_number, t_gi *gp)
 	return (0);
 }
 
+void	check_map_way(t_gi *gp)
+{
+	printf("%s\n",gp->str_line);
+	int	p = ft_strlen(gp->str_line);
+	printf("%d",p);
+}
+
 int	main(int ac, char *av[])
 {
 	t_gi	*gp; //game pointer
@@ -60,6 +68,7 @@ int	main(int ac, char *av[])
 	gp->img = img_init(gp->mlx);
 	read_map(av[1], gp);
 	check_map(gp);
+	check_map_way(gp);
 	gp->window = mlx_new_window(gp->mlx, \
 	gp->width * 64, gp->height * 64, "so_long");
 	setting_img(gp);

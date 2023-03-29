@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 17:02:40 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/29 13:51:29 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/29 15:37:05 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,14 @@ t_gimgi	img_init(void *mlx)
 
 void	put_img(t_gi *gp, int w, int h)
 {
-	if (gp->str_line[h * gp->width + w] == '1')
+	if (gp->str_line[h * gp->width + w] == '0')
+		mlx_put_image_to_window(gp->mlx, gp->window, \
+		gp->img.floor, w * 64, h * 64);
+	else if (gp->str_line[h * gp->width + w] == '1')
 		mlx_put_image_to_window(gp->mlx, gp->window, gp->img.wall, \
+		w * 64, h * 64);
+	else if (gp->str_line[h * gp->width + w] == 'E')
+		mlx_put_image_to_window(gp->mlx, gp->window, gp->img.exit, \
 		w * 64, h * 64);
 	else if (gp->str_line[h * gp->width + w] == 'C')
 		mlx_put_image_to_window(gp->mlx, gp->window, gp->img.treasure, \
@@ -40,13 +46,6 @@ void	put_img(t_gi *gp, int w, int h)
 	else if (gp->str_line[h * gp->width + w] == 'P')
 		mlx_put_image_to_window(gp->mlx, gp->window, gp->img.character, \
 		w * 64, h * 64);
-
-	else if (gp->str_line[h * gp->width + w] == 'E')
-		mlx_put_image_to_window(gp->mlx, gp->window, gp->img.exit, \
-		w * 64, h * 64);
-	else
-		mlx_put_image_to_window(gp->mlx, gp->window, \
-		gp->img.floor, w * 64, h * 64);
 }
 
 void	setting_img(t_gi *gp)
