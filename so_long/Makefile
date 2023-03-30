@@ -6,11 +6,11 @@
 #    By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 15:31:35 by jsunwoo           #+#    #+#              #
-#    Updated: 2023/03/29 13:29:06 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/03/30 16:52:31 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c image.c key.c map.c Text_editing_tools.c get_next_line.c get_next_line_utils.c
+SRCS = main.c image.c key.c map.c Text_editing_tools.c DFS.c get_next_line.c get_next_line_utils.c
 
 OBJS := $(SRCS:.c=.o)
 NAME := so_long

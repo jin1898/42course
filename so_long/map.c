@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:33:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/29 11:38:38 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/30 15:20:47 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	read_map(char *map, t_gi *gp)
 	gp->step_cnt = 0;
 	gp->str_line = ft_mod_strdup(line);
 	free(line);
-
 	while (line)
 	{
 		gp->height++;

@@ -6,12 +6,12 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/29 20:41:59 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/30 17:47:49 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include <stdio.h> // 이거 지워야함!!!!!!!!!!!!!!!!!!!!
+#include <stdio.h>
 
 t_gimgi	img_init2(void *mlx)
 {
@@ -49,9 +49,29 @@ int	press_key(int key_number, t_gi *gp)
 
 void	check_map_way(t_gi *gp)
 {
-	printf("%s\n",gp->str_line);
-	int	p = ft_strlen(gp->str_line);
-	printf("%d",p);
+	t_dfs	*dfs;
+	int		line_len;
+
+	dfs = malloc(sizeof(t_dfs));
+	printf("dfs : %p\n", dfs);
+	if (!dfs)
+		end_game(gp);
+	dfs->start_point = 0;
+	line_len = ft_strlen(gp->str_line);
+	dfs->cp_str_line = malloc(sizeof(char) * line_len);
+	if (!dfs->cp_str_line)
+		end_game(gp);
+	dfs->cp_str_line = ft_mod_strdup(gp->str_line);
+	while (dfs->cp_str_line[dfs->start_point] != 'P')
+		dfs->start_point++;
+	dfs->move[0] = -1;
+	dfs->move[1] = 1;
+	dfs->move[2] = gp->width;
+	dfs->move[3] = -gp->width;
+	dfs->found_way = 0;
+	ft_dfs(dfs, gp, 0);
+	if (!(gp->col_cnt == 0 && dfs->found_way == 1))
+		end_game(gp);
 }
 
 int	main(int ac, char *av[])
@@ -67,7 +87,7 @@ int	main(int ac, char *av[])
 	gp->mlx = mlx_init();
 	gp->img = img_init(gp->mlx);
 	read_map(av[1], gp);
-	check_map(gp);
+	check_map(gp);//shape [함수 이름 바꾸기]
 	check_map_way(gp);
 	gp->window = mlx_new_window(gp->mlx, \
 	gp->width * 64, gp->height * 64, "so_long");

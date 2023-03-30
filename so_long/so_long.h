@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:08:03 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/27 15:07:30 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/30 17:42:26 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,14 @@ typedef struct s_game_information
 	int		step_cnt;
 }t_gi;
 
+typedef struct s_dfs
+{
+	char	*cp_str_line;
+	int		start_point;
+	int		move[4];
+	int		found_way;
+}t_dfs;
+
 int		end_game(t_gi *gp);
 void	read_map(char *map, t_gi *gp);
 char	*ft_mod_strdup(char *s);
@@ -70,4 +78,6 @@ void	move_d(t_gi *gp);
 
 int		ft_strlen(char *s);
 int		ft_strlcpy(char *dst, char *src, int len);
+
+void	ft_dfs(t_dfs *dfs, t_gi *gp, int step);
 #endif
