@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:22:54 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/31 13:45:50 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/31 16:24:35 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,9 +52,8 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 	dfs->a = count_col(dfs->cp_col_line);
 	i = 0;
 	//dfs->cp_str_line[location] = '2';
-	printf("location:%d/dfs->startpoint:%d  i : %d a : %d -     ", location, dfs->start_point,i,dfs->a);
-	printf("gp->str_line[location] : %c\n" ,gp->str_line[location]);
-
+	// printf("location:%d/dfs->startpoint:%d  i : %d a : %d -     ", location, dfs->start_point,i,dfs->a);
+	// printf("gp->str_line[location] : %c\n" ,gp->str_line[location]);
 	if (dfs->found_way == 1 && gp->total_col == dfs->a)
 		return ;
 	if (gp->str_line[location] == 'E')
@@ -78,7 +77,6 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 	}
 }
 
-
 int	count_col(char *str)
 {
 	int	i;
@@ -95,26 +93,7 @@ int	count_col(char *str)
 	return (col);
 }
 
-void    *ft_calloc(size_t count, size_t size)
+int	end(void)
 {
-        size_t  total;
-        char    *malloc_name;
-        size_t  count1;
-
-        count1 = 0;
-        total = count * size;
-        if (count != 0 && size != 0)
-        {
-                if (total / count != size)
-                        return (0);
-        }
-        malloc_name = malloc(total);
-        if (malloc_name == NULL)
-                return (NULL);
-        while (count1 < total)
-        {
-                malloc_name[count1] = 0;
-                count1++;
-        }
-        return (malloc_name);
+	exit(1);
 }

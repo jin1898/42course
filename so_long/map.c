@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:33:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/30 15:20:47 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/31 16:12:40 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	read_map(char *map, t_gi *gp)
 	fd = open(map, O_RDONLY);
 	if (fd <= 0)
 	{
-		write(1, "Failed to read file.\n", 21);
+		write(1, "[ERROR]Failed to read file.\n", 28);
 		exit(1);
 	}
 	line = get_next_line(fd);
@@ -61,7 +61,7 @@ void	map_check_wall(t_gi *gp)
 		{
 			if (gp->str_line[i] != '1')
 			{
-				write(1, "The map is not walled.(top)\n", 28);
+				write(1, "[ERROR]The map is not walled.(top)\n", 35);
 				exit(1);
 			}
 		}
@@ -69,7 +69,7 @@ void	map_check_wall(t_gi *gp)
 		{
 			if (gp->str_line[i] != '1')
 			{
-				write(1, "Map is not walled (side)\n", 25);
+				write(1, "[ERROR]Map is not walled (side)\n", 32);
 				exit(1);
 			}
 		}
@@ -77,7 +77,7 @@ void	map_check_wall(t_gi *gp)
 		{
 			if (gp->str_line[i] != '1')
 			{
-				write(1, "Map is not walled (bottom)\n", 26);
+				write(1, "[ERROR]Map is not walled (bottom)\n", 33);
 				exit(1);
 			}
 		}
@@ -105,19 +105,19 @@ void	map_check_params(t_gi *gp)
 		else if (gp->str_line[i] == 'C')
 			gp->total_col++;
 	}
-	if (exit_count == 0)
+	if (exit_count != 1)
 	{
-		write(1, "Exit does not exist.\n", 21);
+		write(1, "[ERROR]Only one exit must exist!\n", 33);
 		exit(1);
 	}
 	if (gp->total_col == 0)
 	{	
-		write(1, "No collectible found.\n", 22);
+		write(1, "[ERROR]No collectible found.\n", 29);
 		exit(1);
 	}
 	if (startpoint_count != 1)
 	{	
-		write(1, "You must have one starting point.\n", 34);
+		write(1, "[ERROR]You must have one starting point.\n", 41);
 		exit(1);
 	}
 }

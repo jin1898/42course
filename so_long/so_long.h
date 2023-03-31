@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:08:03 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/31 13:44:50 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/31 16:24:30 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,6 @@ void	move_d(t_gi *gp);
 
 int		ft_strlen(char *s);
 int		ft_strlcpy(char *dst, char *src, int len);
-void	*ft_calloc(size_t count, size_t size);
 int		count_col(char *str);
 
 void	ft_dfs(t_dfs *dfs, t_gi *gp, int step);
