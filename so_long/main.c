@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/31 10:13:19 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/31 13:44:18 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,9 @@ void	check_map_way(t_gi *gp)
 {
 	t_dfs	*dfs;
 	int		line_len;
+	int		i;
 
+	i = 0;
 	dfs = malloc(sizeof(t_dfs));
 	printf("dfs : %p\n", dfs);
 	if (!dfs)
@@ -61,7 +63,7 @@ void	check_map_way(t_gi *gp)
 	dfs->cp_str_line = malloc(sizeof(char) * line_len);
 	if (!dfs->cp_str_line)
 		end_game(gp);
-	dfs->cp_str_line = ft_mod_strdup(gp->str_line);
+	dfs->cp_str_line = ft_mod_strdup(gp->str_line);//
 	while (dfs->cp_str_line[dfs->start_point] != 'P')
 		dfs->start_point++;
 	dfs->move[0] = -1;
@@ -69,9 +71,25 @@ void	check_map_way(t_gi *gp)
 	dfs->move[2] = gp->width;
 	dfs->move[3] = -gp->width;
 	dfs->found_way = 0;
-	ft_dfs(dfs, gp, 0);
-	if (!(gp->col_cnt == 0 && dfs->found_way == 1))
+
+	dfs->cp_col_line = ft_mod_strdup(gp->str_line);
+	if (!dfs->cp_col_line)
 		end_game(gp);
+	while (dfs->cp_col_line[i])
+	{
+		dfs->cp_col_line[i] = '0';
+		i++;
+	}
+	if (!dfs->cp_str_line)
+		end_game(gp);
+
+	ft_dfs(dfs, gp, dfs->start_point);
+	printf("total_col : %d, found_way : %d\n", gp->total_col, dfs->found_way);
+	if (!(dfs->a == gp->total_col && dfs->found_way == 1))
+	{
+		printf("[Error]total_col : %d, found_way : %d\n", gp->total_col, dfs->found_way);
+		end_game(gp);
+	}
 }
 
 int	main(int ac, char *av[])

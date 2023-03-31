@@ -6,7 +6,7 @@
 #    By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 15:31:35 by jsunwoo           #+#    #+#              #
-#    Updated: 2023/03/31 07:42:16 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/03/31 12:26:48 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,7 @@ clean :
 
 fclean : clean
 	rm -f $(NAME)
+	make clean -C ./mlx
 
 re : fclean all
 
