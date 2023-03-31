@@ -6,7 +6,7 @@
 #    By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 15:31:35 by jsunwoo           #+#    #+#              #
-#    Updated: 2023/03/30 16:52:31 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/03/31 07:42:16 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,6 +31,6 @@ $(NAME) : $(OBJS) $(GNLOBJS)
 	$(CC) -o $(NAME) $(OBJS) -Lmlx/ -lmlx -framework OpenGL -framework AppKit
 
 %.o : %.c
-	$(CC) -Wall -Wextra -Werror -g $(INCLUDE) -c $< -o $@
+	$(CC) -Wall -Wextra -Werror -g3 $(INCLUDE) -c $< -o $@
 
 .PHONY : all clean fclean re
