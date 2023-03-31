@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:22:54 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/03/31 09:18:45 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/31 10:45:03 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,17 +17,19 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 {
 	int	i;
 
+	i = -1;
 	dfs->cp_str_line[location] = '2';
-	printf("location:%d/dfs->startpoint:%d\n", location, dfs->start_point);
-	i = 0;
+	printf("location:%d/dfs->startpoint:%d  i : %d  -     ", location, dfs->start_point,i);
+	printf("gp->str_line[location] : %c\n" ,gp->str_line[location]);
 	if (gp->str_line[location] == 'C')
 		gp->total_col--;
 	if (gp->str_line[location] == 'E')
 	{
 		dfs->found_way = 1;
+		dfs->start_point -= dfs->move[i];
 		return ;
 	}
-	while (i < 4 && (!(dfs->found_way == 1 && gp->total_col == 0)) && dfs->found_way != 1)
+	while (i < 4 && (!(dfs->found_way == 1 && gp->total_col == 0)) && gp->str_line[location] != 'E')
 	{
 		i++;
 		dfs->start_point += dfs->move[i];
@@ -37,8 +39,7 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 	if ((dfs->found_way != 1 && gp->total_col != 0) || gp->total_col != 0)
 	{
 		dfs->cp_str_line[location] = '0';
-		dfs->found_way = 0;
-		dfs->start_point -= dfs->move[i];
+		//dfs->found_way = 0;
 	}
 	if (dfs->found_way == 1 && gp->total_col == 0)
 		return ;
