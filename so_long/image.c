@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 17:02:40 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/29 15:37:05 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/31 17:25:17 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,14 @@ t_gimgi	img_init(void *mlx)
 
 	img.floor = mlx_xpm_file_to_image(mlx, "./images/tile00.xpm", \
 	&width, &height);
-	img.wall = mlx_xpm_file_to_image(mlx, "./images/stone.xpm", &width, &height);
+	img.wall = mlx_xpm_file_to_image(mlx, "./images/stone.xpm", \
+	&width, &height);
 	img.character = mlx_xpm_file_to_image(mlx, "./images/player_S00.xpm", \
 	&width, &height);
 	img.treasure = mlx_xpm_file_to_image(mlx, "./images/ball.xpm", \
 	&width, &height);
-	img.exit = mlx_xpm_file_to_image(mlx, "./images/ladder.xpm", &width, &height);
+	img.exit = mlx_xpm_file_to_image(mlx, "./images/ladder.xpm", \
+	&width, &height);
 	return (img);
 }
 

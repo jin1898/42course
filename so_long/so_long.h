@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:08:03 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/31 16:24:30 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/03/31 17:21:39 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,10 @@ typedef struct s_game_image_information
 typedef struct s_game_information
 {
 	void	*mlx;
-	void	*window; //윈도우 식별자 mlx_hook사용할때 필요.
+	void	*window;
 	t_gimgi	img;
-	int		width; // 가로
-	int		height; //세로
+	int		width;
+	int		height;
 	char	*str_line;
 	int		total_col;
 	int		col_cnt;
@@ -83,4 +83,7 @@ int		ft_strlcpy(char *dst, char *src, int len);
 int		count_col(char *str);
 
 void	ft_dfs(t_dfs *dfs, t_gi *gp, int step);
+void	ft_exit_print(char *str);
+void	init_dfs(t_dfs *dfs, t_gi *gp, int i);
+void	ft_putnbr_fd(int n, int fd);
 #endif

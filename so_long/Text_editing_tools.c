@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   Text_editing_tools.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:08:23 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/20 15:00:45 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/31 17:24:44 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,6 @@ char	*ft_mode_strjoin(char *s1, char *s2)
 	free(s2);
 	return (new_mem);
 }
-
 
 int	ft_strlen(char *s)
 {

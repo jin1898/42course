@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:15:41 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/21 10:34:32 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/03/31 17:25:50 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void	move_w(t_gi *gp)
 		gp->col_cnt++;
 	if (gp->str_line[i - gp->width] == 'E' && gp->total_col == gp->col_cnt)
 		clear_game(gp);
-	else if (gp->str_line[i - gp->width] != '1' && gp->str_line[i - gp->width] != 'E')
+	else if (gp->str_line[i - gp->width] != '1' && \
+	gp->str_line[i - gp->width] != 'E')
 	{
 		gp->str_line[i] = '0';
 		gp->str_line[i - gp->width] = 'P';
@@ -80,7 +81,8 @@ void	move_s(t_gi *gp)
 		gp->col_cnt++;
 	if (gp->str_line[i + gp->width] == 'E' && gp->total_col == gp->col_cnt)
 		clear_game(gp);
-	else if (gp->str_line[i + gp->width] != '1' && gp->str_line[i + gp->width] != 'E')
+	else if (gp->str_line[i + gp->width] != '1' && \
+	gp->str_line[i + gp->width] != 'E')
 	{
 		gp->str_line[i] = '0';
 		gp->str_line[i + gp->width] = 'P';
