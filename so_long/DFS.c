@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:22:54 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/01 17:49:26 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/01 19:35:49 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 {
 	int	i;
 
-	dfs->a = count_col(dfs->cp_col_line); // 콜렉터블 체크 맵에 현재 몇개의 콜랙터가 있는지 확인 (종료조건을 위해서)
+	dfs->a = count_col(dfs->cp_col_line);
 	i = 0;
 	if (dfs->found_way == 1 && gp->total_col == dfs->a)
 		return ;
@@ -31,7 +31,7 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 	}
 	while (i < 4)
 	{
-		if (gp->str_line[location] != '1' && dfs->cp_str_line[location] != '2')// '1'(벽)과 '2'(갔던길)이 아닐때만 계속해서 이동
+		if (gp->str_line[location] != '1' && dfs->cp_str_line[location] != '2')
 		{
 			dfs->cp_str_line[location] = '2';
 			ft_dfs(dfs, gp, location + dfs->move[i]);
@@ -92,27 +92,25 @@ void	init_dfs(t_dfs *dfs, t_gi *gp, int i)
 {
 	int	line_len;
 
-	dfs->start_point = 0; //p가 start_point
-	line_len = ft_strlen(gp->str_line); // 원본 맵 길이 재기
+	dfs->start_point = 0;
+	line_len = ft_strlen(gp->str_line);
 	dfs->cp_str_line = malloc(sizeof(char) * line_len);
 	if (!dfs->cp_str_line)
 		exit(1);
-	dfs->cp_str_line = ft_mod_strdup(gp->str_line); //원본맵 복사해오기(출구전용)
+	dfs->cp_str_line = ft_mod_strdup(gp->str_line);
 	while (dfs->cp_str_line[dfs->start_point] != 'P')
 		dfs->start_point++;
-	dfs->move[0] = -1; //왼쪽
-	dfs->move[1] = 1;//오른쪽
-	dfs->move[2] = gp->width; //위
-	dfs->move[3] = -gp->width; // 아래
-	dfs->found_way = 0; //출구로 나갈 수 있나? 체크 하기위한 플레그
-	dfs->cp_col_line = ft_mod_strdup(gp->str_line); //원본맵 복사해오기(콜렉터블 전용)
+	dfs->move[0] = -1;
+	dfs->move[1] = 1;
+	dfs->move[2] = gp->width;
+	dfs->move[3] = -gp->width;
+	dfs->found_way = 0;
+	dfs->cp_col_line = ft_mod_strdup(gp->str_line);
 	if (!dfs->cp_col_line)
 		exit(1);
-	while (dfs->cp_col_line[i]) //c를 찾으면 1로 바꿀꺼라서 모두 0으로 표시 (이렇게 위치적으로 표기하면 중복 표기 위험성이 사라짐)
+	while (dfs->cp_col_line[i])
 	{
 		dfs->cp_col_line[i] = '0';
 		i++;
 	}
-	// if (!dfs->cp_str_line)
-	// 	end_game(gp);
 }

@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/01 19:33:52 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/01 19:34:56 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,16 +66,16 @@ int	main(int ac, char *av[])
 	if (ac != 2)
 		ft_exit_print("ERROR \n Where is map?\n");
 	gp = malloc(sizeof(t_gi));
-	gp->mlx = mlx_init(); // mlx_init 함수를 호출하여 그래픽 시스템과의 연결을 설정해야 합니다. mlx_init 함수는 void * 형식의 포인터를 반환하며, 이는 현재 MLX 인스턴스의 위치를 저장합니다. 
+	gp->mlx = mlx_init();
 	gp->img = img_init(gp->mlx);
-	read_map(av[1], gp); // 나는 1자로 맵을 읽어올것이다.
-	check_map(gp); // 맵이 예쁘게 들어왔는지!, 벽이 모두있는지!, 들어가야할 인자값들도 다들어갔는지 확인
-	check_map_way(gp); //DFS
+	read_map(av[1], gp);
+	check_map(gp);
+	check_map_way(gp);
 	gp->window = mlx_new_window(gp->mlx, \
-	gp->width * 64, gp->height * 64, "so_long"); // 이제 출력창 크기설정 및 윈도우 띄우기
-	setting_img(gp); // 그래프에 순차적인 위치별로 그림을 넣어줌.
-	mlx_hook(gp->window, KEY_PRESS, 0, &press_key, gp); //이벤트를 설정하는 함수,버튼을 누를때  press_key함수의 이벤트가 나오도록 설정함 (MiniLibX의 모든 훅은 이벤트가 트리거될 때마다 호출되는 함수입니다.)
-	mlx_hook(gp->window, KEY_EXIT, 0, &end_game, gp);//이벤트를 설정하는 함수,버튼을 누를때  press_key함수의 이벤트가 나오도록 설정함 (MiniLibX의 모든 훅은 이벤트가 트리거될 때마다 호출되는 함수입니다.)
+	gp->width * 64, gp->height * 64, "so_long");
+	setting_img(gp);
+	mlx_hook(gp->window, KEY_PRESS, 0, &press_key, gp);
+	mlx_hook(gp->window, KEY_EXIT, 0, &end_game, gp);
 	mlx_loop(gp->mlx);
 	return (0);
 }
