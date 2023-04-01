@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:15:41 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/31 17:25:50 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/01 16:49:19 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,8 @@ void	move_w(t_gi *gp)
 		gp->str_line[i] = '0';
 		gp->str_line[i - gp->width] = 'P';
 		gp->step_cnt++;
-		printf("%d\n", gp->step_cnt);
+		ft_putnbr_fd(gp->step_cnt, 1);
+		write(1, "\n", 1);
 		setting_img(gp);
 	}
 }
@@ -62,7 +63,8 @@ void	move_a(t_gi *gp)
 		gp->str_line[i] = '0';
 		gp->str_line[i - 1] = 'P';
 		gp->step_cnt++;
-		printf("%d\n", gp->step_cnt);
+		ft_putnbr_fd(gp->step_cnt, 1);
+		write(1, "\n", 1);
 		setting_img(gp);
 	}
 }
@@ -87,7 +89,8 @@ void	move_s(t_gi *gp)
 		gp->str_line[i] = '0';
 		gp->str_line[i + gp->width] = 'P';
 		gp->step_cnt++;
-		printf("%d\n", gp->step_cnt);
+		ft_putnbr_fd(gp->step_cnt, 1);
+		write(1, "\n", 1);
 		setting_img(gp);
 	}
 }
@@ -111,7 +114,8 @@ void	move_d(t_gi *gp)
 		gp->str_line[i] = '0';
 		gp->str_line[i + 1] = 'P';
 		gp->step_cnt++;
-		printf("%d\n", gp->step_cnt);
+		ft_putnbr_fd(gp->step_cnt, 1);
+		write(1, "\n", 1);
 		setting_img(gp);
 	}
 }

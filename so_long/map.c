@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:33:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/31 17:04:44 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/01 16:22:34 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,21 +24,21 @@ void	read_map(char *map, t_gi *gp)
 	gp->width = ft_strlen(line) - 1;
 	gp->height = 0;
 	gp->step_cnt = 0;
-	gp->str_line = ft_mod_strdup(line);
+	gp->str_line = ft_mod_strdup(line); // '\n' 만  빼고 나머지 글자만 복붙
 	free(line);
 	while (line)
 	{
 		gp->height++;
 		line = get_next_line(fd);
 		if (line)
-			gp->str_line = ft_mode_strjoin(gp->str_line, line);
+			gp->str_line = ft_mode_strjoin(gp->str_line, line); // '\n' 만  빼고 나머지 글자만 복붙
 	}
 	close(fd);
 }
 
 void	check_map(t_gi *gp)
 {
-	if (gp->height * gp->width != ft_strlen(gp->str_line))
+	if (gp->height * gp->width != ft_strlen(gp->str_line)) // 1자로 펴진 지도와 읽어들인 height*width가 똑같아야 잘 읽힌것이기 때문에 wall,params를 읽기전에 확인
 		ft_exit_print("[ERROR]The map is not shaped correctly.\n");
 	map_check_wall(gp);
 	map_check_params(gp);
@@ -56,7 +56,7 @@ void	map_check_wall(t_gi *gp)
 			if (gp->str_line[i] != '1')
 				ft_exit_print("[ERROR]The map is not walled.(top)\n");
 		}
-		else if (i % gp->width == 0 || i % gp->width == gp->width - 1)
+		else if (i % gp->width == 0 || i % gp->width == gp->width - 1) // i=0이기 때문에 -1이 추가된것이다! 0부터 숫자를 읽으니까 원래수 -1이 변의 길이이다.
 		{
 			if (gp->str_line[i] != '1')
 				ft_exit_print("[ERROR]Map is not walled (side)\n");
