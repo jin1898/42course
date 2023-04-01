@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:08:03 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/31 17:21:39 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/01 18:18:57 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@
 # include <stdlib.h>
 # include <fcntl.h>
 
+//x11 event 표 
 # define KEY_PRESS		2
 # define KEY_RELEASE	3
 # define KEY_EXIT		17
 
+//맥 keycode 참조 
 # define KEY_W			13
 # define KEY_A			0
 # define KEY_S			1
