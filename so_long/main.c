@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/01 17:57:23 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/01 19:33:52 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ void	check_map_way(t_gi *gp)
 	init_dfs(dfs, gp, 0);
 	ft_dfs(dfs, gp, dfs->start_point);
 	if (!(dfs->a == gp->total_col && dfs->found_way == 1))
-		ft_exit_print("[Error]There's no way out!\n");
+		ft_exit_print("ERROR\n There's no way out!\n");
 }
 
 int	main(int ac, char *av[])
@@ -64,7 +64,7 @@ int	main(int ac, char *av[])
 	t_gi	*gp;
 
 	if (ac != 2)
-		ft_exit_print("[ERROR]Where is map?\n");
+		ft_exit_print("ERROR \n Where is map?\n");
 	gp = malloc(sizeof(t_gi));
 	gp->mlx = mlx_init(); // mlx_init 함수를 호출하여 그래픽 시스템과의 연결을 설정해야 합니다. mlx_init 함수는 void * 형식의 포인터를 반환하며, 이는 현재 MLX 인스턴스의 위치를 저장합니다. 
 	gp->img = img_init(gp->mlx);
