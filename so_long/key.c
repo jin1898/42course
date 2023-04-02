@@ -14,6 +14,7 @@
 
 int	end_game(t_gi *gp)
 {
+	(void) gp;
 	exit(0);
 }
 
