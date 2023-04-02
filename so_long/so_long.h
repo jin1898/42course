@@ -86,4 +86,5 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int step);
 void	ft_exit_print(char *str);
 void	init_dfs(t_dfs *dfs, t_gi *gp, int i);
 void	ft_putnbr_fd(int n, int fd);
+void 	print_DFS(t_gi *gp, t_dfs *dfs, int location,int i,int plant);
 #endif
