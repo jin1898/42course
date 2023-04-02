@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:15:41 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/04/01 16:49:19 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/02 18:00:35 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 int	end_game(t_gi *gp)
 {
-	mlx_destroy_window(gp->mlx, gp->window);
 	exit(0);
 }
 

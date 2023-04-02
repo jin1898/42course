@@ -9,13 +9,13 @@
 #    Updated: 2023/03/31 12:26:48 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-
-SRCS = main.c image.c key.c map.c Text_editing_tools.c DFS.c get_next_line.c get_next_line_utils.c
+SRCS = main.c image.c key.c map.c text_editing_tools.c dfs.c get_next_line.c get_next_line_utils.c
 
 OBJS := $(SRCS:.c=.o)
+GOBJS := $(GSRCS:.c=.o)
 NAME := so_long
 
-CC = gcc
+CC = cc
 
 all : $(NAME)
 
@@ -26,9 +26,12 @@ fclean : clean
 	rm -f $(NAME)
 	make clean -C ./mlx
 
-re : fclean all
+re : 
+	make fclean 
+	make all
 
-$(NAME) : $(OBJS) $(GNLOBJS)
+$(NAME) : $(GOBJS) $(OBJS)
+	 make -C ./mlx
 	$(CC) -o $(NAME) $(OBJS) -Lmlx/ -lmlx -framework OpenGL -framework AppKit
 
 %.o : %.c
