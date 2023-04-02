@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:33:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/04/01 19:36:30 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/03 00:22:55 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "./so_long.h"
+#include <stdio.h>
 
 void	read_map(char *map, t_gi *gp)
 {
@@ -33,6 +34,7 @@ void	read_map(char *map, t_gi *gp)
 		if (line)
 			gp->str_line = ft_mode_strjoin(gp->str_line, line);
 	}
+	printf("%s",gp->str_line);
 	close(fd);
 }
 

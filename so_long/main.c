@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/01 19:34:56 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/03 00:29:16 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ t_gimgi	img_init2(void *mlx)
 int	press_key(int key_number, t_gi *gp)
 {
 	if (key_number == KEY_ESC)
-		end_game(gp);
+		end_game();
 	if (key_number == KEY_W)
 		move_w(gp);
 	if (key_number == KEY_A)
@@ -52,7 +52,7 @@ void	check_map_way(t_gi *gp)
 
 	dfs = malloc(sizeof(t_dfs));
 	if (!dfs)
-		end_game(gp);
+		end_game();
 	init_dfs(dfs, gp, 0);
 	ft_dfs(dfs, gp, dfs->start_point);
 	if (!(dfs->a == gp->total_col && dfs->found_way == 1))
@@ -66,6 +66,8 @@ int	main(int ac, char *av[])
 	if (ac != 2)
 		ft_exit_print("ERROR \n Where is map?\n");
 	gp = malloc(sizeof(t_gi));
+	if (!gp)
+		exit(1);
 	gp->mlx = mlx_init();
 	gp->img = img_init(gp->mlx);
 	read_map(av[1], gp);

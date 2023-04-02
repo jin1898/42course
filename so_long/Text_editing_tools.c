@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Text_editing_tools.c                               :+:      :+:    :+:   */
+/*   text_editing_tools.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 12:08:23 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/03/31 17:24:44 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/03 00:30:56 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ char	*ft_mod_strdup(char *s)
 	i = 0;
 	new_p = malloc(size + 1);
 	if (!(new_p))
-		return (new_p);
+		exit(1);
 	while (s[i] && s[i] != '\n')
 	{
 		new_p[i] = s[i];
@@ -50,7 +50,7 @@ char	*ft_mode_strjoin(char *s1, char *s2)
 	s2_len = ft_strlen(s2);
 	new_mem = malloc(s1_len + s2_len);
 	if (!(new_mem))
-		return (0);
+		exit(1);
 	ft_strlcpy(new_mem, s1, s1_len + 1);
 	ft_strlcpy(new_mem + s1_len, s2, s2_len + 1);
 	free(s1);

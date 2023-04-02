@@ -6,15 +6,14 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:15:41 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/04/02 18:00:35 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/03 00:28:42 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	end_game(t_gi *gp)
+int	end_game(void)
 {
-	(void) gp;
 	exit(0);
 }
 

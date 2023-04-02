@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   DFS.c                                              :+:      :+:    :+:   */
+/*   dfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:22:54 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/01 19:35:49 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/03 00:23:52 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 	}
 	while (i < 4)
 	{
-		print_DFS(gp,dfs,location,i,plant);
+		//print_DFS(gp,dfs,location,i,plant);
 		plant++;
 		if (gp->str_line[location + dfs->move[i]] != '1' && dfs->cp_str_line[location + dfs->move[i]] != '2')
 		{

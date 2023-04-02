@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:08:03 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/04/01 19:36:41 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/03 00:28:56 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ typedef struct s_dfs
 	int		a;
 }t_dfs;
 
-int		end_game(t_gi *gp);
+int		end_game(void);
 void	read_map(char *map, t_gi *gp);
 char	*ft_mod_strdup(char *s);
 char	*ft_mode_strjoin(char *s1, char *s2);
