@@ -4,6 +4,12 @@
         "stddef.h": "c",
         "fcntl.h": "c",
         "stdlib.h": "c",
-        "so_long.h": "c"
+        "so_long.h": "c",
+        "stdio.h": "c",
+        "__bit_reference": "c",
+        "algorithm": "c",
+        "bitset": "c",
+        "chrono": "c",
+        "unordered_map": "c"
     }
 }

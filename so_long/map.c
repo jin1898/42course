@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:33:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/04/03 00:22:55 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/03 17:24:51 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,29 +19,29 @@ void	read_map(char *map, t_gi *gp)
 	char	*line;
 
 	fd = open(map, O_RDONLY);
-	if (fd <= 0)
-		ft_exit_print("ERROR\n Failed to read file.\n");
+	if (fd <= 0) //음수로 하는게어떨지
+		ft_exit_print("ERROR\nFailed to read file.\n");
 	line = get_next_line(fd);
 	gp->width = ft_strlen(line) - 1;
 	gp->height = 0;
 	gp->step_cnt = 0;
-	gp->str_line = ft_mod_strdup(line);
+	gp->str_line = ft_mod_strdup(line); // substr함수 libft (strtrim만사용)
 	free(line);
-	while (line)
+	while (line) // 댕글링포인터
 	{
 		gp->height++;
 		line = get_next_line(fd);
 		if (line)
-			gp->str_line = ft_mode_strjoin(gp->str_line, line);
+			gp->str_line = ft_mode_strjoin(gp->str_line, line); //꼭 필요할까?
 	}
-	printf("%s",gp->str_line);
+	// printf("%s",gp->str_line);
 	close(fd);
 }
 
 void	check_map(t_gi *gp)
 {
 	if (gp->height * gp->width != ft_strlen(gp->str_line))
-		ft_exit_print("ERROR\n The map is not shaped correctly.\n");
+		ft_exit_print("ERROR\nThe map is not shaped correctly.\n");
 	map_check_wall(gp);
 	map_check_params(gp);
 }
@@ -72,7 +72,7 @@ void	map_check_wall(t_gi *gp)
 	}
 }
 
-void	map_check_params(t_gi *gp)
+void	map_check_params(t_gi *gp)//오브젝트로 제목바꾸는것도 
 {
 	int	i;
 	int	exit_count;

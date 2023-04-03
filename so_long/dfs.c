@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   dfs.c                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:22:54 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/03 00:23:52 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/03 17:27:05 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,11 +33,10 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 	}
 	while (i < 4)
 	{
-	//	print_DFS(gp,dfs,location,i,plant);
+		//print_DFS(gp,dfs,location,i,plant);
 		plant++;
 		if (gp->str_line[location + dfs->move[i]] != '1' && dfs->cp_str_line[location + dfs->move[i]] != '2')
 		{
-
 			dfs->cp_str_line[location] = '2';
 			ft_dfs(dfs, gp, location + dfs->move[i]);
 		}
@@ -64,7 +63,7 @@ int	count_col(char *str)
 
 void	ft_exit_print(char *str)
 {
-	write(1, str, ft_strlen(str));
+	write(1, str, ft_strlen(str));//ft_putstr_fd 스텐다드 앙
 	exit(1);
 }
 
@@ -99,9 +98,6 @@ void	init_dfs(t_dfs *dfs, t_gi *gp, int i)
 
 	dfs->start_point = 0;
 	line_len = ft_strlen(gp->str_line);
-	dfs->cp_str_line = malloc(sizeof(char) * line_len);
-	if (!dfs->cp_str_line)
-		exit(1);
 	dfs->cp_str_line = ft_mod_strdup(gp->str_line);
 	while (dfs->cp_str_line[dfs->start_point] != 'P')
 		dfs->start_point++;

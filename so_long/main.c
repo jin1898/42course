@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/03 00:29:16 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/03 15:46:06 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,11 @@ void	check_map_way(t_gi *gp)
 		end_game();
 	init_dfs(dfs, gp, 0);
 	ft_dfs(dfs, gp, dfs->start_point);
+	free(dfs->cp_str_line);
+	free(dfs->cp_col_line);
 	if (!(dfs->a == gp->total_col && dfs->found_way == 1))
-		ft_exit_print("ERROR\n There's no way out!\n");
+		ft_exit_print("ERROR\nThere's no way out!\n");
+	free(dfs);
 }
 
 int	main(int ac, char *av[])
@@ -64,7 +67,7 @@ int	main(int ac, char *av[])
 	t_gi	*gp;
 
 	if (ac != 2)
-		ft_exit_print("ERROR \n Where is map?\n");
+		ft_exit_print("ERROR\nWhere is map?\n");
 	gp = malloc(sizeof(t_gi));
 	if (!gp)
 		exit(1);
@@ -72,9 +75,9 @@ int	main(int ac, char *av[])
 	gp->img = img_init(gp->mlx);
 	read_map(av[1], gp);
 	check_map(gp);
+	system("leaks -q so_long");
 	check_map_way(gp);
-	gp->window = mlx_new_window(gp->mlx, \
-	gp->width * 64, gp->height * 64, "so_long");
+	gp->window = mlx_new_window(gp->mlx, gp->width * 64, gp->height * 64, "so_long");
 	setting_img(gp);
 	mlx_hook(gp->window, KEY_PRESS, 0, &press_key, gp);
 	mlx_hook(gp->window, KEY_EXIT, 0, &end_game, gp);
