@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 10:08:03 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/04/03 00:28:56 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/04 16:12:17 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ t_gimgi	img_init(void *mlx);
 t_gimgi	img_init3(void *mlx);
 void	put_img(t_gi *gp, int w, int h);
 void	setting_img(t_gi *game);
-void	map_check_params(t_gi *gp);
+void	map_check_params(t_gi *gp, int i);
 void	map_check_wall(t_gi *gp);
 int		clear_game(t_gi *gp);
 
@@ -86,5 +86,4 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int step);
 void	ft_exit_print(char *str);
 void	init_dfs(t_dfs *dfs, t_gi *gp, int i);
 void	ft_putnbr_fd(int n, int fd);
-void 	print_DFS(t_gi *gp, t_dfs *dfs, int location,int i,int plant);
 #endif

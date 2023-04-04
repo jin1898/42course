@@ -3,14 +3,14 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsunwoo <jsunwoo@student.42.fr>            +#+  +:+       +#+         #
+#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/27 15:31:35 by jsunwoo           #+#    #+#              #
-#    Updated: 2023/03/31 12:26:48 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/04/04 16:14:45 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
-SRCS = main.c image.c key.c map.c text_editing_tools.c dfs.c get_next_line.c get_next_line_utils.c print_DFS.c
 
+SRCS = main.c image.c key.c map.c text_editing_tools.c dfs.c get_next_line.c get_next_line_utils.c
 OBJS := $(SRCS:.c=.o)
 GOBJS := $(GSRCS:.c=.o)
 NAME := so_long
@@ -26,8 +26,8 @@ fclean : clean
 	rm -f $(NAME)
 	make clean -C ./mlx
 
-re : 
-	make fclean 
+re :
+	make fclean
 	make all
 
 $(NAME) : $(GOBJS) $(OBJS)

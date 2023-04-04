@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/10 15:55:44 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/04 15:02:46 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/04 16:15:26 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,11 +73,11 @@ int	main(int ac, char *av[])
 		exit(1);
 	read_map(av[1], gp);
 	check_map(gp);
-	system("leaks -q so_long");
 	check_map_way(gp);
 	gp->mlx = mlx_init();
 	gp->img = img_init(gp->mlx);
-	gp->window = mlx_new_window(gp->mlx, gp->width * 64, gp->height * 64, "so_long");
+	gp->window = mlx_new_window(gp->mlx, gp->width * 64, \
+	gp->height * 64, "so_long");
 	setting_img(gp);
 	mlx_hook(gp->window, KEY_PRESS, 0, &press_key, gp);
 	mlx_hook(gp->window, KEY_EXIT, 0, &end_game, gp);

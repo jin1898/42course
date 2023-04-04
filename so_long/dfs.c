@@ -6,13 +6,11 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:22:54 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/04 15:24:43 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/04 15:54:00 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-int plant = 0;
 
 void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 {
@@ -33,14 +31,12 @@ void	ft_dfs(t_dfs *dfs, t_gi *gp, int location)
 	}
 	while (i < 4)
 	{
-		//print_DFS(gp,dfs,location,i,plant);
-		plant++;
-		if (gp->str_line[location + dfs->move[i]] != '1' && dfs->cp_str_line[location + dfs->move[i]] != '2')
+		if (gp->str_line[location + dfs->move[i]] != '1' \
+		&& dfs->cp_str_line[location + dfs->move[i]] != '2')
 		{
 			dfs->cp_str_line[location] = '2';
 			ft_dfs(dfs, gp, location + dfs->move[i]);
 		}
-		//dfs->cp_str_line[location] = '0';
 		i++;
 	}
 }
@@ -63,7 +59,7 @@ int	count_col(char *str)
 
 void	ft_exit_print(char *str)
 {
-	write(1, str, ft_strlen(str));//ft_putstr_fd 스텐다드 에러사용하라함
+	write(1, str, ft_strlen(str));
 	exit(1);
 }
 
