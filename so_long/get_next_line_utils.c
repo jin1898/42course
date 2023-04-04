@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 19:43:19 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/04 16:07:00 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/04 16:45:27 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,6 @@ size_t s1_len, size_t s2_len)
 		free((void *)s1);
 		return (NULL);
 	}
-	//return (free((void *)s1), NULL); //free((void *)s1)만 못적는 이유는 함수의 리턴값이 char *이기 때문이다.
 	a = -1;
 	while (++a < s1_len)
 		box[a] = s1[a];
@@ -52,7 +51,6 @@ size_t s1_len, size_t s2_len)
 		box[a + s1_len] = s2[a];
 	free((void *)s1);
 	return ((char *)box);
-	//return (free((void *)s1), (char *)box); // return값앞에다가 함수를 넣을 수 있다. 대신 함수의 리턴자료형을 맞춰줘야한다.
 }
 
 char	*subline(t_box **fd_node, t_box **head)
