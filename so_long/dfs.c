@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/30 15:22:54 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/03 17:27:05 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/04 15:24:43 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	count_col(char *str)
 
 void	ft_exit_print(char *str)
 {
-	write(1, str, ft_strlen(str));//ft_putstr_fd 스텐다드 앙
+	write(1, str, ft_strlen(str));//ft_putstr_fd 스텐다드 에러사용하라함
 	exit(1);
 }
 

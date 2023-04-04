@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/20 11:33:36 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/04/03 17:24:51 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/04 15:47:45 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,25 +72,34 @@ void	map_check_wall(t_gi *gp)
 	}
 }
 
-void	map_check_params(t_gi *gp)//오브젝트로 제목바꾸는것도 
+void	map_check_params(t_gi *gp)//오브젝트로 제목바꾸는것도
 {
 	int	i;
 	int	exit_count;
 	int	startpoint_count;
 
-	i = 0;
+	i = -1;
 	exit_count = 0;
 	startpoint_count = 0;
 	gp->total_col = 0;
 	gp->col_cnt = 0;
-	while (i++ < ft_strlen(gp->str_line))
+	while (i++ < (ft_strlen(gp->str_line) - 1))
 	{
+		printf("ft_strlen(gp->str_line) : %d / i : %d /gp->strline[i] : %c\n",ft_strlen(gp->str_line),i,gp->str_line[i]);
+		printf("with * height : %d\n",gp->width * gp->height);
 		if (gp->str_line[i] == 'E')
 			exit_count++;
 		else if (gp->str_line[i] == 'P')
 			startpoint_count++;
 		else if (gp->str_line[i] == 'C')
 			gp->total_col++;
+		else if (gp->str_line[i] != 'E' && gp->str_line[i] != 'P'\
+		&& gp->str_line[i] != 'C' && gp->str_line[i] != '0' \
+		&& gp->str_line[i] != '1')
+		{
+			printf("%d/[%c]",i,gp->str_line[i]); //#include <stdio.h> 지워라
+			ft_exit_print("ERORR\nThere's an unknown character in it!");
+		}
 	}
 	if (exit_count != 1)
 		ft_exit_print("ERROR\nOnly one exit must exist!\n");
