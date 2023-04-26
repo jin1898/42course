@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/24 20:44:34 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/26 19:47:21 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,17 @@
 int	main(int argc, char **argv, char **envp)
 {
 	t_db	db;
+	int		i;
 
 	what_parameter(argv, argc, &db);
-	find_path(envp, &db);
-	if (!find_path)
+	i = find_path(envp, &db);
+	if (!i)
 		return (0);
-	// connect_infile_outfile();
-	// make_pipe_and_open();
+	// for (int i = 0; db.path[i] != 0; i++)
+	// 	printf("db.path[%d] [%s]\n",i,db.path[i]);
+
+	make_pipe_and_open();
+	// connect_infile_outfile(&db);
 	// make_child();
 	// close_pipe();
 	// waitpid();
@@ -57,12 +61,12 @@ int	ft_strcmp(char *s1, char *s2)
 
 	s1_c = (unsigned char *)s1;
 	s2_c = (unsigned char *)s2;
-	while (*s1_c != '\0' && *s2_c != '\0')
+	while (*s1_c == *s2_c)
 	{
-		if (*s1_c != *s2_c)
-			return (*s1_c - *s2_c);
+		if (*s1_c == '\0')
+			return (0);
 		s1_c++;
 		s2_c++;
 	}
-	return (0);
+	return (*s1_c - *s2_c);
 }

@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:50:31 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/24 20:43:58 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/26 19:36:54 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,67 +14,78 @@
 
 int	find_path(char **envp, t_db *db)
 {
-	int	a;
+	char	*a;
 
 	while (*envp)
 	{
-		if (!(ft_strcmp(envp, "PATH")))
+		if (!(ft_strncmp(*envp, "PATH", 4)))
 			break ;
 		envp++;
 	}
-	db->path = *envp + 5;
-	a = ft_split(envp, ':');
+	a = *envp + 5;
 	if (!a)
 		return (0);
+	db->path = ft_split(a, ':');
+	if (!db->path)
+		error_message("Environment");
+	return (1);
 }
 
-char	**ft_split(char **s1, char split_word)
+char	**ft_split(char *s1, char split_word)
 {
-	char	**s1_c;
+	char	*s1_c;
 	int		box_count;
 	char	**ret;
 	char	**ret2;
 
+	box_count = 0;
 	s1_c = s1;
-	while (*s1_c)
+	while (*s1_c != '\0')
 	{
-		while (split_word == *s1_c && split_word != '\0')
+		while (split_word == *s1_c && *s1_c != '\0')
 			s1_c++;
+		if (*s1_c == '\0')
+			break ;
 		box_count++;
-		while (split_word != *s1_c && split_word != '\0')
+		while (split_word != *s1_c && *s1_c != '\0')
 			s1_c++;
 	}
-	ret = malloc(sizeof(char) * box_count + 1);
+	ret = malloc(sizeof(char *) * box_count + 1);
+	ret[box_count] = NULL;
+	printf("box_count %d\n", box_count);
+	printf("--------------ret[box_count] [%s]\n",ret[box_count-1]);
 	if (!ret)
 		return (0);
 	ret2 = shape_word(ret, s1, split_word);
 	if (ret2 != &ret[box_count])
 		free_arr(&ret, ret2);
-	return (ret);
+	return (ret2);
 }
 
-char	**shape_word(char **ret, char **s1, char split_word)
+char	**shape_word(char **ret, char *s1, char split_word)
 {
-	char	*startpoint;
-	char	**ret_p;
+	char	*ret_p;
+	int		start;
+	int		end;
 	int		i;
+	int		e;
 
-	while (*s1)
+	i = 0;
+	start = 0;
+	e = 0;
+	while (s1 != NULL && s1[i])
 	{
-		while (split_word == *s1 && split_word != '\0')
-			s1++;
-		if (split_word != '\0')
-			return (0);
-		startpoint = s1;
-		while (split_word != *s1 && split_word != '\0')
-			s1++;
-		ret_p = malloc(sizeof(char) * (startpoint - s1) + 1);
-		ret_p[startpoint - s1] = 0;
-		i = -1;
-		while (++i < (startpoint - s1))
-			*ret_p++ = *startpoint++;
-		*ret_p = '\0';
-		ret++;
+		while (split_word == s1[i] && s1[i++] != '\0')
+			start++;
+		end = start;
+		while (split_word != s1[i] && s1[i] != '\0')
+		{
+			i++;
+			end++;
+		}
+		ret_p = ft_substr(s1, start, (end - start));
+		start = i;
+		ret[e++] = ret_p;
 	}
 	return (ret);
 }
@@ -91,4 +102,14 @@ void	free_arr(char ***ret, char **ret2)
 	}
 	free(*ret);
 	ret = NULL;
+}
+
+int	ft_strlen(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i] != '\0')
+		i++;
+	return (i);
 }
