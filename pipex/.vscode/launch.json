@@ -8,8 +8,8 @@
             "type": "lldb",
             "request": "launch",
             "name": "Debug",
-            "program": "a.out",
-            "args": ["here_doc", "eof", "sort", "wc", "ls", "outfile"],
+            "program": "pipex",
+            "args": ["here_doc","eof","ls","ls","outfile"],
             "cwd": "${workspaceFolder}"
         }
     ]

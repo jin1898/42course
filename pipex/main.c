@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/26 19:47:21 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/28 19:20:43 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ int	main(int argc, char **argv, char **envp)
 	i = find_path(envp, &db);
 	if (!i)
 		return (0);
-	// for (int i = 0; db.path[i] != 0; i++)
-	// 	printf("db.path[%d] [%s]\n",i,db.path[i]);
+	for (int i = 0; db.path[i] != 0; i++)
+		printf("db.path[%d] [%s]\n",i,db.path[i]);
 
-	make_pipe_and_open();
-	// connect_infile_outfile(&db);
+	// make_pipe_and_open();
 	// make_child();
 	// close_pipe();
 	// waitpid();
@@ -34,18 +33,27 @@ int	main(int argc, char **argv, char **envp)
 
 void	what_parameter(char **argv, int argc, t_db *db)
 {
+	if (argv[1] == NULL || argc == 1)
+		error_message("Invalid number of arguments. \n");
 	if (ft_strcmp(argv[1], "here_doc") == 0 && argv[1] != 0)
 	{
 		db->h_flag = 1;
 		if (argc < 6)
 			error_message("Invalid number of arguments. \n");
+		here_doc(argv[2]);
+		db->outfilenum = open(argv[argc - 1], O_WRONLY \
+		| O_CREAT | O_APPEND, 0644);
 	}
 	else
 	{
 		db->h_flag = 0;
 		if (argc < 5)
 			error_message("Invalid number of arguments. \n");
+		db->infilenum = open(argv[1], O_RDONLY);
+		db->outfilenum = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
 	}
+	if (db->outfilenum < 0 || db->infilenum < 0)
+		error_message("Can't open file. \n");
 }
 
 void	error_message(char *s)
@@ -70,3 +78,65 @@ int	ft_strcmp(char *s1, char *s2)
 	}
 	return (*s1_c - *s2_c);
 }
+
+void	here_doc(char *eof)
+{
+	int		tmp_heredoc;
+	char	*getbox;
+	int	strnc;
+
+	tmp_heredoc = open(".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 644);
+	if (tmp_heredoc < 0)
+		error_message("heredoc error\n");
+	while (1)
+	{
+		getbox = NULL;
+		write(1, "here_doc> ", ft_strlen("here_doc> "));
+		while (getbox == NULL)
+			getbox = get_next_line(STDIN_FILENO);
+			printf("getbox %s\n",getbox);
+		if ((strnc = ft_strcmp2(getbox, eof, ft_strlen(eof))) == 0)
+			break ;
+		write(tmp_heredoc, getbox, ft_strlen(getbox));
+		free(getbox);
+	}
+	free(getbox);
+	close(tmp_heredoc);
+	// db->infilenum = open(".heredoc_tmp", O_RDONLY);
+	// if (db->infilenum < 0)
+	// {
+	// 	unlink(".heredoc_tmp");
+	// 	printf("strncmp %d\ndb->infile %d\n",strnc,db->infilenum);
+	// 	error_message("here_doc error");
+	// }
+}
+
+
+// void	here_doc(char *eof, t_db *db)
+// {
+// 	int		tmp_file;
+// 	char	*buf;
+
+// 	tmp_file = open(".heredoc_tmp", O_CREAT | O_WRONLY | O_TRUNC, 644);
+// 	if (tmp_file < 0)
+// 		error_message("no");
+// 	while (1)
+// 	{
+// 		write(STDOUT_FILENO, "heredoc> ", sizeof("heredoc> ") - 1);
+// 		buf = NULL;
+// 		while (buf == NULL)
+// 			buf = get_next_line(STDIN_FILENO);
+// 		if (ft_strncmp(buf, eof, ft_strlen(eof) - 1) == 0)
+// 			break ;
+// 		write(tmp_file, buf, ft_strlen(buf));
+// 		free(buf);
+// 	}
+// 	free(buf);
+// 	close(tmp_file);
+// 	db->infilenum = open(".heredoc_tmp", O_RDONLY);
+// 	if (db->infilenum < 0)
+// 	{
+// 		unlink("heredoc_tmp");
+// 		error_message("error no");
+// 	}
+// }

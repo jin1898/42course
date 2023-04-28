@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:14:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/26 19:45:45 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/28 19:20:09 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,15 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include "get_next_line/get_next_line.h"
 
 typedef struct s_databox
 {
 	int		h_flag;
 	char	**path;
 	char	*fd_boxs;
+	int		outfilenum;
+	int		infilenum;
 }	t_db;
 
 int		ft_strcmp(char *s1, char *s2);
@@ -34,5 +37,7 @@ void	error_message(char *s);
 int		ft_strlen(char *s);
 int		ft_strncmp(char *s1, char *s2, int n);
 char	*ft_substr(char const *s, unsigned int start, size_t len);
+void	here_doc(char *eof);
+int		ft_strcmp2(char *s1, char *s2, int a);
 
 #endif

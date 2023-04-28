@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   connect_infile_outfile.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:41:03 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/26 19:43:59 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/27 21:56:46 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex.h"
 
-int	connect_infile_outfile(t_db *db)
-{
+// int	connect_infile_outfile(t_db *db)
+// {
 	
-}
+// }

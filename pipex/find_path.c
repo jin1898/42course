@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:50:31 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/26 19:36:54 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/28 01:54:21 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ char	**ft_split(char *s1, char split_word)
 	}
 	ret = malloc(sizeof(char *) * box_count + 1);
 	ret[box_count] = NULL;
-	printf("box_count %d\n", box_count);
-	printf("--------------ret[box_count] [%s]\n",ret[box_count-1]);
 	if (!ret)
 		return (0);
 	ret2 = shape_word(ret, s1, split_word);

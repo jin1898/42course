@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:08:07 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/26 15:46:10 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/28 19:23:20 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,30 +30,26 @@ int	ft_strncmp(char *s1, char *s2, int n)
 		s2_c++;
 	}
 	return (*s1_c - *s2_c);
-
 }
 
-char*	ft_substr(char const* s, unsigned int start, size_t len)
+int	ft_strcmp2(char *s1, char *s2, int a)
 {
-	size_t	i;
-	size_t	j;
-	char*	sub;
+	unsigned char	*s1_c;
+	unsigned char	*s2_c;
+	int				i;
 
 	i = 0;
-	j = 0;
-	if (!s)
-		return (NULL);
-	if (!(sub = (char*)malloc(sizeof(char) * (len + 1))))
-		return (NULL);
-	while (s[i])
+	s1_c = (unsigned char *)s1;
+	s2_c = (unsigned char *)s2;
+	while (*s1_c == *s2_c)
 	{
-		if (i >= start && j < len)
-		{
-			sub[j] = s[i];
-			j++;
-		}
+		if (*s1_c == '\n')
+			return (0);
 		i++;
+		s1_c++;
+		s2_c++;
 	}
-	sub[j] = '\0';
-	return (sub);
+	if (*s1_c == '\n' && i == a)
+		return (0);
+	return (*s1_c - *s2_c);
 }
