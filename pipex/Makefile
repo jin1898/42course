@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
+#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 01:49:00 by sunwoo-jin        #+#    #+#              #
-#    Updated: 2023/04/30 02:09:07 by sunwoo-jin       ###   ########.fr        #
+#    Updated: 2023/04/30 16:16:23 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 

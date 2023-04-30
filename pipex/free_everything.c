@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   free_everything.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 19:25:03 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/04/30 11:54:55 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/30 16:18:56 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,19 @@ void	free_everything(t_db *db)
 	i = 0;
 	printf("here3\n");
 	printf("3 %p\n",db->path);
+	system("leaks -q pipex");
+	for(int c = 0; db->path[c] != NULL; c++)
+		printf("top!!!!!!!db->path[%d]주소값:[%p] %s\n",c,&db->path[c], db->path[c]);
+
 	while (db->path[i] != NULL)
 	{
-		printf("%d\n",i);
+		printf("&&db->path[%d]주소값:[%p]\n",i,&db->path[i]);
 		free(db->path[i]);
+		printf("db->path[%d]주소값:[%p]\n",i,db->path[i]);
 		i++;
 	}
 	printf("1");
 	printf("1 %p\n",db->path);
 	// free(db->path);aaa
-	printf("\n2");
+	printf("2\n");
 }

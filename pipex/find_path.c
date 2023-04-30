@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_path.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:50:31 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/30 02:10:28 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/30 15:57:47 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,12 @@ int	find_path(char **envp, t_db *db)
 		return (0);
 	db->path = ft_split(a, ':');
 	printf("1 %p\n",db->path);
-	// int i = 0;
-	// while(db->path[i])
-	// {
-	// 	printf("db->path %s\n",db->path[i]);
-	// 	i++;
-	// }
+	int i = 0;
+	while(db->path[i])
+	{
+		printf("find_path::db->path %s\n",db->path[i]);
+		i++;
+	}
 	if (!db->path)
 		error_message("Environment");
 	printf("2 %p\n",db->path);
@@ -59,9 +59,10 @@ char	**ft_split(char *s1, char split_word)
 			s1_c++;
 	}
 	ret = malloc(sizeof(char *) * (box_count + 1));
-	ret[box_count] = NULL;
 	if (!ret)
 		return (0);
+	printf("find ::box_count%d\n",box_count);
+	ret[box_count] = NULL;
 	ret2 = shape_word(ret, s1, split_word);
 	if (ret2 != ret)
 		free_arr(&ret, ret2);
@@ -70,16 +71,15 @@ char	**ft_split(char *s1, char split_word)
 
 char	**shape_word(char **ret, char *s1, char split_word)
 {
-	char	**ret_p;
+	char	*ret_p;
 	int		start;
 	int		end;
 	int		i;
-	int		e;
+	int		i2;
 
 	i = 0;
 	start = 0;
-	e = 0;
-	ret_p = ret;
+	i2 = 0;
 	while (s1 != NULL && s1[i])
 	{
 		while (split_word == s1[i] && s1[i++] != '\0')
@@ -90,10 +90,12 @@ char	**shape_word(char **ret, char *s1, char split_word)
 			i++;
 			end++;
 		}
-		*ret_p = ft_substr(s1, start, (end - start));
+		ret_p = ft_substr(s1, start, (end - start));
 		start = i;
-		ret[e++] = *ret_p;
+		ret[i2++] = ret_p;
+		ret_p = NULL;
 	}
+	ret[i2] = NULL;
 	return (ret);
 }
 
