@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/30 15:19:28 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/30 16:55:16 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,7 @@ int	main(int argc, char **argv, char **envp)
 		return (0);
 	for (int i = 0; db.path[i] != 0; i++)
 		printf("db.path[%d] [%s]\n",i,db.path[i]);
-
 	//경로 저장완료, infile outfile 다 연결함.
-
 	make_and_open_pipe(argc, &db);
 	make_child(&db, argv, envp);
 	close_and_wait(&db);
@@ -50,7 +48,7 @@ void	what_parameter(char **argv, int argc, t_db *db)
 		db->h_flag = 0;
 		if (argc < 5)
 			error_message("Invalid number of arguments. \n");
-		db->infilenum = open(argv[1], O_RDONLY);
+		db->infilenum = open(argv[1], O_RDONLY | O_CREAT, 0644);
 		db->outfilenum = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
 	}
 	if (db->outfilenum < 0 || db->infilenum < 0)

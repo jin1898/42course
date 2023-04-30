@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:41:03 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/30 00:26:09 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/30 17:08:59 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,19 +54,18 @@ void	start_child(t_db *db, int cmd_sequence, char **argv, char **envp)
 {
 	if (cmd_sequence == 0)
 	{
-		dup2(db->infilenum, 0);
-		dup2(db->pipebox[1], 1);
+		dup2(db->infilenum, STDIN_FILENO);
+		dup2(db->pipebox[1], STDOUT_FILENO);
 	}
-
 	else if (cmd_sequence == (db->cmdnum - 1))
 	{
-		dup2(db->pipebox[2 * cmd_sequence - 2], 0);
-		dup2(db->outfilenum, 1);
+		dup2(db->pipebox[2 * cmd_sequence - 2], STDIN_FILENO);
+		dup2(db->outfilenum, STDOUT_FILENO);
 	}
 	else
 	{
-		dup2(db->pipebox[2 * cmd_sequence - 2], 0);
-		dup2(db->pipebox[2 * cmd_sequence + 1], 1);
+		dup2(db->pipebox[2 * cmd_sequence - 2], STDIN_FILENO);
+		dup2(db->pipebox[2 * cmd_sequence + 1], STDOUT_FILENO);
 	}
 	pipe_close(db);
 	excute_cmd(cmd_sequence, argv, db, envp);
