@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils.c                                            :+:      :+:    :+:   */
+/*   utils_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:08:07 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 02:19:43 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/01 01:31:25 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
@@ -82,7 +82,7 @@ char	*find_cmd(char	**path, char *cmd)
 		ret = ft_strjoin(tmp2, cmd, ft_strlen(tmp2), ft_strlen(cmd));
 		if (access(ret, X_OK) == 0)
 			return (ret);
-		exit(1);
+		free(ret);
 		path++;
 	}
 	return (NULL);

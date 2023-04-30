@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 14:09:15 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/28 02:12:15 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/01 01:18:11 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <unistd.h>
-# include "../pipex.h"
+# include "../pipex_bonus.h"
 
 typedef struct s_box
 {

@@ -9,7 +9,7 @@
             "request": "launch",
             "name": "Debug",
             "program": "pipex",
-            "args": ["infile","ls","sort","outfile"],
+            "args": ["here_doc","infile","eof","sort","wc","outfile"],
             "cwd": "${workspaceFolder}"
         }
     ]
