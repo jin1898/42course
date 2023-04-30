@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:50:31 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/30 15:57:47 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/30 19:34:56 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,16 +26,10 @@ int	find_path(char **envp, t_db *db)
 	if (!a)
 		return (0);
 	db->path = ft_split(a, ':');
-	printf("1 %p\n",db->path);
-	int i = 0;
-	while(db->path[i])
-	{
-		printf("find_path::db->path %s\n",db->path[i]);
-		i++;
-	}
+
 	if (!db->path)
 		error_message("Environment");
-	printf("2 %p\n",db->path);
+
 	return (1);
 }
 
@@ -61,7 +55,6 @@ char	**ft_split(char *s1, char split_word)
 	ret = malloc(sizeof(char *) * (box_count + 1));
 	if (!ret)
 		return (0);
-	printf("find ::box_count%d\n",box_count);
 	ret[box_count] = NULL;
 	ret2 = shape_word(ret, s1, split_word);
 	if (ret2 != ret)

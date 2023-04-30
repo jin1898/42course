@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:08:07 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/29 23:57:45 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/30 20:25:34 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,7 @@ void	excute_cmd(int idx, char **argv, t_db *db, char **envp)
 {
 	char	**cmd_s;
 	char	*cmd;
+	char	tmp[1000];
 
 	cmd_s = ft_split(argv[2 + db->h_flag + idx], ' ');
 	cmd = find_cmd(db->path, cmd_s[0]);
@@ -68,7 +69,12 @@ void	excute_cmd(int idx, char **argv, t_db *db, char **envp)
 		write(2, "\n", sizeof(char));
 		exit(1);
 	}
-	execve(cmd, cmd_s, envp);
+
+
+	write(2, "\n----tmp----\n",ft_strlen("\n----tmp----\n"));
+	sprintf(tmp, "cmd_s(%s),cmd(%s)\n\na : %d\n",*cmd_s,cmd,execve(cmd, cmd_s, envp));
+	write(2, tmp, 50);
+	write(2, "\n----tmp----\n",ft_strlen("\n----tmp----\n"));
 }
 
 char	*find_cmd(char	**path, char *cmd)

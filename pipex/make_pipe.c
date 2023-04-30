@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:41:03 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/30 17:08:59 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/30 20:12:48 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	make_and_open_pipe(int argc, t_db *db)
 			free_everything(db);
 			error_message("pipe");
 		}
-			printf("db->pipebox1[%d] pipebox2[%d]\n",db->pipebox[0],db->pipebox[1]);
 		i++;
 	}
 }

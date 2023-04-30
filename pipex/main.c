@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/30 16:55:16 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/04/30 20:01:54 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,9 @@ int	main(int argc, char **argv, char **envp)
 	i = find_path(envp, &db);
 	if (!i)
 		return (0);
-	for (int i = 0; db.path[i] != 0; i++)
-		printf("db.path[%d] [%s]\n",i,db.path[i]);
-	//경로 저장완료, infile outfile 다 연결함.
 	make_and_open_pipe(argc, &db);
 	make_child(&db, argv, envp);
+	printf("make_chile done!");
 	close_and_wait(&db);
 	free_everything(&db);
 }
@@ -105,5 +103,5 @@ void	here_doc(char *eof, t_db *db)
 		unlink(".heredoc_tmp");
 		error_message("here_doc error");
 	}
-	printf("sucess!!!!!!!!!!!!!!!!!!!!\n");
+
 }
