@@ -6,11 +6,11 @@
 #    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 01:49:00 by sunwoo-jin        #+#    #+#              #
-#    Updated: 2023/04/29 09:47:42 by sunwoo-jin       ###   ########.fr        #
+#    Updated: 2023/04/30 02:09:07 by sunwoo-jin       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS = main.c make_pipe.c utils.c find_path.c
+SRCS = main.c make_pipe.c utils.c find_path.c free_everything.c
 OBJS = $(SRCS:.c=.o)
 NAME = pipex
 

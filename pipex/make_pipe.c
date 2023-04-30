@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:41:03 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/29 10:08:18 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/30 00:26:09 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	make_and_open_pipe(int argc, t_db *db)
 	{
 		if (pipe(db->pipebox + (i * 2)) < 0)
 		{
-			free_main_arg_and_path(db);
+			free_everything(db);
 			error_message("pipe");
 		}
 			printf("db->pipebox1[%d] pipebox2[%d]\n",db->pipebox[0],db->pipebox[1]);
@@ -33,20 +33,53 @@ void	make_and_open_pipe(int argc, t_db *db)
 	}
 }
 
-void	free_main_arg_and_path(t_db *db)
+void	make_child(t_db *db, char **argv, char **envp)
+{
+	int		i;
+	pid_t	a;
+
+	i = 0;
+	while (i < (db->cmdnum -1))
+	{
+		a = fork();
+		if (a == -1)
+			error_message("fork error");
+		else if (a == 0)
+			start_child(db, i, argv, envp);
+		i++;
+	}
+}
+
+void	start_child(t_db *db, int cmd_sequence, char **argv, char **envp)
+{
+	if (cmd_sequence == 0)
+	{
+		dup2(db->infilenum, 0);
+		dup2(db->pipebox[1], 1);
+	}
+
+	else if (cmd_sequence == (db->cmdnum - 1))
+	{
+		dup2(db->pipebox[2 * cmd_sequence - 2], 0);
+		dup2(db->outfilenum, 1);
+	}
+	else
+	{
+		dup2(db->pipebox[2 * cmd_sequence - 2], 0);
+		dup2(db->pipebox[2 * cmd_sequence + 1], 1);
+	}
+	pipe_close(db);
+	excute_cmd(cmd_sequence, argv, db, envp);
+}
+
+void	pipe_close(t_db	*db)
 {
 	int	i;
 
-	close(db->infilenum);
-	close(db->outfilenum);
-	if (db->h_flag == 1)
-		unlink(".heredoc_tmp");
-	free(db->pipebox);
 	i = 0;
-	while (db->path[i] != NULL)
+	while (i < (db->cmdnum - 1) * 2)
 	{
-		free(db->path[i]);
+		close(db->pipebox[i]);
 		i++;
 	}
-	free(db->path);
 }

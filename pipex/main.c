@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/29 10:50:02 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/04/29 19:31:42 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,9 @@ int	main(int argc, char **argv, char **envp)
 	//경로 저장완료, infile outfile 다 연결함.
 
 	make_and_open_pipe(argc, &db);
-	// make_child();
-	// close_pipe();
-	// waitpid();
-	// free_everything();
+	make_child(&db, argv, envp);
+	close_and_wait(&db);
+	free_everything(&db);
 }
 
 void	what_parameter(char **argv, int argc, t_db *db)
@@ -110,5 +109,3 @@ void	here_doc(char *eof, t_db *db)
 	}
 	printf("sucess!!!!!!!!!!!!!!!!!!!!\n");
 }
-
-
