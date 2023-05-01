@@ -3,24 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   main_bonus.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 01:27:41 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/01 23:28:52 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
+
+void	leak_check()
+{
+	system("leaks -q pipex");
+}
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_db	db;
 	int		i;
 
-	what_parameter(argv, argc, &db);
+	atexit(leak_check);
+	i = 0;
 	i = find_path(envp, &db);
 	if (!i)
 		return (0);
+	what_parameter(argv, argc, &db);
 	make_and_open_pipe(argc, &db);
 	make_child(&db, argv, envp);
 	close_and_wait(&db);
@@ -36,9 +43,13 @@ void	what_parameter(char **argv, int argc, t_db *db)
 		db->h_flag = 1;
 		if (argc < 6)
 			error_message("Invalid number of arguments. \n");
+		// check_cmd(argv, argc, db);
 		here_doc(argv[2], db);
+		// if (db->error_flag == 1)
+		// 	p_error_2(db);
 		db->outfilenum = open(argv[argc - 1], O_WRONLY \
 		| O_CREAT | O_APPEND, 0644);
+
 	}
 	else
 	{
@@ -49,7 +60,8 @@ void	what_parameter(char **argv, int argc, t_db *db)
 		db->outfilenum = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
 	}
 	if (db->outfilenum < 0 || db->infilenum < 0)
-		error_message("Can't open file. \n");
+		write (2, "no such file or directory \n", \
+		ft_strlen("no such file or directory \n"));
 }
 
 void	error_message(char *s)

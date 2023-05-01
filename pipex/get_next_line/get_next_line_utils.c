@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/04 19:43:19 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/28 11:16:28 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/01 22:06:51 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ size_t s1_len, size_t s2_len)
 	if (box == NULL)
 	{
 		free((void *)s1);
+		s1 = 0;
 		return (NULL);
 	}
 	a = -1;
@@ -50,6 +51,7 @@ size_t s1_len, size_t s2_len)
 	while (++a < s2_len + 1)
 		box[a + s1_len] = s2[a];
 	free((void *)s1);
+	s1 = 0;
 	return ((char *)box);
 }
 

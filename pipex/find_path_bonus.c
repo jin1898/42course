@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   find_path_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:50:31 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 01:16:22 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/01 20:39:58 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,8 @@ int	find_path(char **envp, t_db *db)
 	if (!a)
 		return (0);
 	db->path = ft_split(a, ':');
-
 	if (!db->path)
 		error_message("Environment");
-
 	return (1);
 }
 

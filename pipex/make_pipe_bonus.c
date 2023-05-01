@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   make_pipe_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:41:03 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 01:18:22 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/01 22:57:00 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ void	make_child(t_db *db, char **argv, char **envp)
 	i = 0;
 	while (i < db->cmdnum)
 	{
+		printf("%d\n", i);
 		a = fork();
 		if (a == -1)
 			error_message("fork error");

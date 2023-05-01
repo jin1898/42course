@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 01:43:33 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/01 16:54:27 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,14 @@ int	main(int argc, char **argv, char **envp)
 	t_db	db;
 	int		i;
 
+	i = 0;
 	what_parameter(argv, argc, &db);
+	if (db.h_flag == 1)
+	{
+		while (i < db.cmdnum)
+			excute_cmd2(i, argv, &db);
+		i++;
+	}
 	i = find_path(envp, &db);
 	if (!i)
 		return (0);

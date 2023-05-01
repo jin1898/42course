@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   pipex.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:14:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/04/30 00:05:26 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/01 16:43:53 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include "get_next_line/get_next_line.h"
 
 typedef struct s_databox
@@ -49,4 +50,5 @@ void	pipe_close(t_db	*db);
 char	*find_cmd(char	**path, char *cmd);
 void	free_everything(t_db *db);
 void	close_and_wait(t_db	*db);
+void	excute_cmd2(int idx, char **argv, t_db *db);
 #endif

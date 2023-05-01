@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:08:07 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 02:19:43 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/01 21:20:55 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,15 +75,18 @@ char	*find_cmd(char	**path, char *cmd)
 {
 	char	*tmp2;
 	char	*ret;
+	int		i;
 
-	while (*path != NULL)
+	i = 0;
+	while (path[i] != NULL)
 	{
-		tmp2 = ft_strjoin(*path, "/", ft_strlen(*path), ft_strlen("/"));
+		tmp2 = ft_strjoin(path[i], "/", ft_strlen(path[i]), ft_strlen("/"));
 		ret = ft_strjoin(tmp2, cmd, ft_strlen(tmp2), ft_strlen(cmd));
+		free(tmp2);
 		if (access(ret, X_OK) == 0)
 			return (ret);
 		exit(1);
-		path++;
+		i++;
 	}
 	return (NULL);
 }

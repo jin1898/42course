@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
+#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 01:49:00 by sunwoo-jin        #+#    #+#              #
-#    Updated: 2023/05/01 02:04:08 by sunwoo-jin       ###   ########.fr        #
+#    Updated: 2023/05/01 17:23:41 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ NAME = pipex
 # BONUS_OBJS = $(BONUS_SRCS:.c=.o)
 
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -g -arch arm64
+CFLAGS = -Wall -Wextra -Werror  -g
 GET_NEXT_LINE_DIR = get_next_line
 GET_NEXT_LINE_SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 GET_NEXT_LINE_OBJS = $(GET_NEXT_LINE_SRCS:.c=.o)

@@ -2,6 +2,8 @@
 	"files.associations": {
 		"algorithm": "c",
 		"pipex.h": "c",
-		"locale": "c"
+		"locale": "c",
+		"pipex_bonus.h": "c",
+		"get_next_line.h": "c"
 	}
 }
