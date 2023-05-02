@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/01 14:09:15 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 01:18:11 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/02 19:45:53 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ char	*ft_strjoin(const char *s1, const char *s2, \
 size_t s1_len, size_t s2_len);
 char	*subline(t_box **fd_node, t_box **head);
 char	*ft_strdup(const char *s1);
-// char	*ft_substr(const char *s, unsigned int start, size_t len);
+char	*ft_substr(const char *s, unsigned int start, size_t len);
 t_box	*add_node(t_box **head, int fd);
 char	*del(t_box	**head, int fd);
 t_box	*ft_find(int fd, t_box **head);

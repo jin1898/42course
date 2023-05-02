@@ -3,14 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   make_pipe.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:41:03 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 01:43:38 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/05/02 21:23:56 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 void	make_and_open_pipe(int argc, t_db *db)
 {

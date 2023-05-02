@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 19:41:03 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 22:57:00 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/02 21:25:28 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ void	make_child(t_db *db, char **argv, char **envp)
 	i = 0;
 	while (i < db->cmdnum)
 	{
-		printf("%d\n", i);
 		a = fork();
 		if (a == -1)
 			error_message("fork error");

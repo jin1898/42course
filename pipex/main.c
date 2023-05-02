@@ -6,28 +6,21 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 16:54:27 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/02 21:23:32 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_db	db;
 	int		i;
 
-	i = 0;
-	what_parameter(argv, argc, &db);
-	if (db.h_flag == 1)
-	{
-		while (i < db.cmdnum)
-			excute_cmd2(i, argv, &db);
-		i++;
-	}
 	i = find_path(envp, &db);
 	if (!i)
 		return (0);
+	what_parameter(argv, argc, &db);
 	make_and_open_pipe(argc, &db);
 	make_child(&db, argv, envp);
 	close_and_wait(&db);
@@ -38,25 +31,14 @@ void	what_parameter(char **argv, int argc, t_db *db)
 {
 	if (argv[1] == NULL || argc == 1)
 		error_message("Invalid number of arguments. \n");
-	if (ft_strcmp(argv[1], "here_doc") == 0 && argv[1] != 0)
-	{
-		db->h_flag = 1;
-		if (argc < 6)
-			error_message("Invalid number of arguments. \n");
-		here_doc(argv[2], db);
-		db->outfilenum = open(argv[argc - 1], O_WRONLY \
-		| O_CREAT | O_APPEND, 0644);
-	}
-	else
-	{
 		db->h_flag = 0;
-		if (argc < 5)
-			error_message("Invalid number of arguments. \n");
+	if (argc != 5)
+		error_message("Invalid number of arguments. \n");
 		db->infilenum = open(argv[1], O_RDONLY);
 		db->outfilenum = open(argv[argc - 1], O_RDWR | O_CREAT | O_TRUNC, 0644);
-	}
 	if (db->outfilenum < 0 || db->infilenum < 0)
-		error_message("Can't open file. \n");
+		write (2, "no such file or directory \n", \
+		ft_strlen("no such file or directory \n"));
 }
 
 void	error_message(char *s)
@@ -96,7 +78,7 @@ void	here_doc(char *eof, t_db *db)
 		write(1, "here_doc> ", ft_strlen("here_doc> "));
 		while (getbox == NULL)
 			getbox = get_next_line(STDIN_FILENO);
-		if ((ft_strcmp2(getbox, eof, ft_strlen(eof))) == 0)
+		if (ft_strcmp2(getbox, eof, ft_strlen(eof)) == 0)
 			break ;
 		write(tmp_heredoc, getbox, ft_strlen(getbox));
 		free(getbox);

@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:08:07 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 23:16:02 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/02 21:29:49 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,6 @@ void	close_and_wait(t_db	*db)
 		close(db->pipebox[i]);
 		i++;
 	}
-	waitpid(-1, NULL, 0);
+	while (wait(0) > 0)
+		;
 }

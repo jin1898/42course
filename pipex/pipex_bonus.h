@@ -6,13 +6,12 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:14:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 22:43:07 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/02 19:45:28 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PIPEX_BONUS_H
 # define PIPEX_BONUS_H
-# include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
 # include <fcntl.h>
@@ -51,7 +50,5 @@ void	pipe_close(t_db	*db);
 char	*find_cmd(char	**path, char *cmd, t_db *db);
 void	free_everything(t_db *db);
 void	close_and_wait(t_db	*db);
-void	excute_cmd2(int idx, char **argv, t_db *db);
-void	check_cmd(char **argv, int argc, t_db *db);
 void	p_error_2(t_db *db);
 #endif

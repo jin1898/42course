@@ -6,11 +6,11 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/26 14:08:07 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 21:20:55 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/02 21:23:19 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pipex.h"
+#include "pipex_bonus.h"
 
 int	ft_strncmp(char *s1, char *s2, int n)
 {
@@ -60,7 +60,7 @@ void	excute_cmd(int idx, char **argv, t_db *db, char **envp)
 	char	*cmd;
 
 	cmd_s = ft_split(argv[2 + db->h_flag + idx], ' ');
-	cmd = find_cmd(db->path, cmd_s[0]);
+	cmd = find_cmd(db->path, cmd_s[0], db);
 	if (cmd == NULL)
 	{
 		write(2, "Command not found: ", ft_strlen("Command not found: "));
@@ -71,7 +71,7 @@ void	excute_cmd(int idx, char **argv, t_db *db, char **envp)
 	execve(cmd, cmd_s, envp);
 }
 
-char	*find_cmd(char	**path, char *cmd)
+char	*find_cmd(char	**path, char *cmd, t_db *db)
 {
 	char	*tmp2;
 	char	*ret;
@@ -80,14 +80,16 @@ char	*find_cmd(char	**path, char *cmd)
 	i = 0;
 	while (path[i] != NULL)
 	{
-		tmp2 = ft_strjoin(path[i], "/", ft_strlen(path[i]), ft_strlen("/"));
+		ret = ft_substr(path[i], 0, ft_strlen(path[i]));
+		tmp2 = ft_strjoin(ret, "/", ft_strlen(path[i]), ft_strlen("/"));
 		ret = ft_strjoin(tmp2, cmd, ft_strlen(tmp2), ft_strlen(cmd));
-		free(tmp2);
 		if (access(ret, X_OK) == 0)
 			return (ret);
-		exit(1);
 		i++;
+		free(ret);
 	}
+	db->error_flag = 1;
+	db->cmd = cmd;
 	return (NULL);
 }
 
@@ -101,5 +103,6 @@ void	close_and_wait(t_db	*db)
 		close(db->pipebox[i]);
 		i++;
 	}
-	waitpid(-1, NULL, 0);
+	while (wait(0) > 0)
+		;
 }

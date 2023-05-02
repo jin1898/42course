@@ -6,24 +6,17 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/01 23:28:52 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/02 21:20:07 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "pipex_bonus.h"
-
-void	leak_check()
-{
-	system("leaks -q pipex");
-}
 
 int	main(int argc, char **argv, char **envp)
 {
 	t_db	db;
 	int		i;
 
-	atexit(leak_check);
-	i = 0;
 	i = find_path(envp, &db);
 	if (!i)
 		return (0);
@@ -43,13 +36,9 @@ void	what_parameter(char **argv, int argc, t_db *db)
 		db->h_flag = 1;
 		if (argc < 6)
 			error_message("Invalid number of arguments. \n");
-		// check_cmd(argv, argc, db);
 		here_doc(argv[2], db);
-		// if (db->error_flag == 1)
-		// 	p_error_2(db);
 		db->outfilenum = open(argv[argc - 1], O_WRONLY \
-		| O_CREAT | O_APPEND, 0644);
-
+		| O_CREAT, 0644);
 	}
 	else
 	{
@@ -101,7 +90,7 @@ void	here_doc(char *eof, t_db *db)
 		write(1, "here_doc> ", ft_strlen("here_doc> "));
 		while (getbox == NULL)
 			getbox = get_next_line(STDIN_FILENO);
-		if ((ft_strcmp2(getbox, eof, ft_strlen(eof))) == 0)
+		if (ft_strcmp2(getbox, eof, ft_strlen(eof)) == 0)
 			break ;
 		write(tmp_heredoc, getbox, ft_strlen(getbox));
 		free(getbox);
@@ -115,3 +104,23 @@ void	here_doc(char *eof, t_db *db)
 		error_message("here_doc error");
 	}
 }
+
+/*
+sleep처리방법
+[1]--start
+	int		j;
+	int		state;
+
+	j = -(db->cmdnum);
+	while (++j < 1)
+		waitpid(-1, &state, 0);
+
+>> make_pipe.c :53
+[1]--end
+
+[2]--start
+	while (wait(0) > 0)
+	;
+>>make_pipe_bonus.c :50
+[2]--end
+*/
