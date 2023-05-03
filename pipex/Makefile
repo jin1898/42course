@@ -6,7 +6,7 @@
 #    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 01:49:00 by sunwoo-jin        #+#    #+#              #
-#    Updated: 2023/05/02 15:37:56 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/05/03 21:12:04 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,14 +26,17 @@ GET_NEXT_LINE_OBJS = $(GET_NEXT_LINE_SRCS:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJS) $(GET_NEXT_LINE_OBJS)
-	$(CC) $(CFLAGS) $(OBJS) $(GET_NEXT_LINE_OBJS) -o $(NAME)
+	make -C ./get_next_line
+	$(CC) $(CFLAGS) $(OBJS) $(GET_NEXT_LINE_OBJS) -o $(NAME) -L./get_next_line -lgnl
 
 clean:
 	rm -f $(OBJS) $(GET_NEXT_LINE_OBJS)
 	rm -f $(BONUS_OBJS)
+	make clean -C ./get_next_line
 
 fclean: clean
 	rm -f $(NAME)
+	make fclean -C ./get_next_line
 
 bonus: $(BONUS_OBJS) $(GET_NEXT_LINE_OBJS)
 	$(CC) $(CFLAGS) $(BONUS_OBJS) $(GET_NEXT_LINE_OBJS) -o $(NAME)
