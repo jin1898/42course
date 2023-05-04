@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/03 22:09:15 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/04 15:13:22 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,6 @@ int	main(int argc, char **argv, char **envp)
 
 void	what_parameter(char **argv, int argc, t_db *db)
 {
-	if (access(argv[1], X_OK) != 0)
-	{
-		perror(argv[1]);
-		exit (1);
-	}
 	if (argv[1] == NULL || argc == 1)
 		error_message("Invalid number of arguments. \n");
 	if (ft_strcmp(argv[1], "here_doc") == 0 && argv[1] != 0)
@@ -47,6 +42,7 @@ void	what_parameter(char **argv, int argc, t_db *db)
 	}
 	else
 	{
+		check_infile(argv[1]);
 		db->h_flag = 0;
 		if (argc < 5)
 			error_message("Invalid number of arguments. \n");
@@ -109,23 +105,3 @@ void	here_doc(char *eof, t_db *db)
 		error_message("here_doc error");
 	}
 }
-
-/*
-sleep처리방법
-[1]--start
-	int		j;
-	int		state;
-
-	j = -(db->cmdnum);
-	while (++j < 1)
-		waitpid(-1, &state, 0);
-
->> make_pipe.c :53
-[1]--end
-
-[2]--start
-	while (wait(0) > 0)
-	;
->>make_pipe_bonus.c :50
-[2]--end
-*/

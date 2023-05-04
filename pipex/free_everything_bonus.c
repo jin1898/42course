@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/29 19:25:03 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/05/02 20:14:15 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/04 14:59:49 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,13 @@ void	p_error_2(t_db *db)
 	write(2, "Command not found: ", ft_strlen("Command not found: "));
 	write(2, db->cmd, ft_strlen(db->cmd));
 	write(2, "\n", sizeof(char));
+}
+
+void	check_infile(char	*filename)
+{
+	if (access(filename, X_OK) != 0)
+	{
+		perror(filename);
+		exit (1);
+	}
 }

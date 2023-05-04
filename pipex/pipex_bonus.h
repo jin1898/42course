@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:14:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/02 19:45:28 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/04 15:00:00 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,4 +51,5 @@ char	*find_cmd(char	**path, char *cmd, t_db *db);
 void	free_everything(t_db *db);
 void	close_and_wait(t_db	*db);
 void	p_error_2(t_db *db);
+void	check_infile(char	*filename);
 #endif
