@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/04 15:13:22 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/04 21:21:02 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void	what_parameter(char **argv, int argc, t_db *db)
 		if (argc < 6)
 			error_message("Invalid number of arguments. \n");
 		here_doc(argv[2], db);
-		db->outfilenum = open(argv[argc - 1], O_WRONLY \
+		db->outfilenum = open(argv[argc - 1], O_WRONLY | O_APPEND \
 		| O_CREAT, 0644);
 	}
 	else

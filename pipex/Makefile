@@ -6,7 +6,7 @@
 #    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/04/28 01:49:00 by sunwoo-jin        #+#    #+#              #
-#    Updated: 2023/05/03 21:12:04 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/05/04 20:47:56 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,11 +23,17 @@ GET_NEXT_LINE_DIR = get_next_line
 GET_NEXT_LINE_SRCS = get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 GET_NEXT_LINE_OBJS = $(GET_NEXT_LINE_SRCS:.c=.o)
 
+ifdef WITH_BONUS
+	OBJ_SWITCH = $(BONUS_OBJS)
+else
+	OBJ_SWITCH = $(OBJS)
+endif
+
 all: $(NAME)
 
-$(NAME): $(OBJS) $(GET_NEXT_LINE_OBJS)
+$(NAME): $(OBJ_SWITCH) $(GET_NEXT_LINE_OBJS)
 	make -C ./get_next_line
-	$(CC) $(CFLAGS) $(OBJS) $(GET_NEXT_LINE_OBJS) -o $(NAME) -L./get_next_line -lgnl
+	$(CC) $(CFLAGS) $(OBJ_SWITCH) $(GET_NEXT_LINE_OBJS) -o $(NAME) -L./get_next_line -lgnl
 
 clean:
 	rm -f $(OBJS) $(GET_NEXT_LINE_OBJS)
@@ -38,11 +44,12 @@ fclean: clean
 	rm -f $(NAME)
 	make fclean -C ./get_next_line
 
-bonus: $(BONUS_OBJS) $(GET_NEXT_LINE_OBJS)
-	$(CC) $(CFLAGS) $(BONUS_OBJS) $(GET_NEXT_LINE_OBJS) -o $(NAME)
+bonus:
+	@make WITH_BONUS=1 $(NAME)
+
 
 re:
 	make fclean
 	make all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re bonus

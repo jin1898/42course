@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 14:59:49 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/05/04 15:10:30 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/05/04 21:10:40 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ int	main(int argc, char **argv, char **envp)
 
 void	what_parameter(char **argv, int argc, t_db *db)
 {
-	if (access(argv[1], X_OK) != 0)
+	if (access(argv[1], R_OK) != 0)
 	{
 		perror(argv[1]);
 		exit (1);
