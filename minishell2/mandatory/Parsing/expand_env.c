@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:12:06 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/21 20:13:44 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/07/21 22:30:20 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ static char	*ft_pexitstatus(int *str_i)
 	if (str_i)
 		*str_i += 1;
 	str = ft_itoa(g_exit_status);
-	g_exit_status = 0;
+	//g_exit_status = 0;
 	return (str);
 }
 

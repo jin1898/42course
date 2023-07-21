@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: hyseong <hyseong@student.42.fr>            +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 17:13:10 by hyseong           #+#    #+#             */
-/*   Updated: 2023/07/21 17:13:30 by hyseong          ###   ########.fr       */
+/*   Updated: 2023/07/21 22:59:31 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,13 +69,19 @@ static int	init_main(int argc, char **argv, t_env_manager *env_manager)
 	return (0);
 }
 
+// void	leak_check(void)
+// {
+// 	system("leaks -q pipex");
+// }
+
+
 int	main(int argc, char **argv, char **envp)
 {
 	char			*line;
 	t_cmd_info		*cmd_arr;
 	t_env_manager	env_manager;
 
-	// atexit(f);
+	// atexit(leak_check);
 	init_main(argc, argv, &env_manager);
 	if (env_arr_to_list(&env_manager, envp))
 		return (1);
@@ -94,7 +100,7 @@ int	main(int argc, char **argv, char **envp)
 			add_history(line);
 		close_fd(cmd_arr);
 		free_eveything(&line, &cmd_arr);
-		// system("leaks --list -- minishell");
+		system("leaks --list -- minishell");
 	}
 	return (!free_env(&env_manager));
 }

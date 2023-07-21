@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 15:53:38 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/21 20:55:22 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/07/21 22:57:51 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,15 @@ static char	*del_front_space(char *str)
 	return (word);
 }
 
+static void	ft_word_combine(char *str, char *word)
+{
+	if (str[strlen(str) - 1] == '\"')
+	{
+		free(word);
+		word = ft_strjoin("\"", str + 1);
+	}
+}
+
 void	parsing_newlist(char *str, t_list **list_all)
 {
 	t_list	*token_list;
@@ -48,13 +57,17 @@ void	parsing_newlist(char *str, t_list **list_all)
 		{
 			word = del_front_space(str);
 			token_list = split_space(word);
+			free(word);
 			ft_lstadd_back(list_all, token_list);
 			list = ft_lstlast(*list_all);
 			list->next = NULL;
 		}
 		else
 		{
-			ft_lstadd_back(list_all, ft_lstnew(ft_strdup(str + 1)));
+			word = ft_strdup(str + 1);
+			ft_word_combine(str, word);
+			ft_lstadd_back(list_all, ft_lstnew(ft_strdup(word)));
+			free(word);
 			list = ft_lstlast(*list_all);
 			list->next = NULL;
 		}

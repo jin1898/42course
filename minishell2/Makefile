@@ -1,6 +1,6 @@
 NAME = minishell
 
-CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3 #-fsanitize=address
 
 LDFLAGS = -L$(shell brew --prefix readline)/lib -lreadline
 INCLUDES = -I$(shell brew --prefix readline)/include/readline -I./include
@@ -10,7 +10,7 @@ LIB = -L./libft -lft -L./printf -lftprintf $(LDFLAGS)
 Parsing_DIR = mandatory/Parsing/
 Parsing_SRC_NAME = cmd_arr.c get_cmd_info_1.c get_cmd_info_2.c first_parsing.c second_parsing.c \
 parsing_overall_structure.c trash.c parsing_command.c bundle_cmd.c \
-expand_env.c replace_text.c split_space_for_path.c parsing_utill_1.c parsing_path.c
+expand_env.c replace_text.c split_space_for_path.c parsing_utill_1.c parsing_utill_2.c parsing_path.c
 
 built_in_path = mandatory/built_in/
 buint_in_src = built_in.c ft_cd.c ft_echo.c ft_env.c ft_exit.c ft_export.c ft_pwd.c ft_unset.c

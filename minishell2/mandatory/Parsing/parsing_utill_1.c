@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/21 20:46:38 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/21 21:07:02 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/07/21 21:11:25 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,21 +54,3 @@ void	free_list1(t_list**list_all)
 	}
 	*list_all = NULL;
 }
-
-// void	free_list2(t_list **list, char **chr)
-// {
-// 	ft_free_util((void **)&list);
-// 	*list = NULL;
-// 	ft_free_util((void **)&chr);
-// 	*chr = NULL;
-// }
-
-// int	find_colon(char *str, int idx)
-// {
-// 	int	len;
-
-// 	len = idx;
-// 	while (str[len] && str[len] != ':')
-// 		len++;
-// 	return (len);
-// }

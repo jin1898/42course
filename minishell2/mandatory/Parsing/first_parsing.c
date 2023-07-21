@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 19:41:36 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/21 20:37:59 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/07/21 21:56:35 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,8 @@ t_list	*first_parsing_by_space(char *line)
 	}
 	if (quote_flag)
 	{
+		if (spl_list)
+			free_list1(&spl_list);
 		ft_printf(1, "minishell: syntax error: unexpected end of file\n");
 		g_exit_status = 258;
 		return (NULL);
