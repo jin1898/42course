@@ -95,7 +95,6 @@ typedef struct s_value
 	int					buf_i;
 	int					q_flag;
 	int					quote;
-	int					ex_f;
 	int					mbgos;
 	int					redir;
 	char				*s_c;
@@ -275,5 +274,10 @@ void		parsing_command(t_cmd_info *cmd, char *path);
 char		**cut_token(char *argv, t_list **list);
 void		free_list1(t_list**list_all);
 void		free_eveything(char **line, t_cmd_info **cmd_arr);
+char		**merge_token(t_list *list_all);
+void		put_path(char **argv, char *path);
+t_list		*split_space(char *line);
+// int			find_colon(char *str, int idx);
+// void		free_list2(t_list **list, char **chr);
 
 #endif
