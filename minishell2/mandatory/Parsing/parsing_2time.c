@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_2time.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 19:41:36 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/11 19:03:10 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/21 18:01:21 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,23 +44,23 @@ void	second_parsing_by_metacharacters(t_list **token_list, char *str) //token_li
 
 void	create_buff_put_end_of_list(char *buff, int *buf_i, t_list **token_list)
 {
-	buff[*buf_i] = '\0'; //글자 마지막에 널 넣어주기 
+	buff[*buf_i] = '\0'; //글자 마지막에 널 넣어주기
 	ft_lstadd_back(token_list, ft_lstnew(ft_strdup(buff))); //토큰화 한걸 token_list의 노드로 넣어주기
 	ft_bzero(buff, ft_strlen(buff) + 1); // 반드시!!!!!! 0으로 초기화해줘야함buff재활용하는중
 	*buf_i = 0;
 }
 
-int	check_new_token(char *str, int jdx, char *buff) //여기서 토큰화될 추가 문자들 
+int	check_new_token(char *str, int jdx, char *buff) //여기서 토큰화될 추가 문자들
 {
 	if (str[jdx] == '|')
 		return (1);
-	else if (str[jdx] == '<') //str이 < 인데 buff(이전에 str담겨있던 문자)가 < 라면 그냥 <이아니라 <<이기 때문에 나누면 큰일남 
+	else if (str[jdx] == '<') //str이 < 인데 buff(이전에 str담겨있던 문자)가 < 라면 그냥 <이아니라 <<이기 때문에 나누면 큰일남
 	{
 		if (!ft_strncmp(buff, "<", 2))
 			return (0);// 그렇기 때문에 buff에 <<가 짤리지 않게 토큰화 안하도록 0리턴
 		return (1);
 	}
-	else if (str[jdx] == '>')//str이 > 인데 buff(이전에 str담겨있던 문자)가 > 라면 그냥 >이아니라 >>이기 때문에 나누면 큰일남 
+	else if (str[jdx] == '>')//str이 > 인데 buff(이전에 str담겨있던 문자)가 > 라면 그냥 >이아니라 >>이기 때문에 나누면 큰일남
 	{
 		if (!ft_strncmp(buff, ">", 2))
 			return (0); // 그렇기 때문에 buff에 >>가 짤리지 않게 토큰화 안하도록 0리턴
@@ -103,7 +103,7 @@ t_list	*first_parsing_by_space(char *line)
 		else if (quote_flag == line[line_i]) // 따옴표의 짝을 만날시 플래그 0으로 바꾸기
 			quote_flag = 0;
 	}
-	if (quote_flag) // quote_flag는 반드시 한쌍의 따옴표가 모여야 에러로 판단하지 않는다. 하지만 while문이 끝난뒤에 quote_flag가 양수라는건 따옴표의 짝이 맞지않다는 뜻이다. 
+	if (quote_flag) // quote_flag는 반드시 한쌍의 따옴표가 모여야 에러로 판단하지 않는다. 하지만 while문이 끝난뒤에 quote_flag가 양수라는건 따옴표의 짝이 맞지않다는 뜻이다.
 	{
 		ft_printf(1, "minishell: syntax error: unexpected end of file\n"); //따옴표한개는 에러라는 뜻이다.
 		g_exit_status = 258;//따옴표 에러 번호저장.
@@ -111,7 +111,7 @@ t_list	*first_parsing_by_space(char *line)
 	}
 	if (start_i != line_i) //만약 두 변수의 값이 같지 않다는 뜻은 마지막 토큰화될 값이 추가되지 않았다는 것을 의미.
 		ft_lstadd_back(&spl_list, ft_lstnew(\
-		ft_substr(line, start_i, line_i - start_i))); // 마지막 토큰을 리스트에 추가해주기 
+		ft_substr(line, start_i, line_i - start_i))); // 마지막 토큰을 리스트에 추가해주기
 	return (spl_list); // 결론 띄어쓰기 와 따옴표를 기준으로 1차 파씽 완료.
 }
 

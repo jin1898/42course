@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_cmd_info.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 19:53:23 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/12 12:40:08 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/21 18:01:09 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	init_cmd_info(t_cmd_info *cmd_info, int cnt[])
 	if (!cmd_info->redir_num) // 리다이렉션이 감지되지 않았으면
 		cmd_info->redir = NULL; // 널로 초기화
 	else
-		cmd_info->redir = make_to_list_redir(cnt[REDIR]); // 리다이렉션을 위한 연결리스트를 만들어서 구조체와 연결해주기 
+		cmd_info->redir = make_to_list_redir(cnt[REDIR]); // 리다이렉션을 위한 연결리스트를 만들어서 구조체와 연결해주기
 	cnt[ARGC] = 0; //재활용을 위한 배열 초기화
 	cnt[REDIR] = 0; // 재활용을 위한 배열 초기화
 	return (1);
@@ -79,13 +79,13 @@ t_redir	*make_to_list_redir(int num)
 	ft_memset(head, 0, sizeof(t_redir)); //헤드 0으로 초기화
 	while (i < num) // num갯수만큼 연결리스트 만들기
 	{
-		now->next = (t_redir *)malloc(sizeof(t_redir)); 
+		now->next = (t_redir *)malloc(sizeof(t_redir));
 		now = now->next;
 		ft_memset(now, 0, sizeof(t_redir));
 		i++;
 	}
 	now->next = NULL;// 마지막표시를 위하여 NULL넣기
-	return (head); // 리다이렉션을 위한 연결리스트를 리턴해주기 
+	return (head); // 리다이렉션을 위한 연결리스트를 리턴해주기
 }
 
 static int	redir_error(int cnt[], t_list **token_now, t_cmd_info *cmd_info_arr)
@@ -94,7 +94,7 @@ static int	redir_error(int cnt[], t_list **token_now, t_cmd_info *cmd_info_arr)
 	(*token_now) = (*token_now) -> next;
 	if ((*token_now) == NULL || check_redir((*token_now) -> content) || !ft_strncmp((*token_now) -> content, "|", 2)) //이미 파씽다한시점에서 리다이렉션이나 파이프가 오면 안됨! 널도 안됨! 이 모든 것을 에러로 판단함!
 	{
-		if ((*token_now) == NULL) //리다이렉션 뒤에 널이 들어가면 안됨! 
+		if ((*token_now) == NULL) //리다이렉션 뒤에 널이 들어가면 안됨!
 			ft_printf(1, "minishell: syntax error near unexpected token `newline'\n"); //에러출력
 		else
 			print_token_err((*token_now) -> content, cmd_info_arr); //해당 에러 출력 및 모두 free
@@ -107,10 +107,10 @@ static int	redir_error(int cnt[], t_list **token_now, t_cmd_info *cmd_info_arr)
 static int	error_check(t_list **token_now, t_cmd_info \
 **cmd_info_arr, t_list **token_list) //파이프 다음에 오면 안되는 에러상황들 걸러내기
 {
-	if ((*token_now)->next == NULL) // | 다음에 널이 오면 에러 
+	if ((*token_now)->next == NULL) // | 다음에 널이 오면 에러
 	{
 		print_token_err(" `|\'", *cmd_info_arr);
-		free_list1(token_list); // 바로 리스트를 free해주기 
+		free_list1(token_list); // 바로 리스트를 free해주기
 		return (0);
 	}
 	else if (((*token_now)->next == 0) || \
@@ -120,7 +120,7 @@ static int	error_check(t_list **token_now, t_cmd_info \
 		free_list1(token_list);
 		return (0);
 	}
-	else if (!ft_strncmp((*token_list)->content, "|", 2)) //****** 원본의 값이 | 면안됨 
+	else if (!ft_strncmp((*token_list)->content, "|", 2)) //****** 원본의 값이 | 면안됨
 	{
 		print_token_err(" `|\'", *cmd_info_arr);
 		free_list1(token_list);
@@ -149,7 +149,7 @@ t_cmd_info	*cmd_arr_init(t_list **token_list, int pipe_num) // 1차2차파씽완
 	init_var(cnt, &cmd_info_arr, &cmd_now, pipe_num); //놈때문에 초기화 코드만 따로 뺌
 	while (token_now) //1차2차파씽완료한 연결리스트의 노드 1개씩 돌아가면서 초기화 해야할 요소를 확인
 	{
-		if (!ft_strncmp(token_now -> content, "|", 2)) // 파이프 단위로 구조체를 만들어줄것이기때문에 파이프일시 구조체 한개 만들기 
+		if (!ft_strncmp(token_now -> content, "|", 2)) // 파이프 단위로 구조체를 만들어줄것이기때문에 파이프일시 구조체 한개 만들기
 		{
 			init_cmd_info(cmd_now, cnt); // 지금까지 모은 정보로 구조체 만들기
 			cmd_now = cmd_now->next; // 다음노드로 넘어가주기
@@ -161,8 +161,8 @@ t_cmd_info	*cmd_arr_init(t_list **token_list, int pipe_num) // 1차2차파씽완
 			return (NULL);
 		else
 			cnt[ARGC] += 1; //리다이렉션이 아닐때 명령어 혹은 출력 인자로 판단하여 argc++ (구조체를 보면 알수 있지만 리다이렉션과 리다이렉션아닌것[argv]로 나뉘어져있음)
-		token_now = token_now->next; // 다음토큰으로 넘어가기 
+		token_now = token_now->next; // 다음토큰으로 넘어가기
 	}
 	init_cmd_info(cmd_now, cnt); //while문을 다돌고 마지막것들은 밖에서 구조체초기화 해주기
-	return (cmd_info_arr); //파씽을 담을 구조체를 모두 갯수에 맞게 초기화후 리턴 
+	return (cmd_info_arr); //파씽을 담을 구조체를 모두 갯수에 맞게 초기화후 리턴
 }

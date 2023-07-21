@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cmd_arr.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 20:12:50 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/12 20:52:53 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/21 18:01:00 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,7 @@ static void	ft_str_check(char *str, t_value *value, t_list **text_list, t_env_ma
 	{
 		if (!value->quote && (str[value->str_i] == '\'' || str[value->str_i] == '\"')) //따옴표시작부분일때
 		{
-			create_buff_put_end_of_list(value->buff, &value->buf_i, text_list); //따옴표시작부분전을 연결리스트에 넣어주기 
+			create_buff_put_end_of_list(value->buff, &value->buf_i, text_list); //따옴표시작부분전을 연결리스트에 넣어주기
 			if (str[value->str_i] == '"')//확장부분때문에 flag로 토큰화를 한번더하려고 넣음.
 				value->q_flag = 1;
 			value->quote = str[value->str_i];// 따옴표 플래그 넣어주기
@@ -157,7 +157,7 @@ static void	ft_str_check(char *str, t_value *value, t_list **text_list, t_env_ma
 		{
 			create_buff_put_end_of_list(value->buff, &value->buf_i, text_list);//확장부분은 따로 저장을 해줘야하기때문에 이전 토큰은 연결리스트에 저장
 			ft_lstadd_back(text_list, ft_lstnew(\
-			expand_env(str + value->str_i + 1, &value->str_i, env_lst)));//확장해야할부분을 확장후 한토큰으로 넣어주기 
+			expand_env(str + value->str_i + 1, &value->str_i, env_lst)));//확장해야할부분을 확장후 한토큰으로 넣어주기
 			value->ex_f = 1; //으악  필요없는부분이 아직도 남아있네
 		}
 		else
@@ -177,7 +177,7 @@ char	*replace_symbol_to_text(char *str, t_env_manager *env_lst, t_value *value)
 	ft_free_util((void **)&value->buff);//buff는 필요없으니 바로 free해주기
 	if (value->q_flag == 1 && value->redir != 1) //str이 리다이렉션 파일명이 아닐경우!
 	{
-		word = connect_list(text_list); //연결리스트를 한단어로 만들기 
+		word = connect_list(text_list); //연결리스트를 한단어로 만들기
 		free_list1(&text_list); //연결리스트 free
 		value->text = ft_strjoin("\"", word); //***이거 플래그이다. 나중에 한번더 쓰는걸로 기억함!
 		ft_free_util((void **)&word); //word는 필요없으니까 바로 free
@@ -246,8 +246,8 @@ static void	word_etc(t_cmd_info **cmd_info_arr_now, t_value *value, t_list *toke
 static void	ft_pip(t_value *value, t_cmd_info \
 **cmd_info_arr_now, t_redir **redir_now) // | 단위로 구조체를 만들었기 때문에 다음 구조체를 넘기는 작업하기
 {
-	value->av_i = 0; // av의 갯수 초기화 
-	(*cmd_info_arr_now) = (*cmd_info_arr_now)->next; // 다음 노드로 이동 
+	value->av_i = 0; // av의 갯수 초기화
+	(*cmd_info_arr_now) = (*cmd_info_arr_now)->next; // 다음 노드로 이동
 	(*redir_now) = (*cmd_info_arr_now)->redir; //다음 노드의 리다이렉션으로 이동
 }
 
@@ -267,7 +267,7 @@ t_list *token_list, t_env_manager	*env_lst)
 	redir_now = cmd_info_arr_now->redir;
 	while (token_now)
 	{
-		if (!ft_strncmp(token_now -> content, "|", 2)) 
+		if (!ft_strncmp(token_now -> content, "|", 2))
 			ft_pip(&value, &cmd_info_arr_now, &redir_now); // | 일경우 다음 구조체로 이동해주기
 		else if (check_redir(token_now -> content))
 		{
@@ -276,7 +276,7 @@ t_list *token_list, t_env_manager	*env_lst)
 			redir_now = redir_now->next; // 다음 리다이렉션으로 이동
 		}
 		else
-			word_etc(&cmd_info_arr_now, &value, token_now, env_lst); //argv의 단어로 판단, 따옴표나 확장부분을 변경해서 argv에 넣기 
+			word_etc(&cmd_info_arr_now, &value, token_now, env_lst); //argv의 단어로 판단, 따옴표나 확장부분을 변경해서 argv에 넣기
 		token_now = token_now -> next;// 다음으로 넘긴다.
 	}
 }

@@ -3,24 +3,24 @@
 /*                                                        :::      ::::::::   */
 /*   ft_pwd.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jihham <jihham@student.42.fr>              +#+  +:+       +#+        */
+/*   By: hyseong <hyseong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/05/15 15:08:30 by jihham            #+#    #+#             */
-/*   Updated: 2023/05/19 13:42:15 by jihham           ###   ########.fr       */
+/*   Created: 2023/07/21 17:18:44 by hyseong           #+#    #+#             */
+/*   Updated: 2023/07/21 17:18:44 by hyseong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	ft_pwd(void)
-{// pwd를 구현한 함수다.
+{
 	char	*buf;
 
-	buf = getcwd(NULL, 0); // 현재 작업 디렉토리를 가져온다.
-	if (!buf)// 현재 작업 디렉토리가 NULL이면 
-		return (ft_perror("minishell: pwd")); //에러 출력하고 1반환 
-	ft_printf(1, "%s\n", buf);// 작업디렉토리 출력 
-	if (buf) // 메모리 해제~
+	buf = getcwd(NULL, 0);
+	if (!buf)
+		return (ft_perror("minishell: pwd"));
+	ft_printf(1, "%s\n", buf);
+	if (buf)
 		free(buf);
 	return (0);
 }

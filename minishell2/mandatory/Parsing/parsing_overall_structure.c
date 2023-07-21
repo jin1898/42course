@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_overall_structure.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 19:38:10 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/12 12:29:22 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/21 18:01:39 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ int	check_space(char ch)
 
 void	print_token_err(char *str, t_cmd_info *cmd_info_arr)
 {
-	free_eveything(0, &cmd_info_arr); //모든것을 free해주기 
-	if (!strncmp(str, "|", 2)) 
+	free_eveything(0, &cmd_info_arr); //모든것을 free해주기
+	if (!strncmp(str, "|", 2))
 		str = " `|\'";
 	ft_printf(1, "minishell: syntax error near unexpected token %s\n", str); //에러메세지를 화면에 출력
 	g_exit_status = 258; // 에러 번호 입력
@@ -101,7 +101,7 @@ char	**ft_slice(char *str, char sep)
 
 t_cmd_info	*parsing_allparts(char *line, t_env_manager *env_lst)
 {
-	int			pipe_num;//파이프 갯수 
+	int			pipe_num;//파이프 갯수
 	t_list		*token_list; //파씽결과를 잠시 저장할곳
 	t_cmd_info	*cmd_info_arr; // 최종 파씽결과를 넣을 곳
 	t_cmd_info	*temp; //while문을 돌기위한 헤드부분대신할 변수
@@ -118,7 +118,7 @@ t_cmd_info	*parsing_allparts(char *line, t_env_manager *env_lst)
 	}
 	fill_cmd_info_arr(cmd_info_arr, token_list, env_lst); // 113에서 할당 초기화한 구조체에다가 정보에 맞게 채워넣기
 	free_list1(&token_list); // 정보로 넘길 구조체가 완성되었으니 임시로 사용하던 리스트는 free해주기
-	temp = cmd_info_arr; 
+	temp = cmd_info_arr;
 	while (temp) // 최종본구조체마다 파이프 갯수를 다 넣어주기
 	{
 		temp->pipe_num = pipe_num;

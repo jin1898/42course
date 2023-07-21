@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing_command.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/15 15:53:38 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/12 20:44:41 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/21 18:01:29 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -224,7 +224,7 @@ void	parsing_newlist(char *str, t_list **list_all)
 			word = del_front_space(str);// 앞에 공백이 있을시 공백을 없애준다.
 			token_list = split_space(word); // 공백을 기준으로 나누어준다.
 			ft_lstadd_back(list_all, token_list); //토큰을 나눈 연결리스트와 전체 연결리스트와 연결해준다.
-			list = ft_lstlast(*list_all); 
+			list = ft_lstlast(*list_all);
 			list->next = NULL;// 마지막에 널넣어준다.
 		}
 		else // 추가 적인 파씽이 필요없을때 실행됨
@@ -251,7 +251,7 @@ void	parsing_command(t_cmd_info *cmd, char *path)
 			while (cmd_c->argv && cmd_c->argv[++i])//argv를 한개씩 빼주기
 			{
 				parsing_newlist(cmd_c->argv[i], &list_all);// 파씽한번더해야하는지 판단후 필요시 파씽한번더하기
-				free(cmd_c->argv[i]); //기존 argv free해주고 
+				free(cmd_c->argv[i]); //기존 argv free해주고
 				cmd_c->argv[i] = NULL; // 널넣어주기
 			}
 			free(cmd_c->argv);//argv를 전부 free해주기
@@ -261,5 +261,5 @@ void	parsing_command(t_cmd_info *cmd, char *path)
 			free_list1(&list_all);//필요없어진 list free해주기
 		}
 	}
-	free(path);// path도 free해주기 
+	free(path);// path도 free해주기
 }

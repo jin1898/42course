@@ -3,34 +3,34 @@
 /*                                                        :::      ::::::::   */
 /*   free_exit.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyseong <hyseong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/01 19:59:07 by jihham            #+#    #+#             */
-/*   Updated: 2023/07/14 11:06:14 by sunwoo-jin       ###   ########.fr       */
+/*   Created: 2023/07/21 17:18:07 by hyseong           #+#    #+#             */
+/*   Updated: 2023/07/21 17:18:08 by hyseong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minishell.h"
 
 int	free_env(t_env_manager *env_manager)
-{//환경변수에 지정된 모든 환경변수 해제
+{
 	t_env	*temp;
 
 	while (env_manager->head)
 	{
 		temp = env_manager->head;
 		env_manager->head = env_manager->head->next;
-		free(temp->key); //환경변수 노드의 키를 해제한다.
+		free(temp->key);
 		temp->key = NULL;
-		if (temp->value) // 환경변수 노드의 값이 있을경우 
+		if (temp->value)
 		{
-			free(temp->value); //값을 해제한다.
+			free(temp->value);
 			temp->value = NULL;
 		}
-		free(temp); //환경변수 노드를 해제
+		free(temp);
 		temp = NULL;
 	}
-	env_manager->size = 0; //환경변수 크기를 0으로 설정
+	env_manager->size = 0;
 	return (0);
 }
 

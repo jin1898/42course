@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: hyseong <hyseong@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/22 15:19:29 by jihham            #+#    #+#             */
-/*   Updated: 2023/07/12 12:43:30 by sunwoo-jin       ###   ########.fr       */
+/*   Created: 2023/07/21 17:15:09 by hyseong           #+#    #+#             */
+/*   Updated: 2023/07/21 17:15:11 by hyseong          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	ft_free_util(void **target)
 {
 	if (*target)
-		free(*target); //free 하고 
-	*target = NULL; // 널로 바꿔주기 (다음에 접근하지 말라고)
+		free(*target);
+	*target = NULL;
 	return (0);
 }
