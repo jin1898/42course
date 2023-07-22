@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:29:08 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/10 13:52:23 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/07/22 18:01:01 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,25 @@ long long	ft_atoi(const char *str)
 		i++;
 	}
 	return (result * n);
+}
+
+long int	ft_current_time(void)
+{
+	struct timeval	now;
+
+	gettimeofday(&now, NULL);
+	return ((now.tv_sec * 1000) + (now.tv_usec / 1000));
+}
+
+int	ft_printf(t_philo *philo, char *str)
+{
+	long long	now_time;
+
+	if (philo->info->death_flag)
+		return (1);
+	now_time = ft_current_time();
+	pthread_mutex_lock(&philo->info->print);
+	printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
+	pthread_mutex_unlock(&philo->info->print);
+	return (0);
 }

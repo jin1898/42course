@@ -3,83 +3,88 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
+/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 12:56:35 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/10 20:11:30 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/07/21 15:53:03 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philo.h"
 
-int	check_error_num(int ac, char **av)
+void	ft_eat(t_philo *philo)
 {
-	int			i;
-	long long	a;
+	pthread_mutex_lock(&philo->lf);
+	if (ft_printf(philo, "philosopher picked up a fork.\n"))
+		return ;
+	pthread_mutex_lock(&philo->rf); 
+	if (ft_printf(philo, "philosopher picked up a fork.\n"))
+		return ;
+	if (ft_printf(philo, "The philosopher started eating.\n"))
+		return ;
+	pthread_mutex_lock(&philo->info->infofix);
+	philo->p_startetingtime = ft_current_time();
+	pthread_mutex_unlock(&philo->info->infofix);
+	ft_usleep(philo->info->time_to_eat, philo->info->philo_num);
+	// if (check_death(philo))
+	// 	return ;
+	philo->eat_count += 1;
+	pthread_mutex_unlock(&philo->lf);
+	pthread_mutex_unlock(&philo->rf);
+}
 
-	if (ac < 5 || ac > 6)
-		return (1);
+void	ft_sleep_think(t_philo *philo)
+{
+	// if (check_death(philo))
+	// 	return ;
+	if (ft_printf(philo, "The philosopher started to sleep.\n"))
+		return ;
+	ft_usleep(philo->info->time_to_sleep, philo->info->philo_num);
+	// if (check_death(philo))
+	// 	return ;
+	if (ft_printf(philo, "The philosopher began to think.\n"))
+		return ;
+}
+
+void	*ft_action(void *v_philo)
+{
+	t_philo	*philo;
+
+	philo = (t_philo *)v_philo;
+	while (!philo->info->ready)
+		continue ;
+	if (philo->name % 2 == 0)
+		usleep(100);
+	while (!philo->info->death_flag)
+	{
+		ft_eat(philo);
+		ft_sleep_think(philo);
+	}
+	return (0);
+}
+
+int	take_action(t_allinfo *info)
+{
+	int		i;
+	int		check;
+
+	info->start_time = ft_current_time();
 	i = 0;
-	while (av[++i])
+	while (i < info->philo_num)
+		info->philo[i++].p_starttime = info->start_time;
+	info->ready = 1;
+	i = 0;
+	while (i < info->philo_num)
 	{
-		a = ft_atoi(av[i]);
-		if (a <= 0 || a > 2147483647)
+		info->philo[i].p_thread = 0;
+		check = pthread_create(&info->philo[i].p_thread, \
+		NULL, ft_action, &info->philo[i]);
+		i++;
+		if (check == -1)
 			return (1);
 	}
-	return (0);
-}
-
-int	init_each_philo(t_allinfo *info)
-{
-	int	i;
-
-	info->philo = malloc(sizeof(t_philo) * info->philo_num);
-	if (!info->philo)
-		return (1);
-	i = -1;
-	info->philo[0].right_fork = info->philo_num;
-	info->philo[0].left_fork = 1;
-	while (++i < info->philo_num)
-	{
-		info->philo[i].name = (i + 1);
-		if (i != 0)
-		{
-			info->philo[i].right_fork = i;
-			info->philo[i].left_fork = (i + 1);
-		}
-		info->philo[i].eat_count = 0;
-		info->philo[i]. death_time = 0;
-		info->philo[i]. info = info;
-	}
-	return (0);
-}
-
-int	init_everything(t_allinfo *info, char**av)
-{
-	int	i;
-
-	info->philo_num = ft_atoi(av[1]);
-	info->time_to_die = ft_atoi(av[2]);
-	info->time_to_eat = ft_atoi(av[3]);
-	info->time_to_sleep = ft_atoi(av[4]);
-	if (av[5])
-		info->must_eat = ft_atoi(av[5]);
-	else
-		info->must_eat = -1;
-	info->fork = malloc(sizeof(pthread_mutex_t) * info->philo_num);
-	if (!info->fork)
-		return (1);
-	info->death_flag = 0;
-	i = -1;
-	while (++i < info->philo_num)
-		if (pthread_mutex_init(info->fork, NULL) != 0)
-			return (1);
-	if (pthread_mutex_init(&info->print, NULL) != 0)
-		return (1);
-	if (pthread_mutex_init(&info->infofix, NULL) != 0)
-		return (1);
-	if (init_each_philo(info))
-		return (1);
+	usleep(1000);
+	ft_monitor(info);
 	return (0);
 }
 
@@ -91,7 +96,21 @@ int	main(int ac, char **av)
 		return (1);
 	if (init_everything(&info, av)) // 필요 구조체들 모두 초기화하기
 		return (1);
-	
-	printf("please check the result\n");
+	if (take_action(&info))// exec_simul, exec_philoes_and_monitor
+		return (1);
 	return (0);
 }
+
+//필로소퍼 비주얼라이저 스는거 추천(밀리는 곳을시각적으로 볼수있어서 고치기좋음) / 문자열서브젝트대로 바꾸기 (문자가 다르면 fail요소임) 
+//컨텍트 스위칭 문맥교환 때문에 usleep을 10ms정도, 크게줘라 1000정도
+//데이터레이스 
+//문맥교환, 쓰레드와 프로세스 차이, 쓰레드와 프로세스의 문맥교환차이
+//usleep while돌아야하는데 sleep eat시간만큼 돌기 스레드가 죽었거나 그만큼 시간을 보냈는지 확인(시간다보냈으면 조용히나오기) 
+//while문들어가기직전에 시간갖고  time구조체에 넣기 
+//마이크로초로 계산하고 출력시에만 밀리초로 표현하기 (안그러면 밀림), usleep을 하는 중간에 죽는지체크해야함 100마이크로 마다 죽음체크해야함.죽음을 10ms마다 체크가능하면서 usleep최대한 크게 줄수있는 범위출력을 찾아야함.
+
+//exam rank 03 va_arg man
+
+//내가 해야할일들.. 단위 통일 > usleep으로 죽음 확인 > 죽었을시 동작을 그만두게 흘려내보낼수있는지 확인 >
+//문자열 서브젝트 바꾸기 
+//./philo 3 310 200 100  ./philo 4 310 200 100  죽어야하는데 안죽음 (즉 뮤텍스관리가 안되고있음.)

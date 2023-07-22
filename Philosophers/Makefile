@@ -3,16 +3,16 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
+#    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 12:17:57 by jsunwoo           #+#    #+#              #
-#    Updated: 2023/07/10 20:14:59 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/07/19 21:03:38 by sunwoo-jin       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CFLAGS = -Wall -Wextra -Werror -g3 -fsanitize=address #-fsanitize=thread
-SRCS = main.c util.c
+SRCS = main.c util.c distroy.c init.c monitor.c
 OBJ = $(SRCS:.c=.o)
 SILENT = -s
 
