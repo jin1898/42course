@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 12:56:35 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/21 15:53:03 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/22 21:33:49 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 void	ft_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->lf);
-	if (ft_printf(philo, "philosopher picked up a fork.\n"))
+	pthread_mutex_lock(&philo->info->fork_m[philo->right_fork]);
+	if (ft_printf(philo, " has taken a fork\n"))
 		return ;
-	pthread_mutex_lock(&philo->rf); 
-	if (ft_printf(philo, "philosopher picked up a fork.\n"))
+	pthread_mutex_lock(&philo->info->fork_m[philo->left_fork]);
+	if (ft_printf(philo, " has taken a fork\n"))
 		return ;
-	if (ft_printf(philo, "The philosopher started eating.\n"))
+	if (ft_printf(philo, " is eating\n"))
 		return ;
 	pthread_mutex_lock(&philo->info->infofix);
 	philo->p_startetingtime = ft_current_time();
@@ -29,20 +29,20 @@ void	ft_eat(t_philo *philo)
 	// if (check_death(philo))
 	// 	return ;
 	philo->eat_count += 1;
-	pthread_mutex_unlock(&philo->lf);
-	pthread_mutex_unlock(&philo->rf);
+	pthread_mutex_unlock(&philo->info->fork_m[philo->right_fork]);
+	pthread_mutex_unlock(&philo->info->fork_m[philo->left_fork]);
 }
 
 void	ft_sleep_think(t_philo *philo)
 {
 	// if (check_death(philo))
 	// 	return ;
-	if (ft_printf(philo, "The philosopher started to sleep.\n"))
+	if (ft_printf(philo, " is sleeping\n"))
 		return ;
 	ft_usleep(philo->info->time_to_sleep, philo->info->philo_num);
 	// if (check_death(philo))
 	// 	return ;
-	if (ft_printf(philo, "The philosopher began to think.\n"))
+	if (ft_printf(philo, " is thinking\n"))
 		return ;
 }
 
@@ -55,11 +55,14 @@ void	*ft_action(void *v_philo)
 		continue ;
 	if (philo->name % 2 == 0)
 		usleep(100);
+	pthread_mutex_lock(&philo->info->death_flag_m);
 	while (!philo->info->death_flag)
 	{
+		pthread_mutex_unlock(&philo->info->death_flag_m);
 		ft_eat(philo);
 		ft_sleep_think(philo);
 	}
+	//pthread_mutex_unlock(&philo->info->death_flag_m);
 	return (0);
 }
 
@@ -77,13 +80,14 @@ int	take_action(t_allinfo *info)
 	while (i < info->philo_num)
 	{
 		info->philo[i].p_thread = 0;
+		info->philo[i].p_startetingtime = info->philo[i].p_starttime;
 		check = pthread_create(&info->philo[i].p_thread, \
 		NULL, ft_action, &info->philo[i]);
 		i++;
 		if (check == -1)
 			return (1);
 	}
-	usleep(1000);
+	// usleep(1000);
 	ft_monitor(info);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 17:15:01 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/21 14:20:37 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/22 21:38:28 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,18 +19,20 @@ void	ft_distryeverything(t_allinfo *info)
 	i = 0;
 	while (i < info->philo_num)
 	{
-		pthread_join(info->philo[i].p_thread, NULL);
+		pthread_detach(info->philo[i].p_thread);
 		i++;
 	}
 	i = 0;
 	while (i < info->philo_num)
 	{
-		pthread_mutex_destroy(&info->philo[i].lf);
+		pthread_mutex_destroy(&info->fork_m[i]);
 		i++;
 	}
-	pthread_mutex_destroy(info->fork);
+	pthread_mutex_destroy(info->fork_m);
 	pthread_mutex_destroy(&info->print);
 	pthread_mutex_destroy(&info->infofix);
+	pthread_mutex_destroy(&info->death_flag_m);
 	free(info->philo);
-	free(info->fork);
+	free(info->fork_m);
 }
+//뮤텍스할당했는데 실패시 앞에뮤텍스 디스트로이해야한다. 

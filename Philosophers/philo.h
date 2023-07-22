@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:35:16 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/21 14:09:39 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/22 21:23:23 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,12 @@ typedef struct s_allinfo
 	int				eating_flag;
 	long int		start_time;
 	int				ready; //모든 스레드의준비가 된상태에서 행동을 시작해야함. 준비가 될때까지 기다리기위함.
+	int				*fork;//포크배열
 	struct s_philo	*philo;
-	pthread_mutex_t	*fork;
+	pthread_mutex_t	*fork_m;//뮤텍스배열로해서 각 포크배열을뮤택스로 보호해주기
 	pthread_mutex_t	print;
 	pthread_mutex_t	infofix;
+	pthread_mutex_t	death_flag_m;
 }	t_allinfo;
 
 typedef struct s_philo
@@ -42,12 +44,12 @@ typedef struct s_philo
 	int					right_fork;
 	int					left_fork;
 	long int			p_starttime;
-	long int 			p_startetingtime;
+	long int			p_startetingtime;
 	int					eat_count;
 	struct s_allinfo	*info;
 	//int				death_time;// 이거 필요없는것같은뎅 나중에 지우자
-	pthread_mutex_t		lf;
-	pthread_mutex_t		rf;
+	// pthread_mutex_t		*lf;
+	// pthread_mutex_t		*rf;//이거 다 필요없으
 }	t_philo;
 
 int			ft_usleep(int goal_time, int num);

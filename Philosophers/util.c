@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:29:08 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/22 18:01:01 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/22 20:44:57 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,43 @@ long int	ft_current_time(void)
 	return ((now.tv_sec * 1000) + (now.tv_usec / 1000));
 }
 
+// int	ft_printf(t_philo *philo, char *str)
+// {
+// 	long long	now_time;
+
+// 	pthread_mutex_lock(&philo->info->death_flag_m);
+// 	if (philo->info->death_flag)
+// 	{
+// 		pthread_mutex_unlock(&philo->info->death_flag_m);
+// 		return (1);
+// 	}
+// 	pthread_mutex_unlock(&philo->info->death_flag_m);
+// 	pthread_mutex_lock(&philo->info->print);
+// 	now_time = ft_current_time();//컨텍스트 스위칭이 일어나서 
+// 	printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
+// 	usleep(5);
+// 	pthread_mutex_unlock(&philo->info->print);
+// 	return (0);
+// }
 int	ft_printf(t_philo *philo, char *str)
 {
 	long long	now_time;
 
-	if (philo->info->death_flag)
+	pthread_mutex_lock(&philo->info->death_flag_m);
+	if (!philo->info->death_flag)
+	{
+		pthread_mutex_lock(&philo->info->print);
+		now_time = ft_current_time();//컨텍스트 스위칭이 일어나서 
+		printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
+		usleep(5);
+		pthread_mutex_unlock(&philo->info->print);
+		pthread_mutex_unlock(&philo->info->death_flag_m);
+	}
+	else
+	{
+		pthread_mutex_unlock(&philo->info->death_flag_m);
 		return (1);
-	now_time = ft_current_time();
-	pthread_mutex_lock(&philo->info->print);
-	printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
-	pthread_mutex_unlock(&philo->info->print);
+	}
 	return (0);
 }
+	

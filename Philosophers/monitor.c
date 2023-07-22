@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:20:02 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/21 15:54:53 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/22 20:19:04 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,10 @@ void	ft_monitor(t_allinfo *info)
 		if (info->must_eat > 0)
 			if (did_everyone_eat(info))
 			{
-				pthread_mutex_lock(&info->infofix);
+				pthread_mutex_lock(&info->death_flag_m);
 				info->death_flag = 1;
 				printf("모두 밥을 다먹었습니당\n");
-				pthread_mutex_unlock(&info->infofix);
+				pthread_mutex_unlock(&info->death_flag_m);
 				break ;
 			}
 		i = 0;
@@ -110,7 +110,7 @@ int	ft_usleep(int goal_time, int num)
 	struct timeval	start;
 	struct timeval	end;
 
-	goal_time *= 1000; //마이크로초로 변환
+	goal_time *= 1000; //마이크로초로 변환 
 	gettimeofday(&start, NULL);
 	gettimeofday(&end, NULL);
 	start_time = start.tv_sec * 1000000 + start.tv_usec;
