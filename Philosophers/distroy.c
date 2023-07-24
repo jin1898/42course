@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 17:15:01 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/22 21:38:28 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/24 16:39:27 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_distryeverything(t_allinfo *info)
 	i = 0;
 	while (i < info->philo_num)
 	{
-		pthread_detach(info->philo[i].p_thread);
+		pthread_join(info->philo[i].p_thread, NULL);
 		i++;
 	}
 	i = 0;
@@ -32,6 +32,7 @@ void	ft_distryeverything(t_allinfo *info)
 	pthread_mutex_destroy(&info->print);
 	pthread_mutex_destroy(&info->infofix);
 	pthread_mutex_destroy(&info->death_flag_m);
+	pthread_mutex_destroy(&info->check_death);
 	free(info->philo);
 	free(info->fork_m);
 }

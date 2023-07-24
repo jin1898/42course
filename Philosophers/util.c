@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:29:08 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/22 20:44:57 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/24 16:50:37 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,22 +68,53 @@ long int	ft_current_time(void)
 int	ft_printf(t_philo *philo, char *str)
 {
 	long long	now_time;
+	int			internal_death_flag;
 
 	pthread_mutex_lock(&philo->info->death_flag_m);
-	if (!philo->info->death_flag)
+	internal_death_flag = philo->info->death_flag;
+	pthread_mutex_unlock(&philo->info->death_flag_m);
+	
+	if (!internal_death_flag)
 	{
+		// pthread_mutex_unlock(&philo->info->death_flag_m);
 		pthread_mutex_lock(&philo->info->print);
 		now_time = ft_current_time();//컨텍스트 스위칭이 일어나서 
 		printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
 		usleep(5);
 		pthread_mutex_unlock(&philo->info->print);
-		pthread_mutex_unlock(&philo->info->death_flag_m);
 	}
 	else
 	{
-		pthread_mutex_unlock(&philo->info->death_flag_m);
+		// pthread_mutex_unlock(&philo->info->death_flag_m);
 		return (1);
 	}
+	
 	return (0);
 }
+// int	ft_printf(t_philo *philo, char *str)
+// {
+// 	long long	now_time;
+// 	int			internal_death_flag;
 	
+
+// 	pthread_mutex_lock(&philo->info->death_flag_m);
+// 	internal_death_flag = philo->info->death_flag;
+// 	pthread_mutex_unlock(&philo->info->death_flag_m);
+	
+// 	if (!internal_death_flag)
+// 	{
+// 		// pthread_mutex_unlock(&philo->info->death_flag_m);
+// 		pthread_mutex_lock(&philo->info->print);
+// 		now_time = ft_current_time();//컨텍스트 스위칭이 일어나서 
+// 		printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
+// 		usleep(5);
+// 		pthread_mutex_unlock(&philo->info->print);
+// 	}
+// 	else
+// 	{
+// 		// pthread_mutex_unlock(&philo->info->death_flag_m);
+// 		return (1);
+// 	}
+	
+// 	return (0);
+// }

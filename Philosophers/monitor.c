@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:20:02 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/22 20:19:04 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/24 17:53:40 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,12 @@ int	did_everyone_eat(t_allinfo *info)
 	count = 0;
 	while (i < info->philo_num)
 	{
+		pthread_mutex_lock(&info->infofix);
 		if (info->philo[i].eat_count >= info->must_eat)
+		{
+			pthread_mutex_lock(&info->infofix);
 			count++;
+		}
 		i++;
 	}
 	if (count == info->philo_num)
@@ -41,8 +45,10 @@ void	ft_monitor(t_allinfo *info)
 			{
 				pthread_mutex_lock(&info->death_flag_m);
 				info->death_flag = 1;
-				printf("모두 밥을 다먹었습니당\n");
 				pthread_mutex_unlock(&info->death_flag_m);
+				pthread_mutex_lock(&info->print);
+				printf("모두 밥을 다먹었습니당\n");
+				pthread_mutex_unlock(&info->print);
 				break ;
 			}
 		i = 0;

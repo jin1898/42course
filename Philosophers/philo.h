@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:35:16 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/22 21:23:23 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/24 15:23:51 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef struct s_allinfo
 	pthread_mutex_t	print;
 	pthread_mutex_t	infofix;
 	pthread_mutex_t	death_flag_m;
+	pthread_mutex_t	check_death;
 }	t_allinfo;
 
 typedef struct s_philo
