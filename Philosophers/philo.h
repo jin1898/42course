@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:35:16 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/24 15:23:51 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/24 20:21:47 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ typedef struct s_philo
 	// pthread_mutex_t		*rf;//이거 다 필요없으
 }	t_philo;
 
+// int			ft_usleep(int goal_time, t_philo *philo);
 int			ft_usleep(int goal_time, int num);
 int			check_death(t_philo *philo);
 void		ft_sleep_think(t_philo *philo);

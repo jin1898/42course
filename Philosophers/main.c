@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 12:56:35 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/24 17:56:33 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/24 20:57:59 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,40 @@
 
 void	ft_eat(t_philo *philo)
 {
-	pthread_mutex_lock(&philo->info->fork_m[philo->right_fork]);
-	if (ft_printf(philo, " has taken a fork\n"))
+	if (philo->info->philo_num % 2 == 0)
 	{
-		pthread_mutex_unlock(&philo->info->fork_m[philo->right_fork]);
-		return ;
+		pthread_mutex_lock(&philo->info->fork_m[philo->right_fork]);
+		if (ft_printf(philo, " has taken a fork\n"))
+		{
+			pthread_mutex_unlock(&philo->info->fork_m[philo->right_fork]);
+			return ;
+		}
+		pthread_mutex_lock(&philo->info->fork_m[philo->left_fork]);
+		if (ft_printf(philo, " has taken a fork\n"))
+		{
+			pthread_mutex_unlock(&philo->info->fork_m[philo->left_fork]);
+			pthread_mutex_unlock(&philo->info->fork_m[philo->right_fork]);
+			return ;
+		}
 	}
-	pthread_mutex_lock(&philo->info->fork_m[philo->left_fork]);
-	if (ft_printf(philo, " has taken a fork\n"))
+	else
 	{
-		pthread_mutex_unlock(&philo->info->fork_m[philo->left_fork]);
-		pthread_mutex_unlock(&philo->info->fork_m[philo->right_fork]);
-		return ;
+		pthread_mutex_lock(&philo->info->fork_m[philo->left_fork]);
+		printf("[1]\n");
+		if (ft_printf(philo, " has taken a fork1\n"))
+		{
+			printf("[2]\n");
+			return ;
+		}
+		pthread_mutex_lock(&philo->info->fork_m[philo->right_fork]);
+			printf("[3]\n");
+		if (ft_printf(philo, " has taken a fork2\n"))
+		{
+			pthread_mutex_unlock(&philo->info->fork_m[philo->right_fork]);
+			pthread_mutex_unlock(&philo->info->fork_m[philo->right_fork]);
+			printf("4\n");
+			return ;
+		}
 	}
 	if (ft_printf(philo, " is eating\n"))
 	{
@@ -34,12 +56,9 @@ void	ft_eat(t_philo *philo)
 		return ;
 	}
 	pthread_mutex_lock(&philo->info->infofix);
-	pthread_mutex_lock(&philo->info->check_death);
 	philo->p_startetingtime = ft_current_time();
-	pthread_mutex_unlock(&philo->info->check_death);
 	pthread_mutex_unlock(&philo->info->infofix);
-	ft_usleep(philo->info->time_to_eat, philo->info->philo_num);
-
+	ft_usleep(philo->info->time_to_eat, philo->name);
 	pthread_mutex_lock(&philo->info->infofix);
 	philo->eat_count += 1;
 	pthread_mutex_unlock(&philo->info->infofix);
@@ -53,7 +72,7 @@ void	ft_sleep_think(t_philo *philo)
 	// 	return ;
 	if (ft_printf(philo, " is sleeping\n"))
 		return ;
-	ft_usleep(philo->info->time_to_sleep, philo->info->philo_num);
+	ft_usleep(philo->info->time_to_sleep, philo->name);
 	// if (check_death(philo))
 	// 	return ;
 	if (ft_printf(philo, " is thinking\n"))
@@ -68,7 +87,7 @@ void	*ft_action(void *v_philo)
 	while (!philo->info->ready)
 		continue ;
 	if (philo->name % 2 == 0)
-		usleep(20 * philo->info->philo_num);
+		usleep(100 * philo->info->philo_num);
 	pthread_mutex_lock(&philo->info->death_flag_m);
 	while (!philo->info->death_flag)
 	{

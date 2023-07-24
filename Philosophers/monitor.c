@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:20:02 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/24 17:53:40 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/24 20:49:50 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,10 @@ int	did_everyone_eat(t_allinfo *info)
 		pthread_mutex_lock(&info->infofix);
 		if (info->philo[i].eat_count >= info->must_eat)
 		{
-			pthread_mutex_lock(&info->infofix);
+			pthread_mutex_unlock(&info->infofix);
 			count++;
 		}
+		pthread_mutex_unlock(&info->infofix);
 		i++;
 	}
 	if (count == info->philo_num)
@@ -43,11 +44,11 @@ void	ft_monitor(t_allinfo *info)
 		if (info->must_eat > 0)
 			if (did_everyone_eat(info))
 			{
+				pthread_mutex_lock(&info->print);
 				pthread_mutex_lock(&info->death_flag_m);
 				info->death_flag = 1;
-				pthread_mutex_unlock(&info->death_flag_m);
-				pthread_mutex_lock(&info->print);
 				printf("모두 밥을 다먹었습니당\n");
+				pthread_mutex_unlock(&info->death_flag_m);
 				pthread_mutex_unlock(&info->print);
 				break ;
 			}
@@ -124,10 +125,23 @@ int	ft_usleep(int goal_time, int num)
 	while (goal_time >= end_time - start_time)
 	{
 		end_time = end.tv_sec * 1000000 + end.tv_usec;
-		must_spend_time = (goal_time - (end_time - start_time)) * 3 / 4;
+		must_spend_time = (goal_time - (end_time - start_time)) * 4 / 5;
 		must_spend_time = lower_bound(must_spend_time, num);
 		usleep(must_spend_time);
 		gettimeofday(&end, NULL);
 	}
 	return (0);
 }
+
+// int	ft_usleep(int goal_time, t_philo *philo)
+// {
+// 	int	remain_time;
+
+// 	goal_time *= 1000;
+// 	remain_time = philo->info->start_time - philo->p_startetingtime;
+// 	while (philo->p_startetingtime <= goal_time)
+// 	{
+// 		usleep(12 * remain_time);
+// 	}
+// 	return (0);
+// }
