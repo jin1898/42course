@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:20:02 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/24 20:49:50 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/29 20:27:13 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,14 @@ int	did_everyone_eat(t_allinfo *info)
 	while (i < info->philo_num)
 	{
 		pthread_mutex_lock(&info->infofix);
+		pthread_mutex_lock(&info->eat_count);
 		if (info->philo[i].eat_count >= info->must_eat)
 		{
-			pthread_mutex_unlock(&info->infofix);
+			// pthread_mutex_unlock(&info->eat_count);
+			// pthread_mutex_unlock(&info->infofix);
 			count++;
 		}
+		pthread_mutex_unlock(&info->eat_count);
 		pthread_mutex_unlock(&info->infofix);
 		i++;
 	}
@@ -117,7 +120,7 @@ int	ft_usleep(int goal_time, int num)
 	struct timeval	start;
 	struct timeval	end;
 
-	goal_time *= 1000; //마이크로초로 변환 
+	goal_time *= 1000; //마이크로초로 변환
 	gettimeofday(&start, NULL);
 	gettimeofday(&end, NULL);
 	start_time = start.tv_sec * 1000000 + start.tv_usec;
@@ -125,7 +128,7 @@ int	ft_usleep(int goal_time, int num)
 	while (goal_time >= end_time - start_time)
 	{
 		end_time = end.tv_sec * 1000000 + end.tv_usec;
-		must_spend_time = (goal_time - (end_time - start_time)) * 4 / 5;
+		must_spend_time = (goal_time - (end_time - start_time)) * 3 / 4;
 		must_spend_time = lower_bound(must_spend_time, num);
 		usleep(must_spend_time);
 		gettimeofday(&end, NULL);

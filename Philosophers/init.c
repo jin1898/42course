@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:23:18 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/24 19:38:59 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/29 20:18:54 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,10 @@ int	init_everything(t_allinfo *info, char**av)
 		return (1);
 	if (pthread_mutex_init(&info->check_death, NULL) != 0)
 		return (1);
+	if (pthread_mutex_init(&info->p_startetingtime, NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&info->eat_count, NULL) != 0)
+		return (1);
 	if (init_each_philo(info))
 		return (1);
 	return (0);
@@ -101,8 +105,11 @@ int	check_death(t_philo *philo)
 	long int	howlongtime;
 	long long	now_time;
 
-	//pthread_mutex_lock(&philo->info->check_death);
+	pthread_mutex_lock(&philo->info->infofix);
+	pthread_mutex_lock(&philo->info->p_startetingtime);
 	howlongtime = ft_current_time() - philo->p_startetingtime;
+	pthread_mutex_unlock(&philo->info->p_startetingtime);
+	pthread_mutex_unlock(&philo->info->infofix);
 	if (howlongtime > philo->info->time_to_die)
 	{
 		pthread_mutex_lock(&philo->info->print);
@@ -116,6 +123,5 @@ int	check_death(t_philo *philo)
 		return (1);
 	}
 	// usleep(12 * (philo->info->time_to_die - howlongtime));
-	//pthread_mutex_unlock(&philo->info->check_death);
 	return (0);
 }
