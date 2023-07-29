@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 12:56:35 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/24 20:57:59 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/29 19:27:58 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,9 +131,14 @@ int	main(int ac, char **av)
 
 	if (check_error_num(ac, av)) // 인자갯수, 음수, int오버플로우 일경우 에러로인지
 		return (1);
+	if (ft_atoi(av[1]) == 1)
+	{
+		ft_print_one_end(av);
+		return (0);
+	}
 	if (init_everything(&info, av)) // 필요 구조체들 모두 초기화하기
 		return (1);
-	if (take_action(&info))// exec_simul, exec_philoes_and_monitor
+	else if (take_action(&info))// exec_simul, exec_philoes_and_monitor
 		return (1);
 	return (0);
 }

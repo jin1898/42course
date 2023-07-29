@@ -6,13 +6,13 @@
 #    By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/07/10 12:17:57 by jsunwoo           #+#    #+#              #
-#    Updated: 2023/07/24 20:46:01 by sunwoo-jin       ###   ########.fr        #
+#    Updated: 2023/07/29 19:28:49 by sunwoo-jin       ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = philo
 CFLAGS = -Wall -Wextra -Werror #-g #-fsanitize=thread #-fsanitize=address 
-SRCS = main.c util.c distroy.c init.c monitor.c
+SRCS = main.c util.c distroy.c init.c monitor.c one_philo.c
 OBJ = $(SRCS:.c=.o)
 SILENT = -s
 

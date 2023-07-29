@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:35:16 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/24 20:21:47 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/29 19:29:06 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,4 +65,5 @@ int			check_error_num(int ac, char **av);
 int			init_each_philo(t_allinfo *info);
 int			init_everything(t_allinfo *info, char**av);
 int			ft_printf(t_philo *philo, char *str);
+void		ft_print_one_end(char **av);
 #endif
