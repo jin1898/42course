@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:20:02 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/29 20:27:13 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/29 20:31:17 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int	did_everyone_eat(t_allinfo *info)
 	count = 0;
 	while (i < info->philo_num)
 	{
-		pthread_mutex_lock(&info->infofix);
+		// pthread_mutex_lock(&info->infofix);
 		pthread_mutex_lock(&info->eat_count);
 		if (info->philo[i].eat_count >= info->must_eat)
 		{
@@ -30,7 +30,7 @@ int	did_everyone_eat(t_allinfo *info)
 			count++;
 		}
 		pthread_mutex_unlock(&info->eat_count);
-		pthread_mutex_unlock(&info->infofix);
+		// pthread_mutex_unlock(&info->infofix);
 		i++;
 	}
 	if (count == info->philo_num)

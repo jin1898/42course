@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 12:56:35 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/29 20:20:43 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/29 20:30:11 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,17 +51,17 @@ void	ft_eat(t_philo *philo)
 		pthread_mutex_unlock(&philo->info->fork_m[philo->right_fork]);
 		return ;
 	}
-	pthread_mutex_lock(&philo->info->infofix);
+	// pthread_mutex_lock(&philo->info->infofix);
 	pthread_mutex_lock(&philo->info->p_startetingtime);
 	philo->p_startetingtime = ft_current_time();
 	pthread_mutex_unlock(&philo->info->p_startetingtime);
-	pthread_mutex_unlock(&philo->info->infofix);
+	// pthread_mutex_unlock(&philo->info->infofix);
 	ft_usleep(philo->info->time_to_eat, philo->name);
-	pthread_mutex_lock(&philo->info->infofix);
+	// pthread_mutex_lock(&philo->info->infofix);
 	pthread_mutex_lock(&philo->info->eat_count);
 	philo->eat_count += 1;
 	pthread_mutex_unlock(&philo->info->eat_count);
-	pthread_mutex_unlock(&philo->info->infofix);
+	// pthread_mutex_unlock(&philo->info->infofix);
 	pthread_mutex_unlock(&philo->info->fork_m[philo->right_fork]);
 	pthread_mutex_unlock(&philo->info->fork_m[philo->left_fork]);
 }
