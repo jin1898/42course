@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:35:16 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/29 20:18:42 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/29 20:33:45 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct s_allinfo
 	struct s_philo	*philo;
 	pthread_mutex_t	*fork_m;//뮤텍스배열로해서 각 포크배열을뮤택스로 보호해주기
 	pthread_mutex_t	print;
-	pthread_mutex_t	infofix;
+	// pthread_mutex_t	infofix;
 	pthread_mutex_t	death_flag_m;
 	pthread_mutex_t	check_death;
 	pthread_mutex_t	p_startetingtime;

@@ -6,7 +6,7 @@
 /*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 17:15:01 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/24 16:39:27 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/07/29 20:34:24 by sunwoo-jin       ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	ft_distryeverything(t_allinfo *info)
 	}
 	pthread_mutex_destroy(info->fork_m);
 	pthread_mutex_destroy(&info->print);
-	pthread_mutex_destroy(&info->infofix);
+	// pthread_mutex_destroy(&info->infofix);
 	pthread_mutex_destroy(&info->death_flag_m);
 	pthread_mutex_destroy(&info->check_death);
 	free(info->philo);
