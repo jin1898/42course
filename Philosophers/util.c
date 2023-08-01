@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   util.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:29:08 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/24 21:06:45 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/08/01 15:08:20 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,24 +47,6 @@ long int	ft_current_time(void)
 	return ((now.tv_sec * 1000) + (now.tv_usec / 1000));
 }
 
-// int	ft_printf(t_philo *philo, char *str)
-// {
-// 	long long	now_time;
-
-// 	pthread_mutex_lock(&philo->info->death_flag_m);
-// 	if (philo->info->death_flag)
-// 	{
-// 		pthread_mutex_unlock(&philo->info->death_flag_m);
-// 		return (1);
-// 	}
-// 	pthread_mutex_unlock(&philo->info->death_flag_m);
-// 	pthread_mutex_lock(&philo->info->print);
-// 	now_time = ft_current_time();//컨텍스트 스위칭이 일어나서 
-// 	printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
-// 	usleep(5);
-// 	pthread_mutex_unlock(&philo->info->print);
-// 	return (0);
-// }
 int	ft_printf(t_philo *philo, char *str)
 {
 	long long	now_time;
@@ -76,9 +58,7 @@ int	ft_printf(t_philo *philo, char *str)
 	pthread_mutex_unlock(&philo->info->death_flag_m);
 	if (!internal_death_flag)
 	{
-		// printf("internal_death_flag %d==============\n", internal_death_flag);
-		// pthread_mutex_unlock(&philo->info->death_flag_m);
-		now_time = ft_current_time();//컨텍스트 스위칭이 일어나서
+		now_time = ft_current_time();
 		printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
 		usleep(5);
 		pthread_mutex_unlock(&philo->info->print);
@@ -86,36 +66,7 @@ int	ft_printf(t_philo *philo, char *str)
 	else
 	{
 		pthread_mutex_unlock(&philo->info->print);
-		// pthread_mutex_unlock(&philo->info->death_flag_m);
 		return (1);
 	}
-	
 	return (0);
 }
-// int	ft_printf(t_philo *philo, char *str)
-// {
-// 	long long	now_time;
-// 	int			internal_death_flag;
-	
-
-// 	pthread_mutex_lock(&philo->info->death_flag_m);
-// 	internal_death_flag = philo->info->death_flag;
-// 	pthread_mutex_unlock(&philo->info->death_flag_m);
-	
-// 	if (!internal_death_flag)
-// 	{
-// 		// pthread_mutex_unlock(&philo->info->death_flag_m);
-// 		pthread_mutex_lock(&philo->info->print);
-// 		now_time = ft_current_time();//컨텍스트 스위칭이 일어나서 
-// 		printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
-// 		usleep(5);
-// 		pthread_mutex_unlock(&philo->info->print);
-// 	}
-// 	else
-// 	{
-// 		// pthread_mutex_unlock(&philo->info->death_flag_m);
-// 		return (1);
-// 	}
-	
-// 	return (0);
-// }

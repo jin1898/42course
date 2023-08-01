@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:23:18 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/07/29 20:34:43 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/08/01 15:03:47 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,10 +37,6 @@ int	init_each_philo(t_allinfo *info)
 	if (!info->philo)
 		return (1);
 	i = -1;
-	// info->philo[0].right_fork = info->philo_num;
-	// info->philo[0].left_fork = 1;
-	info->ready = 0;
-	info->eating_flag = 0;
 	while (++i < info->philo_num)
 	{
 		if (i != info->philo_num - 1)
@@ -62,10 +58,28 @@ int	init_each_philo(t_allinfo *info)
 	return (0);
 }
 
-int	init_everything(t_allinfo *info, char**av)
+static int	ft_pthread_init(t_allinfo *info)
 {
 	int	i;
 
+	i = -1;
+	while (++i < info->philo_num)
+		if (pthread_mutex_init(&info->fork_m[i], NULL) != 0)
+			return (1);
+	if (pthread_mutex_init(&info->print, NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&info->death_flag_m, NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&info->check_death, NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&info->p_startetingtime, NULL) != 0)
+		return (1);
+	if (pthread_mutex_init(&info->eat_count, NULL) != 0)
+		return (1);
+}
+
+int	init_everything(t_allinfo *info, char**av)
+{
 	info->philo_num = ft_atoi(av[1]);
 	info->time_to_die = ft_atoi(av[2]);
 	info->time_to_eat = ft_atoi(av[3]);
@@ -79,22 +93,9 @@ int	init_everything(t_allinfo *info, char**av)
 	if (!info->fork)
 		return (1);
 	info->death_flag = 0;
-	i = -1;
-	while (++i < info->philo_num)
-		if (pthread_mutex_init(&info->fork_m[i], NULL) != 0)
-			return (1);
-	if (pthread_mutex_init(&info->print, NULL) != 0)
-		return (1);
-	// if (pthread_mutex_init(&info->infofix, NULL) != 0)
-	// 	return (1);
-	if (pthread_mutex_init(&info->death_flag_m, NULL) != 0)
-		return (1);
-	if (pthread_mutex_init(&info->check_death, NULL) != 0)
-		return (1);
-	if (pthread_mutex_init(&info->p_startetingtime, NULL) != 0)
-		return (1);
-	if (pthread_mutex_init(&info->eat_count, NULL) != 0)
-		return (1);
+	ft_pthread_init(info);
+	info->ready = 0;
+	info->eating_flag = 0;
 	if (init_each_philo(info))
 		return (1);
 	return (0);
@@ -105,23 +106,20 @@ int	check_death(t_philo *philo)
 	long int	howlongtime;
 	long long	now_time;
 
-	// pthread_mutex_lock(&philo->info->infofix);
 	pthread_mutex_lock(&philo->info->p_startetingtime);
 	howlongtime = ft_current_time() - philo->p_startetingtime;
 	pthread_mutex_unlock(&philo->info->p_startetingtime);
-	// pthread_mutex_unlock(&philo->info->infofix);
 	if (howlongtime > philo->info->time_to_die)
 	{
 		pthread_mutex_lock(&philo->info->print);
 		pthread_mutex_lock(&philo->info->death_flag_m);
 		philo->info->death_flag = 1;
 		now_time = ft_current_time();
-		printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, " died\n");
+		printf("%lld %d %s", (now_time - philo->p_starttime), \
+		philo->name, " died\n");
 		pthread_mutex_unlock(&philo->info->death_flag_m);
 		pthread_mutex_unlock(&philo->info->print);
-		//pthread_mutex_unlock(&philo->info->check_death);
 		return (1);
 	}
-	// usleep(12 * (philo->info->time_to_die - howlongtime));
 	return (0);
 }

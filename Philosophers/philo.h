@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   philo.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sunwoo-jin <sunwoo-jin@student.42.fr>      +#+  +:+       +#+        */
+/*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:35:16 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/07/29 20:33:45 by sunwoo-jin       ###   ########.fr       */
+/*   Updated: 2023/08/01 15:07:36 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,12 +28,11 @@ typedef struct s_allinfo
 	int				death_flag;
 	int				eating_flag;
 	long int		start_time;
-	int				ready; //모든 스레드의준비가 된상태에서 행동을 시작해야함. 준비가 될때까지 기다리기위함.
-	int				*fork;//포크배열
+	int				ready;
+	int				*fork;
 	struct s_philo	*philo;
-	pthread_mutex_t	*fork_m;//뮤텍스배열로해서 각 포크배열을뮤택스로 보호해주기
+	pthread_mutex_t	*fork_m;
 	pthread_mutex_t	print;
-	// pthread_mutex_t	infofix;
 	pthread_mutex_t	death_flag_m;
 	pthread_mutex_t	check_death;
 	pthread_mutex_t	p_startetingtime;
@@ -50,12 +49,8 @@ typedef struct s_philo
 	long int			p_startetingtime;
 	int					eat_count;
 	struct s_allinfo	*info;
-	//int				death_time;// 이거 필요없는것같은뎅 나중에 지우자
-	// pthread_mutex_t		*lf;
-	// pthread_mutex_t		*rf;//이거 다 필요없으
 }	t_philo;
 
-// int			ft_usleep(int goal_time, t_philo *philo);
 int			ft_usleep(int goal_time, int num);
 int			check_death(t_philo *philo);
 void		ft_sleep_think(t_philo *philo);
@@ -68,4 +63,5 @@ int			init_each_philo(t_allinfo *info);
 int			init_everything(t_allinfo *info, char**av);
 int			ft_printf(t_philo *philo, char *str);
 void		ft_print_one_end(char **av);
+void		ft_eat(t_philo *philo);
 #endif
