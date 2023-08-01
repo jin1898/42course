@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 16:23:18 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/08/01 15:03:47 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/08/01 15:10:36 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static int	ft_pthread_init(t_allinfo *info)
 		return (1);
 	if (pthread_mutex_init(&info->eat_count, NULL) != 0)
 		return (1);
+	return (0);
 }
 
 int	init_everything(t_allinfo *info, char**av)
@@ -93,7 +94,8 @@ int	init_everything(t_allinfo *info, char**av)
 	if (!info->fork)
 		return (1);
 	info->death_flag = 0;
-	ft_pthread_init(info);
+	if (ft_pthread_init(info))
+		return (1);
 	info->ready = 0;
 	info->eating_flag = 0;
 	if (init_each_philo(info))
