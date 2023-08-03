@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 17:15:01 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/08/03 15:08:12 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/08/03 18:35:26 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@ void	ft_distryeverything(t_allinfo *info)
 	pthread_mutex_destroy(info->fork_m);
 	pthread_mutex_destroy(&info->print);
 	pthread_mutex_destroy(&info->death_flag_m);
-	pthread_mutex_destroy(&info->check_death);
 	free(info->philo);
 	free(info->fork_m);
 }
-//뮤텍스할당했는데 실패시 앞에뮤텍스 디스트로이해야한다.

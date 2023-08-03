@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/19 14:20:02 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/08/01 15:06:51 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/08/03 15:34:45 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	everyone_has_finished_eating(t_allinfo *info)
 	pthread_mutex_lock(&info->print);
 	pthread_mutex_lock(&info->death_flag_m);
 	info->death_flag = 1;
-	printf("모두 밥을 다먹었습니당\n");
+	printf("----everyone finished eating----\n");
 	pthread_mutex_unlock(&info->death_flag_m);
 	pthread_mutex_unlock(&info->print);
 }
