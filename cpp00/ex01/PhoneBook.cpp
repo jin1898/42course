@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 15:55:19 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/10/28 17:46:29 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/11/02 22:15:58 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,56 @@ void PhoneBook::ft_add(int i, PhoneBook P)
 
 	P.contact[i] = NewP;
 }
-void PhoneBook::search()
+static int check_number(std::string input, int max_index)
 {
-	if(P.contact[0].empty)
+	if(input.size() != 1) // 길이가 1개이상이라는 뜻은 두자리 수이상이라는뜻! 하지만 주어진 인덱스는 7개 즉 한자리수여야한다!
+		return(0);
+	if(((input[0] - 48) >= 1) && ((input[0] - 48) <= max_index))
+		return(1);
+	return (0);
+}
+
+void PhoneBook::current_repository_display(PhoneBook P)
+{
+	std::cout << "|-------------------------------------------|" << std::endl;
+	std::cout << "     INDEX|" << "First name|" << "  NICKNAME|" << std::endl;
+	std::cout << "|-------------------------------------------|" << std::endl;
+	int index = 0;
+	while(index < 8)
+	{
+		if(P.contact[index].check_empty(P.contact[index]))
+			break;
+		std::cout << "|" << std::setw(10) << index << "|";
+		P.contact[index].print_info(P.contact[index]);
+		index++;
+	}
+	int max_index = index - 1;
+	std::string input;
+	while(1)
+	{
+		std::cout << "<Select the indexes you want to view.>";
+		getline(std::cin,input);
+		input.erase(0,input.find_first_not_of("\t \v\f\r"));
+		while(std::isspace(input[input.length() -1]))
+			input.erase(input.find_last_not_of("\t \v\r\f") + 1, input[input.length() -1]);
+		if(input.empty())
+			continue;
+		if(check_number(input, max_index))
+			index = (int)input[0] - 48;
+		else
+		{
+			std::cout << "Invalid number, please enter again." << std::endl;
+			continue;
+		}
+		P.contact[index].individual_output(P.contact[index]);
+		break;
+	}
+
+}
+void PhoneBook::search(PhoneBook P)
+{
+	if(P.contact[0].check_empty(P.contact[0]))
 		std::cout << "Empty. Nothing to print." << std::endl;
-
-	current_repository_display();
-
-
+	PhoneBook::current_repository_display(P);
 
 }

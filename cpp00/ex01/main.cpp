@@ -38,7 +38,7 @@ int main(void)
 			i++;
 		}
 		else if(input == "SEARCH")
-			P.search();
+			P.search(P);
 		else if(input.empty())
 			continue;
 		else
