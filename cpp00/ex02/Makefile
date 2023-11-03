@@ -1,24 +1,25 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
 #    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/10/27 17:32:56 by sunwoo-jin        #+#    #+#              #
-#    Updated: 2023/11/03 20:31:53 by jsunwoo          ###   ########.fr        #
+#    Created: 2023/11/03 16:03:44 by jsunwoo           #+#    #+#              #
+#    Updated: 2023/11/03 16:21:59 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = PhoneBook
-SCRS = Contact.cpp PhoneBook.cpp main.cpp
-OBJS = $(SCRS:.cpp=.o)
-FLAG = -g -Wall -Wextra -Werror -std=c++98
+NAME = test
+SCRS = test.cpp Account.cpp
+OBJS = $(SRCS:.cpp=.o)
+FLAG = -Wall -Wextra -Werror -std=c++98
+CC = g++
 
 all: $(NAME)
 
 $(NAME): $(OBJS)
-	$(CXX) $(FLAG) $(OBJS) -o $(NAME)
+	$(CC) $(FLAG) $(OBJS) -o $(NAME)
 
 clean:
 	rm -rf $(OBJS)
@@ -28,4 +29,6 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean
+
+

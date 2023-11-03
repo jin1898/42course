@@ -28,18 +28,18 @@ int main(void)
 		input = con.input_info(input, 0);
 		if(input == "ADD")
 		{
-			if(i > 7)
+			if(i >= 8)
 			{
 				std::cout << "<Capacity is full.>\n<Oldest information will be overwritten first.>\n";
 				i = 0;
 			}
-			if(i < 7)
-				P.ft_add(i, P);
+			if(i < 8)
+				P = P.ft_add(i, P);
 			i++;
 		}
 		else if(input == "SEARCH")
 			P.search(P);
-		else if(input.empty())
+		else if(input.empty() || input == "EXIT")
 			continue;
 		else
 			std::cout << "<error try agin (ADD,EXIT,SEARCH)>\n";

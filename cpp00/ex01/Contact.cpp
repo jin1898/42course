@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:36:02 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/11/02 22:15:29 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/11/03 15:49:40 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ void Contact::print_info(Contact contact)
 		std::cout << std::string(contact.m_nickname.begin(), contact.m_nickname.begin() + 9) << '.' << "|";
 	else
 		std::cout << std::setw(10) << contact.m_nickname << "|";
-	std::cout << std::endl << "|---------------------------------------|" << std::endl;
+	std::cout << std::endl << "|-------------------------------------------|" << std::endl;
 }
 void Contact::individual_output(Contact contact)
 {
