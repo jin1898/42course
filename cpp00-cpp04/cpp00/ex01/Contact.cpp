@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 16:36:02 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/11/03 15:49:40 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/11/04 19:08:56 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,14 @@ std::string Contact::input_info(std::string output, int i)
 
 	if(i > 0)
 		std::cout << output;
-	while(1)
+	while(true)
 	{
 		std::getline(std::cin, input);
-		input.erase(0,input.find_first_not_of("\t\v\r\f"));
+		if(std::cin.eof())
+			return input;
+		input.erase(0,input.find_first_not_of(" \t\v\r\f"));
 		while(isspace(input[input.length()-1]))
-			input.erase(input.find_last_not_of("\t\r\v\f"));
+			input.erase(input.find_last_not_of(" \t\r\v\f"));
 		if(input.empty())
 			std::cout << "empty! please try again" << std::endl;
 		else

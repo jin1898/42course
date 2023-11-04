@@ -6,7 +6,7 @@
 #    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/27 17:32:56 by sunwoo-jin        #+#    #+#              #
-#    Updated: 2023/11/03 20:31:53 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/11/04 14:06:28 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,6 +19,9 @@ all: $(NAME)
 
 $(NAME): $(OBJS)
 	$(CXX) $(FLAG) $(OBJS) -o $(NAME)
+
+%.o : %.cpp
+	$(CXX) $(FLAG) -c -o $@ $<
 
 clean:
 	rm -rf $(OBJS)

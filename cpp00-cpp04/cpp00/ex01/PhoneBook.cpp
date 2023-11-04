@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 15:55:19 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/11/04 11:08:12 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/11/04 19:08:40 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,15 +47,15 @@ void PhoneBook::current_repository_display(PhoneBook P)
 	}
 	int max_index = index - 1;
 	std::string input;
-	while(1)
+	while(true)
 	{
 		std::cout << "<Select the indexes you want to view.> ";
 		getline(std::cin,input);
+		if(input.empty())
+			return;
 		input.erase(0,input.find_first_not_of("\t \v\f\r"));
 		while(std::isspace(input[input.length() -1]))
 			input.erase(input.find_last_not_of("\t \v\r\f") + 1, input[input.length() -1]);
-		if(input.empty())
-			continue;
 		if(check_number(input, max_index))
 			index = (int)input[0] - 48;
 		else

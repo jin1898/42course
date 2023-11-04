@@ -26,7 +26,12 @@ int main(void)
 	while(input != "EXIT")
 	{
 		input = con.input_info(input, 0);
-		if(input == "ADD")
+		if (input == "")
+		{
+			std::cout << "\n--An error is detected, and it exits.--\n";
+			return 0;
+		}
+		else if(input == "ADD")
 		{
 			if(i >= 8)
 			{
@@ -39,8 +44,13 @@ int main(void)
 		}
 		else if(input == "SEARCH")
 			P.search(P);
-		else if(input.empty() || input == "EXIT")
+		else if(input.empty())
+		{
+			std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');
 			continue;
+		}
+		else if(input == "EXIT" )
+			break;
 		else
 			std::cout << "<error try agin (ADD,EXIT,SEARCH)>\n";
 	}
