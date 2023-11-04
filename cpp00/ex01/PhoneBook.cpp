@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/27 15:55:19 by sunwoo-jin        #+#    #+#             */
-/*   Updated: 2023/11/03 20:26:59 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/11/04 11:08:12 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ static int check_number(std::string input, int max_index)
 void PhoneBook::current_repository_display(PhoneBook P)
 {
 	std::cout << "|-------------------------------------------|" << std::endl;
-	std::cout << "      INDEX|" << "First name|" << " Last name|" << "  NICKNAME|" << std::endl;
+	std::cout << "      INDEX|" << "FIRST NAME|" << " LAST NAME|" << "  NICKNAME" << std::endl;
 	std::cout << "|-------------------------------------------|" << std::endl;
 	int index = 0;
 	while(index < 8)
