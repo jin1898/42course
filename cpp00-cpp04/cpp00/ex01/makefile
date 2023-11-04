@@ -6,7 +6,7 @@
 #    By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/10/27 17:32:56 by sunwoo-jin        #+#    #+#              #
-#    Updated: 2023/11/04 14:06:28 by jsunwoo          ###   ########.fr        #
+#    Updated: 2023/11/04 19:36:16 by jsunwoo          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -29,6 +29,8 @@ clean:
 fclean: clean
 	rm -rf $(NAME)
 
-re: fclean all
+re:
+	make fclean
+	make all
 
 .PHONY: all clean fclean re
