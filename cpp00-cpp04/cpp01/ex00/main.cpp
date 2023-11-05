@@ -2,8 +2,12 @@
 
 int	main(void)
 {
-	Zombie	*z = newZombie("me");
-	z->announce();
-	randomChump("Chumped zom");
-	delete z;
+	Zombie stack ("st");
+	Zombie *heap = new Zombie("heap");
+
+	randomChump("rad");
+	stack.announce();
+	heap->announce();
+	delete heap;
+	return(0);
 }
