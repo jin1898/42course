@@ -1,3 +1,6 @@
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
+
 #include <iostream>
 
 class Weapon
@@ -9,3 +12,5 @@ class Weapon
 	private:
 		std::string name;
 };
+
+#endif
