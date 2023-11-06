@@ -5,11 +5,7 @@ int main(int ac, char **av)
 {
 	Harl H;
 
-	(void)ac;
-	(void)av;
-	// H.complain("DEBUG");
-	// H.complain("INFO");
-	// H.complain("WARNING");
-	// H.complain("ERROR");
-	H.complain("asdfasdf");
+	if (ac == 1 || ac > 3)
+		return (0);
+	H.complain(av[1]);
 }

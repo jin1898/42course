@@ -6,7 +6,6 @@ Zombie::Zombie(std::string name)
 }
 Zombie::~Zombie(void)
 {
-
 }
 
 void Zombie::announce(void)

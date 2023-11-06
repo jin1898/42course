@@ -1,5 +1,5 @@
-NAME = ex06
-SCRS = main.cpp Harl.cpp
+NAME = ex04
+SCRS = main.cpp
 OBJS = $(SCRS:.cpp=.o)
 FLAG = -g -Wall -Wextra -Werror
 
@@ -21,4 +21,4 @@ re:
 	make fclean
 	make all
 
-.PHONY: clean fclean re
+.PHONY: all clean fclean re
