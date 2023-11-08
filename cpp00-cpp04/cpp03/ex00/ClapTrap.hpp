@@ -6,10 +6,10 @@
 class ClapTrap
 {
 	public:
-		ClapTrap();
+		ClapTrap(void);
 		ClapTrap(std::string name);
 		ClapTrap(const ClapTrap& Original);
-		~ClapTrap();
+		~ClapTrap(void);
 		ClapTrap& operator=(const ClapTrap& copy);
 		//--ex00--start-
 		void attack(const std::string& target);

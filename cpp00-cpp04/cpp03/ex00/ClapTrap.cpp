@@ -2,7 +2,7 @@
 
 ClapTrap::ClapTrap() : name("default"), Hitpoints(10), EnergyPoints(10), AttackDamage(0)
 {
-	std::cout << "[Constructor created] " << "[ClapTrap] [" << this->name << "]" << std::endl;
+	std::cout << "[Default Constructor created] " << "[ClapTrap] [" << this->name << "]" << std::endl;
 }
 ClapTrap::ClapTrap(std::string name) : name(name), Hitpoints(10), EnergyPoints(10), AttackDamage(0)
 {
