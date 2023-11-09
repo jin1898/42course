@@ -1,5 +1,5 @@
-NAME = ex00
-SCRS = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp
+NAME = ex01
+SCRS = main.cpp Cat.cpp Dog.cpp Animal.cpp WrongAnimal.cpp WrongCat.cpp Brain.cpp
 OBJS = $(SCRS:.cpp=.o)
 CXXFLAG = -g -Wall -Wextra -Werror -std=c++98
 

@@ -13,7 +13,12 @@ class Dog : public Animal
 		void setType(const std::string& type);
 		const std::string& getType(void) const;
 		void makeSound(void) const;
+
+		void setBrain(const Brain &brain);
+		Brain &getBrain(void) const;
+
 	private:
+		Brain *brain;
 		std::string type;
 };
 

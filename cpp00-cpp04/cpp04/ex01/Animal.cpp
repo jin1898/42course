@@ -36,3 +36,4 @@ void Animal::setType(const std::string& type)
 {
 	this->type = type;
 }
+
