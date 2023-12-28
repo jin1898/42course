@@ -84,3 +84,18 @@ std::ostream& operator<<(std::ostream& out, const Bureaucrat& print)
 }
 
 //--------------과제요구사항-----end-
+
+//--------------ex01 과제요구사항-------start-
+void Bureaucrat::signForm(Form &fInfo, Bureaucrat &bInfo)
+{
+	if(fInfo.getIsSigned() == true)
+	{
+		std::cout << bInfo << " signed " << fInfo << std::endl;
+	}
+	else
+	{
+		std::cout << bInfo << " couldn't sign " << fInfo << " because " << std::endl;
+		throw(Bureaucrat::GradeTooLowException());
+	}
+}
+//--------------ex01 과제요구사항--------end-

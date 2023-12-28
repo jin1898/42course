@@ -1,5 +1,5 @@
 NAME = ex01
-SCRS = main.cpp Bureaucrat.cpp
+SCRS = main.cpp Bureaucrat.cpp Form.cpp
 OBJS = $(SCRS:.cpp=.o)
 FLAG = -g -Wall -Wextra -Werror
 
