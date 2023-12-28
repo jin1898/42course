@@ -1,22 +1,23 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 //----------OCCF-------------start--
 Bureaucrat::Bureaucrat() : grade(150), name("no_name")
 {
-	std::cout << "[OCCF 디폴트 생성자 호출]" << std::endl;
+	std::cout << "[OCCF Bureaucrat 디폴트 생성자 호출]" << std::endl;
 }
 Bureaucrat::~Bureaucrat()
 {
-	std::cout << "[OCCF 소멸자 호출]" << std::endl;
+	std::cout << "[OCCF Bureaucrat 소멸자 호출]" << std::endl;
 }
 Bureaucrat::Bureaucrat(const Bureaucrat &copy) : name(copy.name)
 {
-	std::cout << "[OCCF 복사생성자 호출]" << std::endl;
+	std::cout << "[OCCF Bureaucrat 복사생성자 호출]" << std::endl;
 	*this = copy;
 };
 Bureaucrat& Bureaucrat::operator=(const Bureaucrat& copy)
 {
-	std::cout << "[OCCF 복사 할당 호출]" << std::endl;
+	std::cout << "[OCCF Bureaucrat 복사 할당 호출]" << std::endl;
 	// if (&copy != this)
 	// {
 		this->grade = copy.grade;

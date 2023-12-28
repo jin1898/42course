@@ -1,14 +1,18 @@
 #include "Bureaucrat.hpp"
+#include "Form.hpp"
 
 int main(void)
 {
-	Bureaucrat man1(23,"i want to go home");
+	Bureaucrat man1(76,"i want to go home");
+	Form finfo;
 	try
 	{
 		if(man1.getGrade() > 150)
 			throw Bureaucrat::GradeTooHighException();
 		if(man1.getGrade() <= 0)
 			throw Bureaucrat::GradeTooLowException();
+		finfo.beSigned(man1);
+		man1.signForm(finfo, man1);
 	}
 
 	catch (std::exception & error_detacted)
@@ -20,5 +24,5 @@ int main(void)
 	{
 		std::cout << "예외에 안걸림.." << std::endl;
 	}
-	std::cout << "무사히 나옴!" << std::endl;
+	std::cout << "끝" << std::endl;
 }
