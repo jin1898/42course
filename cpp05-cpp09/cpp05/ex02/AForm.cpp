@@ -9,6 +9,7 @@ AForm::AForm() : name("no_name"), isSigned(false), signedGrade(75), executeGrade
 {
     std::cout << "[OCCF] AForm 디폴트 생성자 호출됨" << std::endl;
 }
+
 AForm::AForm(const AForm& copy) :
 name(copy.name), isSigned(copy.isSigned), signedGrade(copy.signedGrade), executeGrade(copy.executeGrade)
 {
@@ -50,4 +51,9 @@ std::ostream& operator<<(std::ostream& out, const AForm& info)
     << "\n execute authority : " << info.getExecuteGrade()
     << std::endl;
     return(out);
+}
+
+const char *AForm::FNotSigned::what()const throw()
+{
+    return("Form is not signed");
 }

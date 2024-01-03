@@ -2,13 +2,25 @@
 #define PRESIDENTIALPARDONFORM_HPP
 
 #include "AForm.hpp"
-
-class AForm;
+#include "Bureaucrat.hpp"
+#include <string>
 
 class PresidentalPardonForm : public AForm
 {
+	private:
+	std::string target;
+
 	public :
-		 void execute(Bureaucrat const & executer) const;
+		//--OCCF-start-
+		PresidentalPardonForm();
+		PresidentalPardonForm(const PresidentalPardonForm & copy);
+		PresidentalPardonForm &operator=(const PresidentalPardonForm & copy);
+		~PresidentalPardonForm();
+		//--OCCF-end-
+
+		std::string getTarget();
+		PresidentalPardonForm(std::string target);
+		void execute(Bureaucrat const & executer) const;
 };
 
 #endif
