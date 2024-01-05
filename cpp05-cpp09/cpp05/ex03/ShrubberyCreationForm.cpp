@@ -4,10 +4,10 @@ ShrubberyCreationForm::ShrubberyCreationForm(const std::string& target) : AForm(
 {
 	std::cout << "ShrubberyCreationForm 생성자 생성" << std::endl;
 }
-ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation",false, 145, 137)
-{
-	std::cout << "[OCCF]ShrubberyCreationForm 생성자 생성" << std::endl;
-}
+// ShrubberyCreationForm::ShrubberyCreationForm() : AForm("Shrubbery Creation",false, 145, 137)
+// {
+// 	std::cout << "[OCCF]ShrubberyCreationForm 생성자 생성" << std::endl;
+// }
 
 ShrubberyCreationForm::ShrubberyCreationForm(const ShrubberyCreationForm& copy) : AForm(copy), target(copy.target)
 {
@@ -21,7 +21,6 @@ ShrubberyCreationForm::~ShrubberyCreationForm()
 
 ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationForm& copy)
 {
-	std::cout << "[OCCF] ShrubberyCreationForm 복사 할당 연산자 호출 " << std::endl;
 	if (this != &copy) {
 		AForm::operator=(copy);
 		this->target = copy.target;

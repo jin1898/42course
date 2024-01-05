@@ -1,5 +1,5 @@
-NAME = ex02
-SCRS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp
+NAME = ex03
+SCRS = main.cpp Bureaucrat.cpp AForm.cpp PresidentialPardonForm.cpp RobotomyRequestForm.cpp ShrubberyCreationForm.cpp Intern.cpp
 OBJS = $(SCRS:.cpp=.o)
 FLAG = -g -Wall -Wextra -Werror
 
