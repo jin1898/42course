@@ -26,3 +26,8 @@ int main(void)
 	}
 	std::cout << "끝" << std::endl;
 }
+
+/* 진척도
+
+
+*/

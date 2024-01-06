@@ -1,24 +1,51 @@
 #include "Bureaucrat.hpp"
 #include "AForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-#include "ShrubberyCreationForm.hpp"
+#include "Intern.hpp"
+#include <cstdlib>
+#include <ctime>
 
-int main ()
-{
-    Bureaucrat berau(137, "beru");
-    ShrubberyCreationForm form("houssam");
-    RobotomyRequestForm form2("Robot");
-    try
-    {
-        berau.signForm(form);
-        berau.executeForm(form);
-        berau.signForm(form2);
-        berau.executeForm(form2);
+int main(void) {
+	std::srand(std::time(NULL));
+    
+    Intern someRandomIntern;
+    
+    AForm* scf;
+    
+    try {
+        scf = someRandomIntern.makeForm("ShrubberyCreationForm", "Richard");
     }
-    catch (std::exception &e)
-    {
-        std::cout << e.what() << std::endl;
-        return (0);
+    catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
     }
+
+    std::cout << *scf << std::endl;
+
+    std::cout << std::endl;
+
+    AForm* rrf;
+    
+    try {
+        rrf = someRandomIntern.makeForm("RobotomyRequestForm", "Bender");
+    }
+    catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    }
+
+    std::cout << *rrf << std::endl;
+
+    std::cout << std::endl;
+    
+    AForm* ppf;
+    
+    try {
+        ppf = someRandomIntern.makeForm("PresidentialPardonForm", "Hector");
+    }
+    catch (std::exception& e) {
+        std::cerr << e.what() << std::endl;
+    }
+
+    std::cout << *ppf << std::endl;
 }

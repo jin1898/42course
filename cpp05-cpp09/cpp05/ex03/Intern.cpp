@@ -6,7 +6,7 @@ Intern::Intern()
 }
 Intern::Intern(const Intern &copy)
 {
-	if(*this != copy)
+	if(this != &copy)
 		*this = copy;
 	std::cout << "[OCCF] Intern 복사 생성자 호출" << std::endl;
 }
@@ -22,15 +22,15 @@ Intern::~Intern()
 	std::cout << "[OCCF] 소멸자 호출" << std::endl;
 }
 
-AForm *Intern::makeRobotoForm(const std::string target){
+AForm *Intern::makeRobotoForm(const std::string &target){
 	std::cout << "Intern is making RobotomyRequestForm" << std::endl;
 	return(new RobotomyRequestForm(target));
 }
-AForm *Intern::makePresidentialForm(const std::string target){
+AForm *Intern::makePresidentialForm(const std::string &target){
 	std::cout << "Intern is making PresidentialPardonForm" << std::endl;
-	return(new PresidentialPardonForm(target));
+	return(new PresidentalPardonForm(target));
 }
-AForm *Intern::makeShrubberyForm(const std::string target){
+AForm *Intern::makeShrubberyForm(const std::string &target){
 	std::cout << "Intern is making ShrubberyCreationForm" << std::endl;
 	return(new ShrubberyCreationForm(target));
 }
@@ -40,18 +40,18 @@ AForm *Intern::makeForm(const std::string name, const std::string target){
 		"PresidentialPardonForm",
 		"RobotomyRequestForm",
 		"ShrubberyCreationForm"
-	}
-	AForm *(*Intern::*mushin[3])(const std::string &) = {
+	};
+	AForm *(Intern::*mushin[3])(const std::string &) = {
 		&Intern::makeRobotoForm,
 		&Intern::makePresidentialForm,
 		&Intern::makeShrubberyForm
-	}
+	};
 	for(int i = 0; i< 4; i++){
 		if(forms[i] == name)
-			return ((*this->mushin[i])(target));
+			return ((this->*mushin[i])(target));
 	}
 	std::cout << "Intern failed to find form..." << std::endl;
-	throw Intern::FormNotFined::what();
+	throw Intern::FormNotFined();
 }
 
 const char *Intern::FormNotFined::what() const throw(){
