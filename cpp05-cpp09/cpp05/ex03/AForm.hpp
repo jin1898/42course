@@ -15,7 +15,8 @@ class AForm
     int executeGrade;
     public :
         AForm();
-        ~AForm();
+        // ~AForm();
+        virtual ~AForm();
         AForm(const AForm& copy);
         AForm& operator=(const AForm& copy);
 

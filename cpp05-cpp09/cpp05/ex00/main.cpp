@@ -2,9 +2,12 @@
 
 int main(void)
 {
-	Bureaucrat man1(15111,"i want to go home");
+	Bureaucrat man1(100,"i want to go home");
+	std::cout << man1 << std::endl;
 	try
 	{
+		man1.decrement();
+		man1.increment();
 		if(man1.getGrade() > 150)
 			throw Bureaucrat::GradeTooHighException();
 		if(man1.getGrade() <= 0)
@@ -18,7 +21,7 @@ int main(void)
 	}
 	catch (...)
 	{
-		std::cout << "예외에 안걸림.." << std::endl;
+		std::cout << "에러 발견!" << std::endl;
 	}
 	std::cout << man1 << std::endl;
 }

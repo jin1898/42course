@@ -46,7 +46,7 @@ AForm *Intern::makeForm(const std::string name, const std::string target){
 		&Intern::makePresidentialForm,
 		&Intern::makeShrubberyForm
 	};
-	for(int i = 0; i< 4; i++){
+	for(int i = 0; i < 3; i++){
 		if(forms[i] == name)
 			return ((this->*mushin[i])(target));
 	}

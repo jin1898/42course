@@ -6,7 +6,6 @@
 #include <cstdlib>
 #include <ctime>
 
-
 int main(void)
 {
 	// Seed the random number generator with the current time

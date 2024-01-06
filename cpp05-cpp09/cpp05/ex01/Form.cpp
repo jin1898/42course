@@ -30,7 +30,7 @@ Form& Form::operator=(const Form& copy)
 Form::Form(std::string name, bool isSigned, int signedGrade, int executeGrade) :
 name(name), isSigned(isSigned), signedGrade(signedGrade), executeGrade(executeGrade)
 {
-    std::cout << "인자값 있는 생성자 호출됨" << std::endl;
+    std::cout << "인자값 있는 생성자 호출" << std::endl;
 }
 
 void Form::beSigned(Bureaucrat &a)
