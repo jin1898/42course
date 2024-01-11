@@ -1,5 +1,5 @@
-NAME = ex00
-SCRS = main.cpp ScalarConverter.cpp
+NAME = ex01
+SCRS = main.cpp Serializer.cpp
 OBJS = $(SCRS:.cpp=.o)
 FLAG = -Wall -Wextra -Werror -std=c++98
 

@@ -4,9 +4,6 @@
 # include <iostream>
 # include <iomanip>
 # include <string>
-# define B "\x1b[1m\x1b[48;2;188;143;143m"
-# define DV "\x1b[1m\x1b[38;2;25;25;599m"
-# define C "\x1b[0m"
 
 struct Data
 {

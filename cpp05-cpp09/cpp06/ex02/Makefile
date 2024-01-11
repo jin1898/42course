@@ -1,5 +1,5 @@
-NAME = ex00
-SCRS = main.cpp ScalarConverter.cpp
+NAME = ex02
+SCRS = A.cpp B.cpp C.cpp main.cpp Base.cpp
 OBJS = $(SCRS:.cpp=.o)
 FLAG = -Wall -Wextra -Werror -std=c++98
 

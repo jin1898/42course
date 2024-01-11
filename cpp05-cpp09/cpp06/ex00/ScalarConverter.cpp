@@ -1,4 +1,4 @@
-#include "../include/ScalarConverter.hpp"
+#include "./ScalarConverter.hpp"
 
 //----------[OCCF] 사용불가----
 ScalarConverter::ScalarConverter(void) {std::cout << "[OCCF] 사용불가" << std::endl;};
@@ -17,70 +17,70 @@ ScalarConverter & ScalarConverter::operator=(ScalarConverter const & copy) {
 void ScalarConverter::convert(std::string const & str) {
 	if (Check::isInt(str)) {
 		int i = std::atoi(str.c_str());
-		std::cout << "Input is an int: " << MB << "'" << str << "'" << C << std::endl;
+		std::cout << "Input is an int: " << "'" << str << "'" << std::endl;
 		std::cout << "char: ";
 		if (Check::overFlow(str))
-			std::cout << MB << "impossible" << C << std::endl;
+			std::cout << "impossible" << std::endl;
 		else if (i >= 0 && i <= UCHAR_MAX && isprint(i))
-			std::cout << MB << "'" << static_cast<char>(i) << "'" << C << std::endl;
+			std::cout << "'" << static_cast<char>(i) << "'" << std::endl;
 		else
-			std::cout << MB << "Non displayable" << C << std::endl;
+			std::cout << "Non displayable" << std::endl;
 		std::cout << "int: ";
 		if (Check::overFlow(str))
-			std::cout << MB << "impossible" << C << std::endl;
+			std::cout << "impossible" << std::endl;
 		else
-			std::cout << MB << static_cast<int>(i) << C << std::endl;
-		std::cout << "float: " << MB << static_cast<float>( std::atof(str.c_str())) << ".0f" << C << std::endl;
-		std::cout << "double: " << MB << static_cast<double>( std::atof(str.c_str())) << ".0" << C << std::endl;
+			std::cout << static_cast<int>(i) << std::endl;
+		std::cout << "float: " << static_cast<float>( std::atof(str.c_str())) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>( std::atof(str.c_str())) << ".0" << std::endl;
 		return ;
 	}
 	if (Check::isChar(str)) {
-		std::cout << "Input is a char: " << MB << "'" << str[0] << "'" << C << std::endl;
-		std::cout << "char: " << MB << "'" << str[0] << "'" << C << std::endl;
-		std::cout << "int: " << MB << static_cast<int>(str[0]) << C << std::endl;
-		std::cout << "float: " << MB << static_cast<float>(str[0]) << ".0f" << C << std::endl;
-		std::cout << "double: " << MB << static_cast<double>(str[0]) << ".0" << C << std::endl;
+		std::cout << "Input is a char: " << "'" << str[0] << "'" << std::endl;
+		std::cout << "char: " << "'" << str[0] << "'" << std::endl;
+		std::cout << "int: " << static_cast<int>(str[0]) << std::endl;
+		std::cout << "float: " << static_cast<float>(str[0]) << ".0f" << std::endl;
+		std::cout << "double: " << static_cast<double>(str[0]) << ".0" << std::endl;
 		return ;
 	}
 	if (Check::isDouble(str)) {
 		double d = std::atof(str.c_str());
-		std::cout << "Input is a double: " << MB << "'" << str << "'" << C << std::endl;
+		std::cout << "Input is a double: " << "'" << str << "'" << std::endl;
 		std::cout << "char: ";
 		if (Check::overFlow(str))
-			std::cout << MB << "impossible" << C << std::endl;
+			std::cout << "impossible" << std::endl;
 		else if (d >= 0 && d <= UCHAR_MAX && isprint(d))
-			std::cout << MB << "'" << static_cast<char>(d) << "'" << C << std::endl;
+			std::cout << "'" << static_cast<char>(d) << "'" << std::endl;
 		else
-			std::cout << MB << "Non displayable" << C << std::endl;
+			std::cout << "Non displayable" << std::endl;
 		std::cout << "int: ";
 		if (Check::overFlow(str))
-			std::cout << MB << "impossible" << C << std::endl;
+			std::cout << "impossible" << std::endl;
 		else
-			std::cout << MB << static_cast<int>(d) << C << std::endl;
-		std::cout << "float: " << MB << static_cast<float>(d) << "f" << C << std::endl;
-		std::cout << "double: " << MB << static_cast<double>(d) << C << std::endl;
+			std::cout << static_cast<int>(d) << std::endl;
+		std::cout << "float: " << static_cast<float>(d) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(d) << std::endl;
 		return ;
 	}
 	if (Check::isFloat(str)) {
 		float f = std::atof(str.c_str());
-		std::cout << "Input is a float: " << MB << "'" << str << "'" << C << std::endl;
+		std::cout << "Input is a float: " << "'" << str << "'" << std::endl;
 		std::cout << "char: ";
 		if (Check::overFlow(str))
-			std::cout << MB << "impossible" << C << std::endl;
+			std::cout << "impossible" << std::endl;
 		else if (f >= 0 && f <= UCHAR_MAX && isprint(f))
-			std::cout << MB << "'" << static_cast<char>(f) << "'" << C << std::endl;
+			std::cout << "'" << static_cast<char>(f) << "'" << std::endl;
 		else
-			std::cout << MB << "Non displayable" << C << std::endl;
+			std::cout << "Non displayable" << std::endl;
 		std::cout << "int: ";
 		if (Check::overFlow(str))
-			std::cout << MB << "impossible" << C << std::endl;
+			std::cout << "impossible" << std::endl;
 		else
-			std::cout << MB << static_cast<int>(f) << C << std::endl;
-		std::cout << "float: " << MB << static_cast<float>(f) << "f" << C << std::endl;
-		std::cout << "double: " << MB << static_cast<double>(f) << C << std::endl;
+			std::cout << static_cast<int>(f) << std::endl;
+		std::cout << "float: " << static_cast<float>(f) << "f" << std::endl;
+		std::cout << "double: " << static_cast<double>(f) << std::endl;
 		return ;
 	}
-	std::cout << MB << "impossible" << C << std::endl;
+	std::cout << "impossible" << std::endl;
 }
 
 bool ScalarConverter::Check::isChar(std::string const & str) {

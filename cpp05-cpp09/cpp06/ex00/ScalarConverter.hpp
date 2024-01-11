@@ -8,9 +8,6 @@
 # include <climits>
 # include <cerrno>
 
-# define MB "\x1b[1m\x1b[38;2;25;25;599m"
-# define C "\x1b[0m"
-
 class ScalarConverter {
 	private:
 		ScalarConverter(void);

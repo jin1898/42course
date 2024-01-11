@@ -1,14 +1,16 @@
-#include "../include/Serializer.hpp"
+#include "./Serializer.hpp"
 
-Serializer::Serializer(void) {}
+Serializer::Serializer(void) {std::cout << "[OCCF] 사용불가" << std::endl;}
 
 Serializer::Serializer(Serializer const & src) {
+	std::cout << "[OCCF] 사용불가" << std::endl;
 	*this = src;
 }
 
-Serializer::~Serializer(void) {}
+Serializer::~Serializer(void) {std::cout << "[OCCF] 사용불가" << std::endl;}
 
 Serializer & Serializer::operator=(Serializer const & rhs) {
+	std::cout << "[OCCF] 사용불가" << std::endl;
 	(void)rhs;
 	return *this;
 }
