@@ -8,6 +8,11 @@ template<typename T> void iter(T *arry, int length, void (*f)(T const &)){
         f(arry[i]);
 }
 
+template<typename T> void iter(T *arry, int length, void (*f)(T &)){
+    for(int i = 0; i < length; i++)
+        f(arry[i]);
+}
+
 template<typename T> void print(T &i) {
     std::cout << i << std::endl;
 }
