@@ -7,16 +7,15 @@ int main(void)
     char char_arr[3] = {'a','b','c'};
     std::string string_arr[3] = {"i","am trying","so hard"};
 
-    iter<int>(int_arr,3,print<int>);
+    iter<int>(int_arr,3,printIt<int>);
     std::cout << "\n\n";
-    iter<double>(double_arr,3,print<double>);
+    iter<double>(double_arr,3,printIt<double>);
     std::cout << "\n\n";
-    iter<char>(char_arr,3,print<char>);
+    iter<char>(char_arr,3,printIt<char>);
     std::cout << "\n\n";
-    iter<std::string>(string_arr,3,print<std::string>);
+    iter<std::string>(string_arr,3,printIt<std::string>);
     std::cout << "\n\n";
 
     int tab[] = { 0, 1, 2, 3, 4 };
-    iter( tab, 5, print<const int> );
-
+    iter( tab, 5, printIt<const int>);
 }

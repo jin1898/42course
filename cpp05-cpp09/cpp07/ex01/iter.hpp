@@ -13,7 +13,7 @@ template<typename T> void iter(T *arry, int length, void (*f)(T &)){
         f(arry[i]);
 }
 
-template<typename T> void print(T &i) {
+template<typename T> void printIt(T &i) {
     std::cout << i << std::endl;
 }
 #endif
