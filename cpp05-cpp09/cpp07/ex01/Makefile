@@ -1,5 +1,5 @@
 NAME = ex01
-SCRS = ex01.cp
+SCRS = main.cpp
 OBJS = $(SCRS:.cpp=.o)
 FLAG = -g -Wall -Wextra -Werror
 
