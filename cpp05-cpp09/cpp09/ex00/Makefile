@@ -1,7 +1,7 @@
-NAME = ex00
-SCRS = main.cpp
-OBJS = $(SCRS:.cpp=.o)
-FLAG = -g -Wall -Wextra -Werror
+NAME =ex00
+SRCS = main.cpp BitcoinExchange.cpp
+OBJS = $(SRCS:.cpp=.o)
+FLAG = -g -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 

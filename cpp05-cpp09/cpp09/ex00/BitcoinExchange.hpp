@@ -1,3 +1,6 @@
+#ifndef BITCOINEXCHANGE_HPP
+#define BITCOINEXCHANGE_HPP
+
 #include <string>
 #include <map>
 
@@ -8,5 +11,7 @@ public:
     float findClosestRate(const std::string& date);
 
 private:
-    std::map<std::string, float> db;
+    std::map<std::string, float> rates;
 };
+
+#endif
