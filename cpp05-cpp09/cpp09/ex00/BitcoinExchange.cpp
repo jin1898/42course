@@ -2,18 +2,23 @@
 #include <fstream>
 #include <sstream>
 #include <iostream>
+#include <cstdlib>
 
 BitcoinExchange::BitcoinExchange(const std::string& filename) {
+    if (filename != "input.txt") {
+        std::cerr << "Error: Invalid file name. Program will exit.\n";
+        exit(EXIT_FAILURE);
+    }
     std::ifstream file(filename.c_str());
     std::string line;
-    std::getline(file, line); // Skip the header line
+    std::getline(file, line);
     while (std::getline(file, line)) {
         std::istringstream ss(line);
         std::string date, separator;
         float rate;
         ss >> date >> separator >> rate;
         if (separator != "|" || rate <= 0 || rate > 2147483647) {
-            std::cout << "Error: not a positive number." << std::endl;
+            std::cout << "[파씽]Error: not a positive number." << std::endl;
             continue;
         }
         rates[date] = rate;
@@ -34,4 +39,10 @@ float BitcoinExchange::findClosestRate(const std::string& date) {
     }
     --it;
     return it->second;
+}
+
+void BitcoinExchange::printRates() const {
+    for (std::map<std::string, float>::const_iterator it = rates.begin(); it != rates.end(); ++it) {
+        std::cout << "Date: <" << it->first << ">, Rate: <" << it->second << ">" << std::endl;
+    }
 }

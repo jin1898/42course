@@ -10,6 +10,9 @@ int main(int argc, char* argv[]) {
     }
 
     BitcoinExchange be(argv[1]);
+    std::cout << "-start---------" << std::endl;
+    be.printRates();
+    std::cout << "------------end-" << std::endl;
     std::ifstream file(argv[1]);
     std::string line;
     while (std::getline(file, line)) {
