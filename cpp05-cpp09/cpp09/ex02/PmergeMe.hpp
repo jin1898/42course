@@ -9,90 +9,109 @@
 #include <sstream>
 #include <cstddef>
 
-
-#define START(x) x + 1
-
 class PmergeMe
 {
 
 public:
 
-    //Orthodox Canonical Form
     PmergeMe();
     ~PmergeMe();
     PmergeMe& operator=(const PmergeMe& other);
     PmergeMe(const PmergeMe& other);
 
-    //Vector sort functions
     template <typename T>
     static void mergeInsertSortVector(T &container, int start, int end)
     {
         int newEnd;
         if (start < end)
         {
-            if ((end - start) < 10)
+            if ((end - start) < 10) // 범위가 적은데 mergesort를 하면 오버헤드가 발생할수있다함.
                 insertSortVector(container, start, end);
             else
             {
                 newEnd = start + (end - start) / 2;
-                mergeInsertSortVector(container,  start, newEnd);
-                mergeInsertSortVector(container, START(newEnd), end);
-                mergeSortVector(container, start, newEnd, end);
+                mergeInsertSortVector(container,  start, newEnd); // 반으로 나눠서 2번 marge함.
+                mergeInsertSortVector(container, newEnd + 1, end);// 반으로 나눠서 2번으로 marge함.
+                mergeSortVector(container, start, newEnd, end);// 그리고 그 둘을 합침
             }
         }
     };
     template <typename T>
     static void mergeSortVector(T &container, int start, int mid, int end)
     {
-        int i, j , k;
+        int leftIndex,rightIndex,containIndex;
 
-        std::vector<int> left(mid - start + 1);
+        std::vector<int> left(mid - start);
         std::vector<int> right(end - mid);
 
-        for(i = 0; i < (mid - start + 1); ++i)
-            left[i] = container[start + i];
-        for(j = 0; j < (end - mid); ++j)
-            right[j] = container[mid + 1 + j];
-        i = 0;
-        j = 0;
-        k = start;
-    while(i < (mid - start + 1) && j < (end - mid))
+        for(leftIndex = 0; leftIndex < (mid - start); ++leftIndex)
+            left[leftIndex] = container[start + leftIndex];
+        for(rightIndex = 0; rightIndex < (end - mid); ++rightIndex)
+            right[rightIndex] = container[mid + 1 + rightIndex];
+        leftIndex = 0;
+        rightIndex = 0;
+        containIndex=start;
+    while(leftIndex < (mid - start) && rightIndex < (end - mid))
     {
-        if (left[i] <= right[j])
-            container[k++] = left[i++];
+        if (left[leftIndex] <= right[rightIndex])
+            container[containIndex++] = left[leftIndex++];
         else
-            container[k++] = right[j++];
+            container[containIndex++] = right[rightIndex++];
     }
 
-    while(i < (mid - start + 1))
-        container[k++] =  left[i++];
-    while (j < (end - mid))
-        container[k++] = right[j++];
+    while(leftIndex < (mid - start))
+        container[containIndex++] =  left[leftIndex++];
+    while (rightIndex < (end - mid))
+        container[containIndex++] = right[rightIndex++];
 };
     template <typename T>
     static void insertSortVector(T &container, int start, int end)
     {
-        for(int index = START(start); index <= end; index++)
+        for(int index = start; index <= end; index++)
         {
-            int hold = container[index];
-            int j = index - 1;
-            for(; j >= start && container[j] > hold; --j)
-                container[j + 1] = container[j];
-            container[j + 1] = hold;
+            int pivotValue = container[index];
+            int comparValue = index - 1;
+            for(; comparValue >= start && container[comparValue] > pivotValue; --comparValue)
+                container[comparValue + 1] = container[comparValue];
+            container[comparValue + 1] = pivotValue;
         }
     };
-    //Calcualte time functions
     template <typename T>
     static void runcontainer(T &container)
     {
-       mergeInsertSortVector(container, 0, container.size() - 1);
+       mergeInsertSortVector(container, 0, container.size() - 1);//당연한말이지만 0부터 시작하니까 n개이면 n-1이 마지막이다.
     };
-    // static void runDeque(std::deque<int> &container);
 };
 
-// Utility functions
-void print(std::vector<int> &, std::deque<int> &);
+void printresult(std::vector<int> &);
 void caluclateTime(std::vector<int> &, std::deque <int> &, double &, double &);
 int midPoint(int start, int end);
 
 #endif
+
+/*
+void print(std::vector<int> &Vec, std::deque<int> &Deq)
+{
+
+    static int i = 0;
+
+    if (!i)
+        std::cout << MAG << "Vector "  << "befor : " << BEFOR;
+    else
+        std::cout << MAG << "Vector "<< "after : " << AFTER;
+
+    for (std::vector<int>::const_iterator Vit = Vec.begin(); Vit != Vec.end(); ++Vit)
+		std::cout << *Vit << " ";
+    std::cout << std::endl;
+
+    if (!i)
+        std::cout << MAG << "Deque " << " befor : " << BEFOR ;
+    else
+        std::cout << MAG << "Deque "  << " after : " << AFTER;
+
+    for (std::deque<int>::const_iterator Dit = Deq.begin(); Dit != Deq.end(); ++Dit)
+		std::cout << *Dit << " ";
+    std::cout << std::endl;
+    i++;
+}
+*/

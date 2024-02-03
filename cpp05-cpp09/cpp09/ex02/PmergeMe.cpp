@@ -16,7 +16,7 @@ void caluclateTime(std::vector<int> &Vcontainer, std::deque<int> &Dcontainer,dou
     std::clock_t start = std::clock();
     PmergeMe::runcontainer(Vcontainer);
     std::clock_t end = std::clock();
-    double elapsed = static_cast<double>(end - start) / (CLOCKS_PER_SEC / 1000000.0);
+    double elapsed = static_cast<double>(end - start) / (CLOCKS_PER_SEC / 1000000.0); //실행시간을 마이크로 초단위로 얻기위해서 "CLOCKS_PER_SEC / 1000000.0"를 사용함. 그후 double형으로 형변환하면 정확한 소수점 얻을수있음
     vecTime = elapsed;
     start = std::clock();
     PmergeMe::runcontainer(Dcontainer);
@@ -26,28 +26,20 @@ void caluclateTime(std::vector<int> &Vcontainer, std::deque<int> &Dcontainer,dou
 
 }
 
-void print(std::vector<int> &Vec, std::deque<int> &Deq)
+void printresult(std::vector<int> &Vec)
 {
 
     static int i = 0;
 
     if (!i)
-        std::cout << "Vector "  << "befor : " ;
+        std::cout << "Befor : " ;
     else
-        std::cout << "Vector "<< "after : ";
+        std::cout << "After : ";
 
     for (std::vector<int>::const_iterator Vit = Vec.begin(); Vit != Vec.end(); ++Vit)
 		std::cout << *Vit << " ";
     std::cout << std::endl;
 
-    if (!i)
-        std::cout << "Deque " << " befor : "  ;
-    else
-        std::cout << "Deque "  << " after : ";
-
-    for (std::deque<int>::const_iterator Dit = Deq.begin(); Dit != Deq.end(); ++Dit)
-		std::cout << *Dit << " ";
-    std::cout << std::endl;
     i++;
 }
 
