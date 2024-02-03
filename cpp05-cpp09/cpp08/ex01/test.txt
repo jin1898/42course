@@ -1,5 +1,0 @@
-class 뮤턴트스택 : public std:stack
-{
-
-(std::stack 맴버타입) iterator 
-}

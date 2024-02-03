@@ -28,10 +28,12 @@ template <typename T>
 class MutantStack : public std::stack<T>
 {
 public:
-	MutantStack(void) {};
-	MutantStack(const MutantStack& obj) {*this = obj;};
-	MutantStack& operator=(const MutantStack& obj) {*this = obj; return (*this);}
-	~MutantStack(void) {};
+	//--------occf-----------start-
+	MutantStack(void) {std::cout << "occf디폴트 생성자 호출" << std::endl;};
+	MutantStack(const MutantStack& obj) {std::cout << "occf 복사 생성자 호출" << std::endl; *this = obj;};
+	MutantStack& operator=(const MutantStack& obj) {std::cout << "occf 복사 할당 연산자 호출" << std::endl; *this = obj; return (*this);}
+	~MutantStack(void) {std::cout << "occf 소멸자 호출" << std::endl;};
+	//----------occf---------end-
 
 	// 반복자(iterator)를 stack을 상속받은 MutantStack에 추가
 	typedef typename MutantStack<T>::stack::container_type::iterator iterator;
@@ -43,13 +45,6 @@ public:
 	reverse_iterator rbegin(void) {return this->c.rbegin();}
 	reverse_iterator rend(void) {return this->c.rend();}
 
-	typedef typename MutantStack<T>::stack::container_type::const_iterator const_iterator;
-	const_iterator cbegin(void) {return this->c.cbegin();}
-	const_iterator cend(void) {return this->c.cend();}
-
-	typedef typename MutantStack<T>::stack::container_type::const_reverse_iterator const_reverse_iterator;
-	const_iterator crbegin(void) {return this->c.crbegin();}
-	const_iterator crend(void) {return this->c.crend();}
 };
 
 #endif

@@ -1,9 +1,9 @@
 #include "BitcoinExchange.hpp"
 #include <fstream>
 
-int checkValidFiles(char **argv)
+int checkValidFiles(char *rawInputfile)
 {
-	std::string str_btc = argv[1];
+	std::string str_btc = "data.csv";
 	std::fstream fileBtc(str_btc);
 
 	if(str_btc.compare("data.csv") == 0)
@@ -14,13 +14,8 @@ int checkValidFiles(char **argv)
 			return 1;
 		}
 	}
-	else
-	{
-		std::cerr << "Error: only data.csv is alowed" << std::endl;
-		return 1;
-	}
 
-	std::string str_input = argv[2];
+	std::string str_input = rawInputfile;
 	std::fstream fileInput(str_input);
 	if(str_input.compare("input.txt") == 0)
 	{
@@ -40,16 +35,16 @@ int checkValidFiles(char **argv)
 
 int main(int argc, char **argv)
 {
-	if (argc != 3)
+	if (argc != 2)
 	{
-		std::cerr << "usage: ./btc data.csv input.txt" << std::endl;
+		std::cerr << "usage: ./btc input.txt" << std::endl;
 		return 1;
 	}
-	if(checkValidFiles(argv) == 1)
+	if(checkValidFiles(argv[1]) == 1)
 		return 1;
-	std::fstream str_btc(argv[1]);
+	std::fstream str_btc("data.csv");
 	BitcoinExchange btc(str_btc);
-	std::fstream str_input(argv[2]);
+	std::fstream str_input(argv[1]);
 	if(btc.checkCorrectFormat(str_input))
 		return 1;
 	(void)argc;

@@ -28,11 +28,13 @@ int BitcoinExchange::checkCorrectFormat(std::fstream &inputFile)
 	int year, month, day;
 	float value;
 	char error;
+
+	std::getline(inputFile, line);
+	if (line.compare("date | value"))
+		std::cerr << "Error: bad input => " << line << std::endl;
 	while(std::getline(inputFile, line))
 	{
 		if (line.empty())
-			continue;
-		if (line.compare("data|input") == 0)
 			continue;
 
 		//--inputfile의 형식이 맞는지 확인 --start

@@ -50,5 +50,10 @@ void RPN::caculate(char *rawstr)
             return;
         }
     }
+    if(numStorage.size() < 1)
+    {
+        std::cerr << "Error" << std::endl;
+        return;
+    }
     std::cout << numStorage.top() << std::endl;
 }

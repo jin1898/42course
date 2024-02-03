@@ -14,7 +14,7 @@ class BitcoinExchange
 
 	public:
 		~BitcoinExchange();
-		BitcoinExchange(std::fstream &filename); // btc
+		BitcoinExchange(std::fstream &filename); 
 		int checkCorrectFormat(std::fstream &inputFile);
 
 };

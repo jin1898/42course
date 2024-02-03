@@ -1,7 +1,7 @@
 NAME = ex01
 SCRS = main.cpp Span.cpp
 OBJS = $(SCRS:.cpp=.o)
-FLAG = -g -Wall -Wextra -Werror
+FLAG = -g -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
