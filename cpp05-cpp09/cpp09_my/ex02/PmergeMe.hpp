@@ -83,7 +83,7 @@ public:
     };
 };
 
-void printresult(std::vector<int> &);
+void printresult(std::vector<int> &, std::deque<int> &);
 void caluclateTime(std::vector<int> &, std::deque <int> &, double &, double &);
 int midPoint(int start, int end);
 

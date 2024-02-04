@@ -25,23 +25,31 @@ void caluclateTime(std::vector<int> &Vcontainer, std::deque<int> &Dcontainer,dou
     deqTime = elapsed;
 
 }
-
-void printresult(std::vector<int> &Vec)
+void printresult(std::vector<int> &Vec, std::deque<int> &Deq)
 {
 
     static int i = 0;
 
     if (!i)
-        std::cout << "Befor : " ;
+        std::cout  << "Vector "  << "befor : ";
     else
-        std::cout << "After : ";
+        std::cout  << "Vector "<< "after : ";
 
     for (std::vector<int>::const_iterator Vit = Vec.begin(); Vit != Vec.end(); ++Vit)
 		std::cout << *Vit << " ";
     std::cout << std::endl;
 
+    if (!i)
+        std::cout << "Deque " << " befor : ";
+    else
+        std::cout << "Deque "  << " after : ";
+
+    for (std::deque<int>::const_iterator Dit = Deq.begin(); Dit != Deq.end(); ++Dit)
+		std::cout << *Dit << " ";
+    std::cout << std::endl;
     i++;
 }
+
 int midPoint(int start, int end)
 {
     return(start + (end - start) / 2);

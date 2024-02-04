@@ -49,7 +49,7 @@ int BitcoinExchange::checkCorrectFormat(std::fstream &inputFile)
 			continue;
 		}
 
-		if (value < 0 || value > 1000)
+		if (value < 0 )
 		{
 			std::cerr << "Error: not a positive number." << std::endl;
 			continue;
