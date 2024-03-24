@@ -13,11 +13,11 @@ mv wp-cli.phar /usr/local/bin/wp
 
 wp core download --allow-root
 
-wp config create --dbname=$db1_name --dbuser=$db1_user --dbpass=$db1_pwd --dbhost=my_mariadb:3306 --allow-root
+wp config create --dbname=$DATABASE_NAME --dbuser=$DATABASE_USER --dbpass=$DATABASE_PASSWORD --dbhost=my_mariadb:3306 --allow-root
 
-wp core install --url=$DOMAIN_NAME --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL --skip-email --allow-root
+wp core install --url=$DOMAIN_NAME --title=$WORDPRESS_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WORDPRESS_ADMIN_PASWORD --admin_email=$WORDPRESS_ADMIN_EMAIL --skip-email --allow-root
 
-wp user create $WP_USR $WP_EMAIL --role=author --user_pass=$WP_PWD --allow-root
+wp user create $WORDPRESS_USER $WORDPRESS_EMAIL --role=author --user_pass=$WORDPRESS_PASWORD --allow-root
 
 wp theme install astra --activate --allow-root
 
