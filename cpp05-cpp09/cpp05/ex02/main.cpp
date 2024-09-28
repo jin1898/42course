@@ -17,7 +17,7 @@ int main(void)
 	std::cout << std::endl;
 
 	Bureaucrat bur11(1, "bur11");
-	Bureaucrat bur12(140, "bur12");
+	Bureaucrat bur12(148, "bur12");
 	Bureaucrat bur13(150, "bur13");
 
 	ShrubberyCreationForm a("form");
@@ -49,10 +49,9 @@ int main(void)
 	// grade too low to execute
 	try {
 		std::cout << bur12 << std::endl;
-		std::cout << a << std::endl;
 		a.beSigned(bur12);
 		bur12.executeForm(a);
-		//a.execute(bur12);
+		a.execute(bur12);
 	}
 	catch (std::exception& e) {
 		std::cerr << e.what() << std::endl;

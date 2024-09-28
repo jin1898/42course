@@ -12,7 +12,7 @@ void RPN::caculate(char *rawstr)
 {
     for (int i = 0; i < (int)std::strlen(rawstr);)
     {
-       if (std::isdigit(rawstr[i]))
+        if (std::isdigit(rawstr[i]))
         {
             numStorage.push(std::atoi(&rawstr[i]));
             i++;
@@ -50,7 +50,7 @@ void RPN::caculate(char *rawstr)
             return;
         }
     }
-    if(numStorage.size() != 1)
+    if(numStorage.size() < 1)
     {
         std::cerr << "Error" << std::endl;
         return;

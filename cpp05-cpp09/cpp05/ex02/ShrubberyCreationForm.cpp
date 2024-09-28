@@ -31,12 +31,12 @@ ShrubberyCreationForm& ShrubberyCreationForm::operator=(const ShrubberyCreationF
 
 void ShrubberyCreationForm::execute(const Bureaucrat& executor) const
 {
-	if(this->getIsSigned() && executor.getGrade() >= this->getExecuteGrade()) {
-		std::ofstream target;
-		target.open(this->target + "_Shrubbery");
-		if(target.is_open())
-			std::cout << "file open fail" << std::endl;
-
+	if (this->getIsSigned() && executor.getGrade() >= this->getExecuteGrade())
+    {
+        std::ofstream target;
+        target.open(this->target + "_shrubbery");
+        if (!target.is_open())
+            std::cout << "Error : cannot opening file" << std::endl;
 		else
 		{
 			target << "  ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⢀⠀⠀⠀⢀⣀⡀⠀⠀⠂⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀  \n"
