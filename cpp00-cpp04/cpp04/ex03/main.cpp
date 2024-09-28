@@ -1,5 +1,16 @@
+#include "Character.hpp"
+#include "MateriaSource.hpp"
+#include "Ice.hpp"
+#include "Cure.hpp"
+
+void a(void)
+{
+	system("leaks -q ex03");
+}
+
 int main()
 {
+	atexit(a);
 	{
 		IMateriaSource* src = new MateriaSource();
 		src->learnMateria(new Ice());
@@ -56,7 +67,7 @@ int main()
 		dur2->equip(cure);
 		dur2->equip(ice);
 		dur2->unequip(2);
-		delete cure; // Cure must be deleted manually when unequipped
+		delete cure;
 		dur2->unequip(2);
 		dur2->unequip(6);
 		std::cout << std::endl;

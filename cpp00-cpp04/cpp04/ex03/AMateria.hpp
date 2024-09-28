@@ -3,21 +3,20 @@
 
 #include <iostream>
 
+class ICharacter;
+
 class AMateria
 {
 	protected:
-		std::string type;
+		std::string	_type;
 
+		AMateria(std::string const &type);
+		AMateria(AMateria const &copy);
 	public:
-		AMateria(void);
-		AMateria(const AMateria& original);
-		AMateria& operator=(const AMateria& original);
-		~AMateria(void);
-
-		AMateria(std::string const & type);
-		std::string const & getType() const;
-		virtual AMateria* clone() const = 0;
-		virtual void use(ICharacter& target);
-}
-
+		virtual ~AMateria(void);
+		AMateria const	&operator=(AMateria const &copy);
+		std::string const	&getType(void) const;
+		virtual AMateria	*clone(void) const = 0;
+		virtual void		use(ICharacter &target) = 0;
+};
 #endif

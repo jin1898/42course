@@ -1,7 +1,7 @@
 NAME = ex03
-SCRS = main.cpp
-OBJS = $(SCRS:.cpp=.o)
-FLAG = -g -Wall -Wextra -Werror
+SRCS = main.cpp AMateria.cpp Ice.cpp Cure.cpp ICharacter.cpp Character.cpp IMateriaSource.cpp MateriaSource.cpp
+OBJS = $(SRCS:.cpp=.o)
+FLAG = -Wall -Wextra -Werror -std=c++98
 
 all: $(NAME)
 
