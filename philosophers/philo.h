@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:35:16 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/08/03 18:43:29 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/08/01 15:07:36 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ typedef struct s_allinfo
 	int				time_to_sleep;
 	int				must_eat;
 	int				death_flag;
+	int				eating_flag;
 	long int		start_time;
 	int				ready;
 	int				*fork;
@@ -33,7 +34,8 @@ typedef struct s_allinfo
 	pthread_mutex_t	*fork_m;
 	pthread_mutex_t	print;
 	pthread_mutex_t	death_flag_m;
-	pthread_mutex_t	p_startetingtime; //check_death 와 ft_doac에서 startetingtime을 모두 사용하기 때문에 필요함.
+	pthread_mutex_t	check_death;
+	pthread_mutex_t	p_startetingtime;
 	pthread_mutex_t	eat_count;
 }	t_allinfo;
 
@@ -46,7 +48,7 @@ typedef struct s_philo
 	long int			p_starttime;
 	long int			p_startetingtime;
 	int					eat_count;
-	t_allinfo			*info;
+	struct s_allinfo	*info;
 }	t_philo;
 
 int			ft_usleep(int goal_time, int num);

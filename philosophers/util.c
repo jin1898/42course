@@ -6,7 +6,7 @@
 /*   By: jsunwoo <jsunwoo@student.42seoul.kr>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 13:29:08 by jsunwoo           #+#    #+#             */
-/*   Updated: 2023/08/03 17:42:31 by jsunwoo          ###   ########.fr       */
+/*   Updated: 2023/08/01 15:08:20 by jsunwoo          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ long long	ft_atoi(const char *str)
 	return (result * n);
 }
 
-long int	ft_current_time(void) //리턴값 인인트트랑  바바이이트트사사이이즈즈가가같같음 long int와 long long int가 다른거고 int는 long int와 마찬가지로 범위는 같다.
+long int	ft_current_time(void)
 {
 	struct timeval	now;
 
@@ -60,7 +60,7 @@ int	ft_printf(t_philo *philo, char *str)
 	{
 		now_time = ft_current_time();
 		printf("%lld %d %s", (now_time - philo->p_starttime), philo->name, str);
-		usleep(5);//락을 걸었는데 printf의 순서가 꼬일리가없다.
+		usleep(5);
 		pthread_mutex_unlock(&philo->info->print);
 	}
 	else
