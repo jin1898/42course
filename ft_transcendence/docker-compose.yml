@@ -1,0 +1,67 @@
+version: '3'
+
+services:
+  db:
+    image: postgres:alpine3.18
+    volumes:
+      - db_volume:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    env_file:
+      - .env
+    environment:
+      POSTSQL_DB: ${DB_NAME}
+      POSTSQL_USER: ${DB_USER}
+      POSTSQL_PASSWORD: ${DB_PASS}
+    networks:
+      - transendance
+  backend:
+    build:
+      dockerfile: ./BackEnd/dockerfile
+    volumes:
+      - ./BackEnd:/code
+    env_file:
+      - .env
+    environment:
+      POSTSQL_HOST : ${POSTSQL_HOST}
+      DJANGO_SETTINGS_MODULE : ${DJANGO_MODU_back}
+    depends_on:
+      - db
+    networks:
+      - transendance
+  web:
+    build: ./Nginx
+    ports:
+      - "8000:80"
+    volumes:
+      - ./FrontEnd:/nginx
+    env_file:
+      - .env
+    depends_on:
+      - backend
+    networks:
+      - transendance
+  game:
+    build: 
+      dockerfile: ./game/dockerfile
+    volumes:
+      - ./game:/code
+    env_file:
+      - .env
+    environment:
+      POSTSQL_HOST : ${POSTSQL_HOST}
+      DJANGO_SETTINGS_MODULE : ${DJANGO_MODU_game}
+    networks:
+      - transendance
+
+volumes:
+  db_volume:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: ${PWD}/data/postgresql
+
+networks:
+  transendance:
+    driver: bridge

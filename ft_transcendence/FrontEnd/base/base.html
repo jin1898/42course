@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Ft_Transcendence</title>
+	<link rel="icon" href="../static/favicon.ico" type="image/x-icon">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+	<link hr4ef="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;700&display=swap" rel="stylesheet">
+	<script type="module" src="./base/base_util.js"></script>
+	<script type=“module” src=“../src/language/language.js”></script>
+	<style id="style">
+	</style>
+</head>
+
+<body>
+	<header>
+		<div id="popupContainer"></div>
+	</header>
+	<div class="container" id="content">
+	</div>
+	<div class="container my-5" id="footer">
+		<section class="">
+			<footer class="text-center text-white" style="background-color: gray;">
+				<div class="container p-4 pb-0">
+					<section class="">
+					<p class="d-flex justify-content-center align-items-center">
+						<a class="btn btn-outline-light me-3" href="/#" data-translate="homebtn">홈</a>
+						<label class="me-1" for="languageSelector" data-translate="langbtn">언어</label>
+						<select id="languageSelector">
+						<option value="en">English</option>
+						<option value="ko" selected>한국어</option>
+						<option value="ja">日本語</option>
+						</select>
+					</p>
+					</section>
+				</div>
+				<div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+					© 2024 Copyright:
+					<a class="text-white" href="/#">42Seoul</a>
+				</div>
+			</footer>
+		</section>
+	</div>
+</body>
+
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<script type="module" src="./base/base.js"></script>
+</html>
